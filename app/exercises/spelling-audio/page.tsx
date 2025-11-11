@@ -47,11 +47,14 @@ export default function SpellingAudioPage() {
     }
     audioRef.current.src = currentWord.audioUrl;
     audioRef.current.load();
-    setIsAudioBusy(false);
     resetAudioAvailability();
   }, [currentWord, resetAudioAvailability]);
 
   useEffect(() => {
+    if (!currentWord) {
+      return;
+    }
+
     const element = audioRef.current;
     if (!element) {
       return;
@@ -75,7 +78,7 @@ export default function SpellingAudioPage() {
       element.removeEventListener("pause", handleFinished);
       element.removeEventListener("error", handleError);
     };
-  }, [markAudioUnavailable]);
+  }, [currentWord, markAudioUnavailable]);
 
   const handlePlay = async () => {
     if (!audioRef.current || !audioAvailable) {

@@ -3,7 +3,7 @@
     "id": "wieder",
     "word": "wieder",
     "audioUrl": "/assets/audio/wieder.mp3",
-    "letters": ["w", "i", "e", "d", "e", "r", "e", "i", "ä", "ß"],
+    "letters": ["w", "i", "d", "r", "e", "i", "ä", "ß"],
     "hints": { "tip": "Achte auf die Reihenfolge von \"ie\"." }
   },
   {
@@ -17,7 +17,7 @@
     "id": "heissen",
     "word": "heißen",
     "audioUrl": "/assets/audio/heissen.mp3",
-    "letters": ["h", "e", "i", "ß", "e", "n", "ä", "o", "u", "s", "i"],
+    "letters": ["h", "e", "i", "ß", "e", "n", "ä", "o", "u", "s"],
     "hints": { "tip": "Achtung: In \"heißen\" steht ein ß, kein ss." }
   }
 ]
