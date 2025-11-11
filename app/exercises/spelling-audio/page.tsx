@@ -6,6 +6,7 @@ import { safeAudioPlay } from "@/lib/utils";
 import { AudioButton } from "./components/AudioButton";
 import { InputDisplay } from "./components/InputDisplay";
 import { LetterGrid } from "./components/LetterGrid";
+import { SuccessPopup } from "./components/SuccessPopup";
 import {
   useSpellingGame,
   type GameStatus,
@@ -40,6 +41,7 @@ export default function SpellingAudioPage() {
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isAudioBusy, setIsAudioBusy] = useState(false);
+  const showSuccessPopup = status === "success";
 
   useEffect(() => {
     if (!audioRef.current || !currentWord) {
@@ -253,6 +255,12 @@ export default function SpellingAudioPage() {
           </button>
         </div>
       ) : null}
+
+      <SuccessPopup
+        open={showSuccessPopup}
+        message={feedback.message}
+        onClose={() => {}}
+      />
 
       <audio ref={audioRef} preload="auto" aria-hidden="true" />
     </section>
