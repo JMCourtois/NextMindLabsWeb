@@ -7,15 +7,15 @@ import { safeAudioPlay, withBasePath } from "@/lib/utils";
 type SuccessPopupProps = {
   open: boolean;
   message?: string;
-  onClose: () => void;
-  autoCloseMs?: number;
+  onNext: () => void;
+  onClose?: () => void;
 };
 
 export function SuccessPopup({
   open,
   message,
+  onNext,
   onClose,
-  autoCloseMs = 1600,
 }: SuccessPopupProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -35,17 +35,10 @@ export function SuccessPopup({
     if (element) {
       void safeAudioPlay(element);
     }
-    const timeoutId = window.setTimeout(() => {
-      setVisible(false);
-      if (onClose) {
-        onClose();
-      }
-    }, autoCloseMs);
     return () => {
       timers.forEach((id) => window.clearTimeout(id));
-      window.clearTimeout(timeoutId);
     };
-  }, [open, autoCloseMs, onClose]);
+  }, [open]);
 
   return (
     <div
@@ -63,6 +56,18 @@ export function SuccessPopup({
           ✓
         </div>
         <p className={styles.successMessage}>{label}</p>
+        <button
+          type="button"
+          className={styles.nextButton}
+          onClick={() => {
+            if (onClose) {
+              onClose();
+            }
+            onNext();
+          }}
+        >
+          Siguiente ejercicio
+        </button>
       </div>
 
       <audio

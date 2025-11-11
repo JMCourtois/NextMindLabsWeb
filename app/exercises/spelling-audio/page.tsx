@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { FeedbackTone } from "@/lib/types";
-import { safeAudioPlay } from "@/lib/utils";
+import { safeAudioPlay, withBasePath } from "@/lib/utils";
 import { AudioButton } from "./components/AudioButton";
 import { InputDisplay } from "./components/InputDisplay";
 import { LetterGrid } from "./components/LetterGrid";
@@ -40,6 +40,8 @@ export default function SpellingAudioPage() {
   } = useSpellingGame();
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const popAudioRef = useRef<HTMLAudioElement | null>(null);
+  const errorAudioRef = useRef<HTMLAudioElement | null>(null);
   const [isAudioBusy, setIsAudioBusy] = useState(false);
   const showSuccessPopup = status === "success";
 
@@ -94,6 +96,26 @@ export default function SpellingAudioPage() {
     }
   };
 
+  const handleSelectLetter = useCallback((letter: string) => {
+    if (isLocked) {
+      return;
+    }
+    if (popAudioRef.current) {
+      void safeAudioPlay(popAudioRef.current);
+    }
+    selectLetter(letter);
+  }, [isLocked, selectLetter]);
+
+  const handleCheckAnswer = useCallback(() => {
+    if (currentWord) {
+      const attempt = userInput.join("");
+      if (attempt !== currentWord.word && errorAudioRef.current) {
+        void safeAudioPlay(errorAudioRef.current);
+      }
+    }
+    checkAnswer();
+  }, [checkAnswer, currentWord, userInput]);
+
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (!currentWord) {
@@ -108,7 +130,7 @@ export default function SpellingAudioPage() {
 
       if (event.key === "Enter") {
         event.preventDefault();
-        checkAnswer();
+        handleCheckAnswer();
         return;
       }
 
@@ -123,13 +145,13 @@ export default function SpellingAudioPage() {
         const lowerKey = event.key.toLowerCase();
         const matchedLetter =
           letterPool.find((letter) => letter.toLowerCase() === lowerKey) ?? event.key;
-        selectLetter(matchedLetter);
+        handleSelectLetter(matchedLetter);
       }
     };
 
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
-  }, [checkAnswer, clearInput, currentWord, isValidLetter, letterPool, removeLetter, selectLetter]);
+  }, [clearInput, currentWord, handleCheckAnswer, handleSelectLetter, isValidLetter, letterPool, removeLetter]);
 
   const progressLabel = useMemo(() => {
     if (!totalWords) {
@@ -209,7 +231,7 @@ export default function SpellingAudioPage() {
         )}
       </section>
 
-      <LetterGrid letters={letterPool} disabled={isLocked} onSelect={selectLetter} />
+      <LetterGrid letters={letterPool} disabled={isLocked} onSelect={handleSelectLetter} />
 
       <div className={styles.controls} role="group" aria-label="Aktionen">
         <button
@@ -224,7 +246,7 @@ export default function SpellingAudioPage() {
         <button
           type="button"
           className={styles.controlButtonPrimary}
-          onClick={checkAnswer}
+          onClick={handleCheckAnswer}
           disabled={isLocked}
         >
           Antwort prüfen
@@ -248,20 +270,34 @@ export default function SpellingAudioPage() {
       </div>
 
       {showNextPrompt ? (
+        ! (status === "success") ? (
         <div className={styles.nextPrompt} role="status" aria-live="polite">
           <p className={styles.nextPromptText}>Super! Bereit für das nächste Wort?</p>
           <button type="button" className={styles.nextButton} onClick={goToNextWord}>
             Weiter zum nächsten Wort
           </button>
         </div>
+        ) : null
       ) : null}
 
       <SuccessPopup
         open={showSuccessPopup}
         message={feedback.message}
-        onClose={() => {}}
+        onNext={goToNextWord}
       />
 
+      <audio
+        ref={popAudioRef}
+        preload="auto"
+        src={withBasePath("/assets/appsounds/letter-pop.mp3")}
+        aria-hidden="true"
+      />
+      <audio
+        ref={errorAudioRef}
+        preload="auto"
+        src={withBasePath("/assets/appsounds/error-buzz.mp3")}
+        aria-hidden="true"
+      />
       <audio ref={audioRef} preload="auto" aria-hidden="true" />
     </section>
   );
