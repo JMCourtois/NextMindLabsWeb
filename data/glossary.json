@@ -1,0 +1,29 @@
+[
+  {
+    "term": "Confirmation bias",
+    "definition": "The tendency to seek, interpret, and remember information that confirms prior beliefs.",
+    "related": ["/biases/confirmation-bias"]
+  },
+  {
+    "term": "Bayesian reasoning",
+    "definition": "A method of updating beliefs as new data arrives by applying Bayes’ theorem.",
+    "related": []
+  },
+  {
+    "term": "Decision framework",
+    "definition": "Structured approaches, such as decision matrices or OODA loops, that guide choices under uncertainty.",
+    "related": []
+  },
+  {
+    "term": "Human-in-the-loop",
+    "definition": "Design pattern ensuring humans review or override automated decisions before action.",
+    "related": ["/biases/automation-bias"]
+  },
+  {
+    "term": "Prompt engineering",
+    "definition": "Crafting inputs that steer AI systems toward desired outputs while respecting constraints.",
+    "related": ["/skills/ai-and-big-data"]
+  }
+]
+
+

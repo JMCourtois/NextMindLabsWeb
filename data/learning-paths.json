@@ -1,0 +1,31 @@
+[
+  {
+    "id": "beginner",
+    "title": "Beginner",
+    "duration": "2 weeks",
+    "focus": ["Curiosity and lifelong learning", "Technological literacy"],
+    "biases": ["Availability bias", "Confirmation bias"],
+    "exercises": ["Daily bias journal prompts", "Micro-quiz: spotting automation bias"],
+    "outcome": "Recognise everyday biases and build a continuous learning ritual."
+  },
+  {
+    "id": "intermediate",
+    "title": "Intermediate",
+    "duration": "4 weeks",
+    "focus": ["Analytical thinking", "Systems thinking"],
+    "biases": ["Anchoring bias", "Automation bias"],
+    "exercises": ["Case study teardown: AI loan approvals", "Run a team pre-mortem"],
+    "outcome": "Design mitigation strategies and collaborate on AI-inclusive projects."
+  },
+  {
+    "id": "advanced",
+    "title": "Advanced",
+    "duration": "6 weeks",
+    "focus": ["AI and big data", "Talent management", "Service orientation"],
+    "biases": ["Confirmation bias", "Algorithmic bias"],
+    "exercises": ["Prototype a bias monitoring dashboard", "Facilitate a culture-of-learning retrofit"],
+    "outcome": "Lead responsible AI initiatives and coach teams through ambiguity."
+  }
+]
+
+

@@ -1,0 +1,28 @@
+[
+  {
+    "slug": "bias-spotting-quiz",
+    "title": "Bias Spotting Quiz",
+    "type": "Quiz",
+    "summary": "Short scenarios that ask you to name the underlying bias.",
+    "duration": "10 min",
+    "skills": ["Analytical thinking", "Curiosity and lifelong learning"]
+  },
+  {
+    "slug": "ai-governance-case",
+    "title": "AI Governance Case Study",
+    "type": "Case Study",
+    "summary": "Investigate an AI hiring workflow and flag high-risk bias moments.",
+    "duration": "25 min",
+    "skills": ["Systems thinking", "AI and big data"]
+  },
+  {
+    "slug": "reflection-ritual",
+    "title": "Weekly Reflection Ritual",
+    "type": "Guided Reflection",
+    "summary": "Structured prompts to review decisions, emotions, and bias triggers.",
+    "duration": "15 min",
+    "skills": ["Motivation and self-awareness", "Resilience, flexibility, and agility"]
+  }
+]
+
+

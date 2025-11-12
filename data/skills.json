@@ -1,0 +1,104 @@
+[
+  {
+    "id": "creative-thinking",
+    "name": "Creative thinking",
+    "summary": "Generate novel, useful ideas in ambiguous environments.",
+    "microChallenges": [
+      "Run a SCAMPER remix on a daily workflow.",
+      "Sketch three AI prompt variations for the same brief."
+    ],
+    "tag": "Cognitive"
+  },
+  {
+    "id": "analytical-thinking",
+    "name": "Analytical thinking",
+    "summary": "Break complex problems into evidence-based components.",
+    "microChallenges": [
+      "Apply the 5 Whys to a customer churn spike.",
+      "Compare two AI outputs using a decision matrix."
+    ],
+    "tag": "Cognitive"
+  },
+  {
+    "id": "technological-literacy",
+    "name": "Technological literacy",
+    "summary": "Understand how emerging technologies work and where they fit.",
+    "microChallenges": [
+      "Map AI touchpoints in your current role.",
+      "Explain a model lifecycle in five steps."
+    ],
+    "tag": "Technology"
+  },
+  {
+    "id": "curiosity-and-lifelong-learning",
+    "name": "Curiosity and lifelong learning",
+    "summary": "Adopt deliberate habits to explore new information continuously.",
+    "microChallenges": [
+      "Schedule a weekly 30-minute learning sprint.",
+      "Document one 'what if?' question per project."
+    ],
+    "tag": "Self-efficacy"
+  },
+  {
+    "id": "resilience-flexibility-agility",
+    "name": "Resilience, flexibility, and agility",
+    "summary": "Bounce forward from setbacks with adaptive processes.",
+    "microChallenges": [
+      "Conduct a pre-mortem on an active initiative.",
+      "Create a personal re-sync ritual after change."
+    ],
+    "tag": "Self-efficacy"
+  },
+  {
+    "id": "systems-thinking",
+    "name": "Systems thinking",
+    "summary": "See interdependencies, feedback loops, and leverage points.",
+    "microChallenges": [
+      "Diagram stakeholders and data flows for a product.",
+      "Identify a reinforcing loop and design a counterbalance."
+    ],
+    "tag": "Management"
+  },
+  {
+    "id": "ai-and-big-data",
+    "name": "AI and big data",
+    "summary": "Leverage data pipelines and AI governance responsibly.",
+    "microChallenges": [
+      "Audit a dataset for bias signals.",
+      "Draft a human-in-the-loop checkpoint."
+    ],
+    "tag": "Technology"
+  },
+  {
+    "id": "motivation-and-self-awareness",
+    "name": "Motivation and self-awareness",
+    "summary": "Recognise triggers, values, and energy cycles.",
+    "microChallenges": [
+      "Complete a weekly reflection on energy drivers.",
+      "Pair every goal with an intrinsic 'why'."
+    ],
+    "tag": "Self-efficacy"
+  },
+  {
+    "id": "talent-management",
+    "name": "Talent management",
+    "summary": "Cultivate inclusive, high-learning teams.",
+    "microChallenges": [
+      "Run a skills heatmap for your squad.",
+      "Design a feedback ritual that scales."
+    ],
+    "tag": "Management"
+  },
+  {
+    "id": "service-orientation-and-customer-service",
+    "name": "Service orientation and customer service",
+    "summary": "Deliver empathetic, end-to-end experiences.",
+    "microChallenges": [
+      "Shadow a support interaction and note friction moments.",
+      "Draft one proactive outreach triggered by AI signals."
+    ],
+    "tag": "Engagement"
+  }
+]
+
+

@@ -1,0 +1,126 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(4rem, 8vw, 5rem);
+}
+
+.hero {
+  background: rgba(31, 41, 55, 0.82);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 3rem);
+  box-shadow: var(--shadow-md);
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+}
+
+.hero p {
+  margin: 1rem 0 0;
+  color: var(--color-muted);
+  max-width: 60ch;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+  background: rgba(17, 24, 39, 0.78);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow: var(--shadow-md);
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--color-text);
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.checkbox input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.form button {
+  justify-self: flex-start;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-strong));
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.form button:hover,
+.form button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.sidebar {
+  background: rgba(17, 24, 39, 0.72);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.sidebar h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.sidebar p,
+.sidebar a {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.sidebar a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+

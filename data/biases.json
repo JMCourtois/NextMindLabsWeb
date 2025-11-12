@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "confirmation-bias",
+    "name": "Confirmation bias",
+    "category": ["Cognitive", "Decision"],
+    "definition": "Searching for or interpreting information in ways that confirm existing beliefs.",
+    "example": "A product manager ignores usability test results because they contradict the original hypothesis.",
+    "impact": "Stalls innovation, keeps flawed strategies alive, and erodes trust in data.",
+    "mitigation": [
+      "Adopt pre-commit templates with disconfirming evidence sections.",
+      "Assign a 'red team' responder in reviews to critique the dominant view."
+    ],
+    "furtherReading": [
+      { "title": "The Decision Lab – Confirmation Bias", "url": "https://thedecisionlab.com/biases/confirmation-bias" }
+    ],
+    "related": ["anchoring-bias", "automation-bias"]
+  },
+  {
+    "slug": "automation-bias",
+    "name": "Automation bias",
+    "category": ["Decision", "Technology"],
+    "definition": "Over-relying on automated recommendations despite contradictory evidence.",
+    "example": "An operations lead accepts an AI forecast even when manual checks reveal anomalies.",
+    "impact": "Can escalate failures, compromise safety, and degrade accountability.",
+    "mitigation": [
+      "Design human-in-the-loop checkpoints with override logs.",
+      "Pair AI outputs with confidence markers and data lineage."
+    ],
+    "furtherReading": [
+      { "title": "WEF – Responsible AI Toolkit", "url": "https://www.weforum.org/" }
+    ],
+    "related": ["confirmation-bias", "anchoring-bias"]
+  },
+  {
+    "slug": "anchoring-bias",
+    "name": "Anchoring bias",
+    "category": ["Cognitive"],
+    "definition": "Allowing the first piece of information encountered to disproportionately influence decisions.",
+    "example": "A recruiter clings to an initial salary expectation even after new market data appears.",
+    "impact": "Leads to mispricing, negotiation stalemates, and skewed prioritisation.",
+    "mitigation": [
+      "Generate a range of anchors before meetings.",
+      "Use blind reviews for first-pass evaluations."
+    ],
+    "furtherReading": [
+      { "title": "Kahneman – Thinking, Fast and Slow", "url": "https://www.penguinrandomhouse.com/" }
+    ],
+    "related": ["framing-effect", "status-quo-bias"]
+  },
+  {
+    "slug": "availability-bias",
+    "name": "Availability bias",
+    "category": ["Cognitive", "Social"],
+    "definition": "Judging frequency or importance of events by how easily examples come to mind.",
+    "example": "After a high-profile outage, leadership over-invests in that failure mode while ignoring quieter risks.",
+    "impact": "Misallocates resources, fuels fear-based decisions.",
+    "mitigation": [
+      "Review baseline metrics before responding to incidents.",
+      "Create incident libraries with probability annotations."
+    ],
+    "furtherReading": [
+      { "title": "The Decision Lab – Availability Heuristic", "url": "https://thedecisionlab.com/" }
+    ],
+    "related": ["negativity-bias", "representativeness-bias"]
+  }
+]
+
+
