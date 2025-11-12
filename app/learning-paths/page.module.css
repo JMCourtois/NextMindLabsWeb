@@ -85,18 +85,18 @@
   color: var(--color-muted);
 }
 
-dl {
+.definitionList {
   margin: 0;
   display: grid;
   gap: 0.65rem;
 }
 
-dt {
+.definitionTerm {
   font-weight: 600;
   color: var(--color-text);
 }
 
-dd {
+.definitionDesc {
   margin: 0.25rem 0 0;
   color: var(--color-muted);
 }

@@ -26,18 +26,18 @@ export default function LearningPathsPage() {
               <h2>{index + 1}. {path.title}</h2>
             </header>
             <p>{path.outcome}</p>
-            <dl>
+            <dl className={styles.definitionList}>
               <div>
-                <dt>Focus skills</dt>
-                <dd>{path.focus.join(", ")}</dd>
+                <dt className={styles.definitionTerm}>Focus skills</dt>
+                <dd className={styles.definitionDesc}>{path.focus.join(", ")}</dd>
               </div>
               <div>
-                <dt>Biases addressed</dt>
-                <dd>{path.biases.join(", ")}</dd>
+                <dt className={styles.definitionTerm}>Biases addressed</dt>
+                <dd className={styles.definitionDesc}>{path.biases.join(", ")}</dd>
               </div>
               <div>
-                <dt>Exercises</dt>
-                <dd>{path.exercises.join(", ")}</dd>
+                <dt className={styles.definitionTerm}>Exercises</dt>
+                <dd className={styles.definitionDesc}>{path.exercises.join(", ")}</dd>
               </div>
             </dl>
           </article>
