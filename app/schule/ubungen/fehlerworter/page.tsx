@@ -13,7 +13,7 @@ import {
 } from "./hooks/useSpellingGame";
 import styles from "./styles.module.css";
 
-export default function SpellingAudioPage() {
+export default function FehlerwoerterPage() {
   const {
     loading,
     loadError,
@@ -191,13 +191,13 @@ export default function SpellingAudioPage() {
   }
 
   return (
-    <section className={styles.page} aria-labelledby="spellingAudioHeading">
+    <section className={styles.page} aria-labelledby="fehlerworterHeading">
       <header className={styles.header}>
         <div className={styles.headerText}>
           <p className={styles.progress} aria-live="polite">
             {progressLabel}
           </p>
-          <h2 id="spellingAudioHeading" className={styles.heading}>
+          <h2 id="fehlerworterHeading" className={styles.heading}>
             Höre das Wort – baue es mit Buchstaben nach
           </h2>
         </div>
@@ -269,15 +269,13 @@ export default function SpellingAudioPage() {
         {feedback.message || " "}
       </div>
 
-      {showNextPrompt ? (
-        ! (status === "success") ? (
+      {showNextPrompt && status !== "success" ? (
         <div className={styles.nextPrompt} role="status" aria-live="polite">
           <p className={styles.nextPromptText}>Super! Bereit für das nächste Wort?</p>
           <button type="button" className={styles.nextButton} onClick={goToNextWord}>
             Weiter zum nächsten Wort
           </button>
         </div>
-        ) : null
       ) : null}
 
       <SuccessPopup

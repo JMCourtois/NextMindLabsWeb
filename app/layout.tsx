@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SkipLink } from "./components/SkipLink";
 
 export const metadata: Metadata = {
-  title: "NextMind Labs | Lernübungen",
+  title: "Next Mind Labs",
   description:
-    "Sammlung interaktiver Lernübungen für Kinder – inklusive der 100 Fehlerwörter mit Audio.",
+    "Playful learning journeys that help young minds recognise and work through cognitive biases.",
 };
 
 export default function RootLayout({
@@ -13,11 +14,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de">
+    <html lang="en">
       <body>
-        <a className="skip-link" href="#mainContent">
-          Zum Inhalt springen
-        </a>
+        <SkipLink />
         {children}
       </body>
     </html>

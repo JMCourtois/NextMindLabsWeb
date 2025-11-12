@@ -1,0 +1,47 @@
+import Link from "next/link";
+import styles from "./page.module.css";
+
+const uebungen = [
+  {
+    slug: "fehlerworter",
+    href: "/schule/ubungen/fehlerworter",
+    title: "100 Fehlerwörter",
+    description:
+      "Höre das Wort, setze die Buchstaben richtig zusammen und überprüfe deine Lösung.",
+    badge: "Audio + Buchstaben",
+  },
+];
+
+export default function SchuleHomepage() {
+  return (
+    <main id="mainContent" className={styles.main}>
+      <section className={styles.intro}>
+        <p className={styles.eyebrow}>Schule</p>
+        <h1 className={styles.title}>Übungen für klare Gedanken</h1>
+        <p className={styles.subtitle}>
+          Wähle eine Lernaufgabe, um Wahrnehmungsfallen spielerisch sichtbar zu machen und mit deinen
+          Schülerinnen und Schülern zu trainieren.
+        </p>
+      </section>
+
+      <section aria-label="Verfügbare Übungen">
+        <ul className={styles.cardGrid}>
+          {uebungen.map((uebung) => (
+            <li key={uebung.slug} className={styles.cardItem}>
+              <Link href={uebung.href} className={styles.cardLink} aria-label={`${uebung.title} öffnen`}>
+                <span className={styles.cardBadge}>{uebung.badge}</span>
+                <h2 className={styles.cardTitle}>{uebung.title}</h2>
+                <p className={styles.cardDescription}>{uebung.description}</p>
+                <span className={styles.cardCta} aria-hidden="true">
+                  Übung starten →
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  );
+}
+
+

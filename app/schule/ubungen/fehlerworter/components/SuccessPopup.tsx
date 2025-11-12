@@ -66,7 +66,7 @@ export function SuccessPopup({
             onNext();
           }}
         >
-          Siguiente ejercicio
+          Nächste Übung starten
         </button>
       </div>
 

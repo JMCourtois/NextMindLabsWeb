@@ -1,46 +1,40 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 
-const exercises = [
-  {
-    slug: "spelling-audio",
-    href: "./exercises/spelling-audio",
-    title: "100 Fehlerwörter",
-    description:
-      "Höre dir das Wort an, ordne die Buchstaben und überprüfe deine Antwort.",
-    badge: "Audio + Buchstaben",
-  },
-];
-
-export default function HomePage() {
+export default function LandingPage() {
   return (
     <main id="mainContent" className={styles.main}>
       <section className={styles.intro}>
-        <p className={styles.eyebrow}>NextMind Labs</p>
-        <h1 className={styles.title}>Lernübungen für clevere Kids</h1>
+        <h1 className={styles.title}>Next Mind Labs</h1>
         <p className={styles.subtitle}>
-          Wähle eine Übung aus und starte direkt im Browser – keine Anmeldung nötig.
+          We design playful learning journeys that help young minds recognise, question, and overcome
+          the shortcuts their brains love to take.
         </p>
+        <div className={styles.ctaGroup}>
+          <Link href="/schule" className={styles.primaryCta}>
+            Enter the school
+          </Link>
+        </div>
       </section>
 
-      <section aria-label="Verfügbare Übungen">
-        <ul className={styles.cardGrid}>
-          {exercises.map((exercise) => (
-            <li key={exercise.slug} className={styles.cardItem}>
-              <Link
-                href={exercise.href}
-                className={styles.cardLink}
-                aria-label={`${exercise.title} öffnen`}
-              >
-                <span className={styles.cardBadge}>{exercise.badge}</span>
-                <h2 className={styles.cardTitle}>{exercise.title}</h2>
-                <p className={styles.cardDescription}>{exercise.description}</p>
-                <span className={styles.cardCta} aria-hidden="true">
-                  Übung öffnen →
-                </span>
-              </Link>
-            </li>
-          ))}
+      <section className={styles.insights} aria-label="Understanding cognitive biases">
+        <ul className={styles.insightList}>
+          <li className={styles.insightItem}>
+            <h2 className={styles.insightTitle}>Why cognitive biases are harmful</h2>
+            <p className={styles.insightText}>
+              Biases push learners toward quick answers that feel right, even when facts disagree.
+              Left unchecked, they reinforce misconceptions, reduce confidence in evidence, and make
+              collaboration harder.
+            </p>
+          </li>
+          <li className={styles.insightItem}>
+            <h2 className={styles.insightTitle}>How we can deal with them</h2>
+            <p className={styles.insightText}>
+              By combining reflection, spaced practice, and supportive feedback, we give students
+              space to pause, test their thinking, and build habits that challenge bias-driven
+              decisions.
+            </p>
+          </li>
         </ul>
       </section>
     </main>
