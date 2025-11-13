@@ -93,7 +93,6 @@ export default async function FehlerworterGroupPage({ params }: PageProps) {
       title={group.title}
       description={group.description}
       storageKey={group.storageKey}
-      backHref="../"
     />
   );
 }
