@@ -41,13 +41,12 @@
   display: grid;
   gap: clamp(1.5rem, 4vw, 2rem);
   background: rgba(255, 255, 255, 0.92);
-  padding: clamp(1.5rem, 4vw, 2.25rem);
+  padding: clamp(1.25rem, 4vw, 2rem);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(148, 163, 184, 0.2);
   box-shadow: var(--shadow-md);
   justify-items: center;
-  width: min(100%, 1220px);
-  overflow: hidden;
+  width: min(100%, 1240px);
 }
 
 .controls {
@@ -120,10 +119,8 @@
 
 .board {
   display: grid;
-  grid-template-columns: repeat(7, minmax(160px, 1fr));
-  gap: clamp(0.5rem, 1vw, 0.7rem);
-  justify-content: center;
-  align-items: stretch;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: clamp(0.45rem, 0.8vw, 0.65rem);
   width: 100%;
 }
 
@@ -133,7 +130,7 @@
   border-radius: var(--radius-sm);
   border: 2px solid transparent;
   background: rgba(255, 255, 255, 0.92);
-  padding: 0.9rem;
+  padding: 0.85rem;
   min-height: 160px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;

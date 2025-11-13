@@ -9,8 +9,8 @@ const COLORS = ["#9CA3AF", "#22D3EE", "#F97316", "#38BDF8", "#34D399", "#FACC15"
 
 const DECIMAL_LABELS = [
   "Millionen",
-  "Hunderttausender",
-  "Zehntausender",
+  "H_Tausender",
+  "Z_Tausender",
   "Tausender",
   "Hunderter",
   "Zehner",
