@@ -5,9 +5,6 @@ import type { SpellingWord } from "@/lib/types";
 import { FehlerworterExerciseClient } from "../ExerciseClient";
 import { loadAllWords, WORDS_PER_SET, RANDOM_WORD_COUNT } from "../data";
 
-export const dynamic = "force-dynamic";
-export const dynamicParams = true;
-
 type Params = {
   group: string;
 };
@@ -59,6 +56,16 @@ async function resolveGroup(groupParam: string) {
     storageKey: `nextmindlabs_spelling_progress_v1_set_${index}`,
     words: subset,
   };
+}
+
+export async function generateStaticParams() {
+  const words = await loadAllWords();
+  const totalGroups = Math.ceil(words.length / WORDS_PER_SET);
+  const params = Array.from({ length: totalGroups }, (_, index) => ({
+    group: buildGroupSlug(index + 1),
+  }));
+  params.push({ group: "zufall" });
+  return params;
 }
 
 type PageProps = {
