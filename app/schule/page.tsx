@@ -10,6 +10,14 @@ const uebungen = [
       "Höre das Wort, setze die Buchstaben richtig zusammen und überprüfe deine Lösung.",
     badge: "Audio + Buchstaben",
   },
+  {
+    slug: "stellenwerttrainer",
+    href: "/schule/ubungen/stellenwert",
+    title: "Stellenwert-Trainer",
+    description:
+      "Übe den Zehner-, Binär- oder Hexadezimalsystem – mit farbigen Stellen und automatischem Übertrag.",
+    badge: "Zahlenverständnis",
+  },
 ];
 
 export default function SchuleHomepage() {
