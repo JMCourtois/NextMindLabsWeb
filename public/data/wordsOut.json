@@ -1,0 +1,219 @@
+[
+    {
+        "id": "hat",
+        "word": "hat",
+        "audioUrl": "/assets/audio/hat.mp3",
+        "letters": ["h", "a", "t", "d", "e", "n", "g", "b", "s"],
+        "hints": { "tip": "Kurz und klar: kein stummes e oder 'th' ergänzen." }
+      },
+      {
+        "id": "waere",
+        "word": "wäre",
+        "audioUrl": "/assets/audio/waere.mp3",
+        "letters": ["w", "ä", "r", "e", "a", "h", "u", "ß", "f"],
+        "hints": { "tip": "Der Umlaut ersetzt 'ae' – nicht schlicht 'ware' schreiben." }
+      },
+      {
+        "id": "fiel",
+        "word": "fiel",
+        "audioUrl": "/assets/audio/fiel.mp3",
+        "letters": ["f", "i", "e", "l", "h", "ä", "u", "t", "s"],
+        "hints": { "tip": "Der Laut 'ie' bleibt in dieser Reihenfolge – nicht mit 'viel' verwechseln." }
+      },
+      {
+        "id": "naechste",
+        "word": "nächste",
+        "audioUrl": "/assets/audio/naechste.mp3",
+        "letters": ["n", "ä", "c", "h", "s", "t", "e", "k", "i"],
+        "hints": { "tip": "Der Umlaut gehört dazu – kein einfaches 'nachste' schreiben." }
+      },
+      {
+        "id": "seinem",
+        "word": "seinem",
+        "audioUrl": "/assets/audio/seinem.mp3",
+        "letters": ["s", "e", "i", "n", "m", "ä", "t", "d", "r"],
+        "hints": { "tip": "Die Reihenfolge bleibt 'ei' – kein 'sienem'." }
+      },
+      {
+        "id": "liess",
+        "word": "ließ",
+        "audioUrl": "/assets/audio/liess.mp3",
+        "letters": ["l", "i", "ß", "e", "h", "s", "t", "u", "a"],
+        "hints": { "tip": "Der lange Vokal verlangt ß – vermeide das Doppel-s." }
+      },
+      {
+        "id": "bekam",
+        "word": "bekam",
+        "audioUrl": "/assets/audio/bekam.mp3",
+        "letters": ["b", "e", "k", "a", "m", "h", "t", "n", "o"],
+        "hints": { "tip": "Nur ein m – verwechsle es nicht mit dem Präteritum 'bekam' mit Doppel-m." }
+      },
+      {
+        "id": "schaffen",
+        "word": "schaffen",
+        "audioUrl": "/assets/audio/schaffen.mp3",
+        "letters": ["s", "c", "h", "a", "f", "f", "e", "n", "ß"],
+        "hints": { "tip": "Doppel-f sorgt für den kurzen Vokal – nicht zu 'schafen' verkürzen." }
+      },
+      {
+        "id": "diesem",
+        "word": "diesem",
+        "audioUrl": "/assets/audio/diesem.mp3",
+        "letters": ["d", "i", "e", "s", "e", "m", "ä", "t", "r"],
+        "hints": { "tip": "Die Lautfolge 'ie' bleibt – kein 'diesem' mit 'ei'." }
+      },
+      {
+        "id": "ging",
+        "word": "ging",
+        "audioUrl": "/assets/audio/ging.mp3",
+        "letters": ["g", "i", "n", "g", "h", "e", "a", "t", "ß"],
+        "hints": { "tip": "Das ng bleibt – kein k einschieben." }
+      },
+      {
+        "id": "hatte",
+        "word": "hatte",
+        "audioUrl": "/assets/audio/hatte.mp3",
+        "letters": ["h", "a", "t", "t", "e", "n", "d", "o", "r"],
+        "hints": { "tip": "Im Präteritum steht Doppel-t – nicht 'hate'." }
+      },
+      {
+        "id": "liest",
+        "word": "liest",
+        "audioUrl": "/assets/audio/liest.mp3",
+        "letters": ["l", "i", "e", "s", "t", "h", "a", "ß", "u"],
+        "hints": { "tip": "Auch hier bleibt 'ie' zusammen – nicht 'list' schreiben." }
+      },
+      {
+        "id": "keinen",
+        "word": "keinen",
+        "audioUrl": "/assets/audio/keinen.mp3",
+        "letters": ["k", "e", "i", "n", "e", "n", "ä", "t", "r"],
+        "hints": { "tip": "Die Lautfolge 'ei' bleibt – kein 'kien'." }
+      },
+      {
+        "id": "sieht",
+        "word": "sieht",
+        "audioUrl": "/assets/audio/sieht.mp3",
+        "letters": ["s", "i", "e", "h", "t", "ß", "a", "n", "l"],
+        "hints": { "tip": "Das lange i bildet 'ie' vor 'ht' – nicht 'siht'." }
+      },
+      {
+        "id": "nimmt",
+        "word": "nimmt",
+        "audioUrl": "/assets/audio/nimmt.mp3",
+        "letters": ["n", "i", "m", "m", "t", "e", "h", "a", "s"],
+        "hints": { "tip": "Hier steht Doppel-m – nicht zu 'nimt' kürzen." }
+      },
+      {
+        "id": "ihrem",
+        "word": "ihrem",
+        "audioUrl": "/assets/audio/ihrem.mp3",
+        "letters": ["i", "h", "r", "e", "m", "ä", "t", "n", "s"],
+        "hints": { "tip": "Die Form beginnt mit 'ih-' – kein 'ihrm'." }
+      },
+      {
+        "id": "ass",
+        "word": "aß",
+        "audioUrl": "/assets/audio/ass.mp3",
+        "letters": ["a", "ß", "s", "e", "h", "u", "t", "l", "o"],
+        "hints": { "tip": "Der lange a-Laut verlangt ß – kein Doppel-s einsetzen." }
+      },
+      {
+        "id": "auf-einmal",
+        "word": "auf einmal",
+        "audioUrl": "/assets/audio/auf-einmal.mp3",
+        "letters": ["a", "u", "f", " ", "e", "i", "n", "m", "l"],
+        "hints": { "tip": "Beide Wörter bleiben getrennt – das 'auf' endet mit f." }
+      },
+      {
+        "id": "sass",
+        "word": "saß",
+        "audioUrl": "/assets/audio/sass.mp3",
+        "letters": ["s", "a", "ß", "e", "h", "u", "t", "l", "o"],
+        "hints": { "tip": "Nach dem langen a folgt ß – kein Doppel-s." }
+      },
+      {
+        "id": "ihm",
+        "word": "ihm",
+        "audioUrl": "/assets/audio/ihm.mp3",
+        "letters": ["i", "h", "m", "n", "e", "a", "t", "r", "s"],
+        "hints": { "tip": "Die Form bleibt kurz – kein angehängtes e." }
+      },
+      {
+        "id": "erschrak",
+        "word": "erschrak",
+        "audioUrl": "/assets/audio/erschrak.mp3",
+        "letters": ["e", "r", "s", "c", "h", "r", "a", "k", "t"],
+        "hints": { "tip": "Der Stamm endet auf -rak – kein ck oder 'erschreck'." }
+      },
+      {
+        "id": "seinen",
+        "word": "seinen",
+        "audioUrl": "/assets/audio/seinen.mp3",
+        "letters": ["s", "e", "i", "n", "e", "n", "ä", "t", "r"],
+        "hints": { "tip": "Die Lautfolge 'ei' bleibt – kein 'sienen'." }
+      },
+      {
+        "id": "wird",
+        "word": "wird",
+        "audioUrl": "/assets/audio/wird.mp3",
+        "letters": ["w", "i", "r", "d", "t", "e", "h", "a", "s"],
+        "hints": { "tip": "Verwechsele es nicht mit 'wirt' – nur ein d am Ende." }
+      },
+      {
+        "id": "am-abend",
+        "word": "am Abend",
+        "audioUrl": "/assets/audio/am-abend.mp3",
+        "letters": ["a", "m", " ", "A", "b", "e", "n", "d", "t"],
+        "hints": { "tip": "Das Nomen 'Abend' bleibt groß und getrennt vom 'am'." }
+      },
+      {
+        "id": "kam",
+        "word": "kam",
+        "audioUrl": "/assets/audio/kam.mp3",
+        "letters": ["k", "a", "m", "h", "e", "n", "t", "r", "s"],
+        "hints": { "tip": "Nur ein m – kein stummes h am Ende." }
+      },
+      {
+        "id": "meinem",
+        "word": "meinem",
+        "audioUrl": "/assets/audio/meinem.mp3",
+        "letters": ["m", "e", "i", "n", "e", "m", "ä", "t", "r"],
+        "hints": { "tip": "Die Lautfolge 'ei' bleibt – kein 'mienem'." }
+      },
+      {
+        "id": "ein-bisschen",
+        "word": "ein bisschen",
+        "audioUrl": "/assets/audio/ein-bisschen.mp3",
+        "letters": ["e", "i", "n", " ", "b", "s", "c", "h", "t"],
+        "hints": { "tip": "Beide Wörter bleiben getrennt; das 'bis' erhält Doppel-s und 'ch'." }
+      },
+      {
+        "id": "gibt",
+        "word": "gibt",
+        "audioUrl": "/assets/audio/gibt.mp3",
+        "letters": ["g", "i", "b", "t", "e", "n", "s", "a", "r"],
+        "hints": { "tip": "Nur ein b – kein 'giebt' mit ie." }
+      },
+      {
+        "id": "ihn",
+        "word": "ihn",
+        "audioUrl": "/assets/audio/ihn.mp3",
+        "letters": ["i", "h", "n", "e", "t", "a", "r", "s", "m"],
+        "hints": { "tip": "Die Form bleibt kurz – kein 'ihne'." }
+      },
+      {
+        "id": "gesessen",
+        "word": "gesessen",
+        "audioUrl": "/assets/audio/gesessen.mp3",
+        "letters": ["g", "e", "s", "e", "s", "e", "n", "a", "t"],
+        "hints": { "tip": "Hier wiederholen sich s und e – nicht zu 'gesesen' vereinfachen." }
+      },
+      {
+        "id": "rief",
+        "word": "rief",
+        "audioUrl": "/assets/audio/rief.mp3",
+        "letters": ["r", "i", "e", "f", "h", "a", "u", "t", "s"],
+        "hints": { "tip": "Die Lautfolge 'ie' steht vor f – kein 'riff'." }
+      }
+]

@@ -1,6 +1,8 @@
 .page {
   display: grid;
   gap: clamp(1.5rem, 4vw, 2.75rem);
+  justify-items: center;
+  width: 100%;
 }
 
 .header {
@@ -39,10 +41,13 @@
   display: grid;
   gap: clamp(1.5rem, 4vw, 2rem);
   background: rgba(255, 255, 255, 0.92);
-  padding: clamp(1.5rem, 4vw, 2rem);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(148, 163, 184, 0.2);
   box-shadow: var(--shadow-md);
+  justify-items: center;
+  width: min(100%, 1220px);
+  overflow: hidden;
 }
 
 .controls {
@@ -115,17 +120,21 @@
 
 .board {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: clamp(0.75rem, 3vw, 1.25rem);
+  grid-template-columns: repeat(7, minmax(160px, 1fr));
+  gap: clamp(0.5rem, 1vw, 0.7rem);
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
 }
 
 .digitCard {
   display: grid;
   gap: 0.25rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: 2px solid transparent;
-  background: rgba(99, 102, 241, 0.1);
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.9rem;
+  min-height: 160px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -158,6 +167,10 @@
     align-items: stretch;
   }
 
+  .board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .buttonGroup {
     width: 100%;
   }
@@ -167,6 +180,12 @@
   .resetButton {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 960px) and (min-width: 721px) {
+  .board {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

@@ -19,7 +19,6 @@ type FehlerworterExerciseClientProps = {
   title: string;
   description: string;
   storageKey: string;
-  backHref: string;
 };
 
 export function FehlerworterExerciseClient({
@@ -27,7 +26,6 @@ export function FehlerworterExerciseClient({
   title,
   description,
   storageKey,
-  backHref,
 }: FehlerworterExerciseClientProps) {
   const {
     loading,
@@ -213,7 +211,7 @@ export function FehlerworterExerciseClient({
 
   return (
     <section className={styles.page} aria-labelledby="fehlerworterHeading">
-      <Link href={backHref} className={styles.backLink}>
+      <Link href="/schule/ubungen/fehlerworter" className={styles.backLink}>
         ← Zur Auswahl
       </Link>
       <header className={styles.header}>

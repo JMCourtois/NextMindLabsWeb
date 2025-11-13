@@ -5,11 +5,19 @@ import styles from "./styles.module.css";
 
 type NumberSystem = "decimal" | "binary" | "hex";
 
-const COLORS = ["#6b7280", "#0ea5e9", "#f97316", "#22c55e", "#eab308", "#ef4444"];
+const COLORS = ["#9CA3AF", "#22D3EE", "#F97316", "#38BDF8", "#34D399", "#FACC15", "#EF4444"];
 
-const DECIMAL_LABELS = ["Hunderttausender", "Zehntausender", "Tausender", "Hunderter", "Zehner", "Einer"];
-const BINARY_LABELS = ["2⁵", "2⁴", "2³", "2²", "2¹", "2⁰"];
-const HEX_LABELS = ["16⁵", "16⁴", "16³", "16²", "16¹", "16⁰"];
+const DECIMAL_LABELS = [
+  "Millionen",
+  "Hunderttausender",
+  "Zehntausender",
+  "Tausender",
+  "Hunderter",
+  "Zehner",
+  "Einer",
+];
+const BINARY_LABELS = ["2⁶", "2⁵", "2⁴", "2³", "2²", "2¹", "2⁰"];
+const HEX_LABELS = ["16⁶", "16⁵", "16⁴", "16³", "16²", "16¹", "16⁰"];
 
 const SYSTEM_CONFIG: Record<NumberSystem, { base: number; labels: string[]; name: string }> = {
   decimal: { base: 10, labels: DECIMAL_LABELS, name: "Dezimalsystem" },
@@ -17,7 +25,7 @@ const SYSTEM_CONFIG: Record<NumberSystem, { base: number; labels: string[]; name
   hex: { base: 16, labels: HEX_LABELS, name: "Hexadezimalsystem" },
 };
 
-const INITIAL_DIGITS = Array(6).fill(0) as number[];
+const INITIAL_DIGITS = Array(7).fill(0) as number[];
 
 function formatDigit(value: number, system: NumberSystem) {
   if (system === "hex") {
