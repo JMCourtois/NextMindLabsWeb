@@ -38,34 +38,33 @@ export default async function FehlerworterOverviewPage() {
 
       <div className={styles.grid}>
         {groups.map((group) => (
-          <article key={group.id} className={styles.card}>
-            <div className={styles.cardHeader}>
-              <h2>{group.title}</h2>
-              <p>{group.description}</p>
-            </div>
-            <ul className={styles.sampleList} aria-label={`${group.title} Beispielwörter`}>
-              {group.examples.map((example) => (
-                <li key={example}>{example}</li>
-              ))}
-            </ul>
-            <Link href={`fehlerworter/${group.id}`} className={styles.cardLink}>
-              Übung starten
-            </Link>
-          </article>
+          <Link key={group.id} href={`fehlerworter/${group.id}`} className={styles.cardLinkWrapper}>
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <h2>{group.title}</h2>
+                <p>{group.description}</p>
+              </div>
+              <span className={styles.cardCta} aria-hidden="true">
+                Übung starten →
+              </span>
+            </article>
+          </Link>
         ))}
 
-        <article className={styles.card} data-accent="true">
-          <div className={styles.cardHeader}>
-            <h2>Zufallsmix</h2>
-            <p>
-              {RANDOM_WORD_COUNT} zufällig ausgewählte Wörter aus der kompletten Fehlerwortliste – perfekt zum Wiederholen
-              oder für eine Abschlussrunde.
-            </p>
-          </div>
-          <Link href="fehlerworter/zufall" className={styles.cardLink}>
-            Zufall starten
-          </Link>
-        </article>
+        <Link href="fehlerworter/zufall" className={styles.cardLinkWrapper}>
+          <article className={styles.card} data-accent="true">
+            <div className={styles.cardHeader}>
+              <h2>Zufallsmix</h2>
+              <p>
+                {RANDOM_WORD_COUNT} zufällig ausgewählte Wörter aus der kompletten Fehlerwortliste – perfekt zum Wiederholen
+                oder für eine Abschlussrunde.
+              </p>
+            </div>
+            <span className={styles.cardCta} aria-hidden="true">
+              Zufall starten →
+            </span>
+          </article>
+        </Link>
       </div>
     </section>
   );
