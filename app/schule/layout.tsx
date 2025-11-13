@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import "./theme.css";
+import { SchuleBodyClass } from "./BodyClass";
 
 export const metadata: Metadata = {
   title: "Next Mind Labs - Schule",
@@ -11,7 +13,12 @@ export const metadata: Metadata = {
 };
 
 export default function SchuleLayout({ children }: { children: React.ReactNode }) {
-  return <div lang="de">{children}</div>;
+  return (
+    <div className="schule-theme" lang="de">
+      <SchuleBodyClass />
+      {children}
+    </div>
+  );
 }
 
 

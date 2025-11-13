@@ -64,6 +64,10 @@
   transform: scaleX(1);
 }
 
+:global(body.schule-mode) .header {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .navList {
     display: none;

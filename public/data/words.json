@@ -1,24 +1,709 @@
 [
   {
+    "id": "bloss",
+    "word": "bloß",
+    "audioUrl": "/assets/audio/bloss.mp3",
+    "letters": ["b", "l", "o", "ß", "s", "a", "u", "e", "r"],
+    "hints": { "tip": "Viele Lernende greifen hier fälschlich zu 'ss' – achte auf den langen Vokal und das ß." }
+  },
+  {
+    "id": "sitzen",
+    "word": "sitzen",
+    "audioUrl": "/assets/audio/sitzen.mp3",
+    "letters": ["s", "i", "t", "z", "e", "n", "ß", "a", "h"],
+    "hints": { "tip": "Das 'tz' bleibt eine Einheit – kein zusätzliches t oder k einschieben." }
+  },
+  {
+    "id": "hat",
+    "word": "hat",
+    "audioUrl": "/assets/audio/hat.mp3",
+    "letters": ["h", "a", "t", "d", "e", "n", "g", "b", "s"],
+    "hints": { "tip": "Kurz und klar: kein stummes e oder 'th' ergänzen." }
+  },
+  {
+    "id": "zu-hause",
+    "word": "zu Hause",
+    "audioUrl": "/assets/audio/zu-hause.mp3",
+    "letters": ["z", "u", " ", "H", "a", "u", "s", "e", "ß"],
+    "hints": { "tip": "Der zweite Teil ist ein Nomen: groß schreiben und getrennt lassen." }
+  },
+  {
+    "id": "waere",
+    "word": "wäre",
+    "audioUrl": "/assets/audio/waere.mp3",
+    "letters": ["w", "ä", "r", "e", "a", "h", "u", "ß", "f"],
+    "hints": { "tip": "Der Umlaut ersetzt 'ae' – nicht schlicht 'ware' schreiben." }
+  },
+  {
+    "id": "vielleicht",
+    "word": "vielleicht",
+    "audioUrl": "/assets/audio/vielleicht.mp3",
+    "letters": ["v", "i", "e", "l", "c", "h", "t", "a", "y"],
+    "hints": { "tip": "Der Laut 'ie' steht vor dem Doppel-l – kein 'villeicht' oder 'viellicht'." }
+  },
+  {
+    "id": "nicht",
+    "word": "nicht",
+    "audioUrl": "/assets/audio/nicht.mp3",
+    "letters": ["n", "i", "c", "h", "t", "k", "s", "e", "f"],
+    "hints": { "tip": "Das Kehllaut-Paar 'ch' bleibt – kein 'nikht' oder 'nischt'." }
+  },
+  {
+    "id": "bekommen",
+    "word": "bekommen",
+    "audioUrl": "/assets/audio/bekommen.mp3",
+    "letters": ["b", "e", "k", "o", "m", "m", "n", "a", "t"],
+    "hints": { "tip": "Hier bleiben zwei m erhalten, auch wenn man sie kaum hört." }
+  },
+  {
+    "id": "jetzt",
+    "word": "jetzt",
+    "audioUrl": "/assets/audio/jetzt.mp3",
+    "letters": ["j", "e", "t", "z", "s", "d", "a", "i", "ß"],
+    "hints": { "tip": "Der Schluss lautet 'tz' – kein zusätzliches e oder d anhängen." }
+  },
+  {
+    "id": "fahren",
+    "word": "fahren",
+    "audioUrl": "/assets/audio/fahren.mp3",
+    "letters": ["f", "a", "h", "r", "e", "n", "v", "l", "t"],
+    "hints": { "tip": "Das stumme h verlängert den Vokal – nicht zu 'faren' verkürzen." }
+  },
+  {
+    "id": "lassen",
+    "word": "lassen",
+    "audioUrl": "/assets/audio/lassen.mp3",
+    "letters": ["l", "a", "s", "e", "n", "ß", "r", "h", "o"],
+    "hints": { "tip": "Ein Doppel-s sorgt für den kurzen Vokal – kein ß verwenden." }
+  },
+  {
+    "id": "angst",
+    "word": "Angst",
+    "audioUrl": "/assets/audio/angst.mp3",
+    "letters": ["A", "n", "g", "s", "t", "d", "k", "e", "ä"],
+    "hints": { "tip": "Der Laut 'ng' bleibt zusammen – kein zusätzliches e oder h dazwischen." }
+  },
+  {
+    "id": "herein",
+    "word": "herein",
+    "audioUrl": "/assets/audio/herein.mp3",
+    "letters": ["h", "e", "r", "i", "n", "ä", "a", "m", "d"],
+    "hints": { "tip": "Es heißt 'he-rein' – die Reihenfolge von 'e' und 'ei' nicht vertauschen." }
+  },
+  {
+    "id": "fiel",
+    "word": "fiel",
+    "audioUrl": "/assets/audio/fiel.mp3",
+    "letters": ["f", "i", "e", "l", "h", "ä", "u", "t", "s"],
+    "hints": { "tip": "Der Laut 'ie' bleibt in dieser Reihenfolge – nicht mit 'viel' verwechseln." }
+  },
+  {
+    "id": "naechste",
+    "word": "nächste",
+    "audioUrl": "/assets/audio/naechste.mp3",
+    "letters": ["n", "ä", "c", "h", "s", "t", "e", "k", "i"],
+    "hints": { "tip": "Der Umlaut gehört dazu – kein einfaches 'nachste' schreiben." }
+  },
+  {
+    "id": "wollen",
+    "word": "wollen",
+    "audioUrl": "/assets/audio/wollen.mp3",
+    "letters": ["w", "o", "l", "e", "n", "h", "a", "ß", "r"],
+    "hints": { "tip": "Der Stamm hat Doppel-l – verwechsle es nicht mit 'wolen' oder 'woßlen'." }
+  },
+  {
+    "id": "seinem",
+    "word": "seinem",
+    "audioUrl": "/assets/audio/seinem.mp3",
+    "letters": ["s", "e", "i", "n", "m", "ä", "t", "d", "r"],
+    "hints": { "tip": "Die Reihenfolge bleibt 'ei' – kein 'sienem'." }
+  },
+  {
+    "id": "essen",
+    "word": "essen",
+    "audioUrl": "/assets/audio/essen.mp3",
+    "letters": ["e", "s", "n", "a", "ß", "t", "r", "h", "o"],
+    "hints": { "tip": "Der kurze Vokal verlangt Doppel-s – kein ß einsetzen." }
+  },
+  {
+    "id": "abends",
+    "word": "abends",
+    "audioUrl": "/assets/audio/abends.mp3",
+    "letters": ["a", "b", "e", "n", "d", "s", "ä", "h", "t"],
+    "hints": { "tip": "Am Ende steht -ds, nicht -tz oder -ts." }
+  },
+  {
+    "id": "liess",
+    "word": "ließ",
+    "audioUrl": "/assets/audio/liess.mp3",
+    "letters": ["l", "i", "ß", "e", "h", "s", "t", "u", "a"],
+    "hints": { "tip": "Der lange Vokal verlangt ß – vermeide das Doppel-s." }
+  },
+  {
+    "id": "ganz",
+    "word": "ganz",
+    "audioUrl": "/assets/audio/ganz.mp3",
+    "letters": ["g", "a", "n", "z", "k", "s", "t", "e", "ä"],
+    "hints": { "tip": "Der Endlaut ist ein einfaches z – kein tz oder s." }
+  },
+  {
+    "id": "gucken-kucken",
+    "word": "gucken / kucken",
+    "audioUrl": "/assets/audio/gucken-kucken.mp3",
+    "letters": ["g", "u", "c", "k", "e", "n", "/", " ", "o"],
+    "hints": { "tip": "Beide Varianten mit ck sind erlaubt – das ck nicht zu k oder g austauschen." }
+  },
+  {
+    "id": "kommen",
+    "word": "kommen",
+    "audioUrl": "/assets/audio/kommen.mp3",
+    "letters": ["k", "o", "m", "m", "e", "n", "a", "r", "t"],
+    "hints": { "tip": "Der Stamm 'kommen' hat zwei m – kein 'komen'." }
+  },
+  {
     "id": "wieder",
     "word": "wieder",
     "audioUrl": "/assets/audio/wieder.mp3",
-    "letters": ["w", "i", "d", "r", "e", "i", "ä", "ß"],
-    "hints": { "tip": "Achte auf die Reihenfolge von \"ie\"." }
+    "letters": ["w", "i", "e", "d", "r", "ä", "ß", "o", "n"],
+    "hints": { "tip": "Unterscheide 'wieder' (noch einmal) von 'wider' (gegen)." }
   },
   {
-    "id": "groesse",
-    "word": "Größe",
-    "audioUrl": "/assets/audio/groesse.mp3",
-    "letters": ["G", "r", "ö", "ß", "e", "o", "ä", "u", "s", "a"],
-    "hints": { "tip": "Denk daran: \"groß\" wird zu \"Größe\" mit ß." }
+    "id": "aussen",
+    "word": "außen",
+    "audioUrl": "/assets/audio/aussen.mp3",
+    "letters": ["a", "u", "ß", "e", "n", "l", "o", "ä", "s"],
+    "hints": { "tip": "Der lange Vokal verlangt ß – nicht 'aussen' mit Doppel-s." }
   },
   {
-    "id": "heissen",
-    "word": "heißen",
-    "audioUrl": "/assets/audio/heissen.mp3",
-    "letters": ["h", "e", "i", "ß", "e", "n", "ä", "o", "u", "s"],
-    "hints": { "tip": "Achtung: In \"heißen\" steht ein ß, kein ss." }
+    "id": "ploetzlich",
+    "word": "plötzlich",
+    "audioUrl": "/assets/audio/ploetzlich.mp3",
+    "letters": ["p", "l", "ö", "t", "z", "l", "i", "c", "h"],
+    "hints": { "tip": "Merke dir Umlaut und tz – kein 'plotzlich' ohne Punkte." }
+  },
+  {
+    "id": "gross",
+    "word": "groß",
+    "audioUrl": "/assets/audio/gross.mp3",
+    "letters": ["g", "r", "o", "ß", "s", "a", "u", "e", "d"],
+    "hints": { "tip": "Der lange o-Laut führt zum ß – kein Doppel-s." }
+  },
+  {
+    "id": "nehmen",
+    "word": "nehmen",
+    "audioUrl": "/assets/audio/nehmen.mp3",
+    "letters": ["n", "e", "h", "m", "e", "n", "a", "r", "d"],
+    "hints": { "tip": "Das stumme h bleibt – nicht zu 'nemen' verkürzen." }
+  },
+  {
+    "id": "tag",
+    "word": "Tag",
+    "audioUrl": "/assets/audio/tag.mp3",
+    "letters": ["T", "a", "g", "e", "d", "n", "s", "l", "h"],
+    "hints": { "tip": "Kurz und knapp – kein zusätzliches e am Ende, nur ein g." }
+  },
+  {
+    "id": "ziemlich",
+    "word": "ziemlich",
+    "audioUrl": "/assets/audio/ziemlich.mp3",
+    "letters": ["z", "i", "e", "m", "l", "i", "c", "h", "ä"],
+    "hints": { "tip": "Das Wort endet auf -lich – kein -tig oder -tsch." }
+  },
+  {
+    "id": "alle",
+    "word": "alle",
+    "audioUrl": "/assets/audio/alle.mp3",
+    "letters": ["a", "l", "l", "e", "s", "r", "h", "o", "u"],
+    "hints": { "tip": "Der kurze Vokal braucht Doppel-l – nicht nur ein l." }
+  },
+  {
+    "id": "endlich",
+    "word": "endlich",
+    "audioUrl": "/assets/audio/endlich.mp3",
+    "letters": ["e", "n", "d", "l", "i", "c", "h", "ä", "t"],
+    "hints": { "tip": "Der Auslaut -lich bleibt – kein zusätzliches e oder k." }
+  },
+  {
+    "id": "spielen",
+    "word": "spielen",
+    "audioUrl": "/assets/audio/spielen.mp3",
+    "letters": ["s", "p", "i", "e", "l", "e", "n", "a", "h"],
+    "hints": { "tip": "Das 'ie' gehört zusammen – vermeide 'spilen'." }
+  },
+  {
+    "id": "sagen",
+    "word": "sagen",
+    "audioUrl": "/assets/audio/sagen.mp3",
+    "letters": ["s", "a", "g", "e", "n", "h", "ß", "r", "o"],
+    "hints": { "tip": "Mit g geschrieben – kein 'saken' oder 'sahen'." }
+  },
+  {
+    "id": "essen-nomen",
+    "word": "Essen",
+    "audioUrl": "/assets/audio/essen-nomen.mp3",
+    "letters": ["E", "s", "s", "e", "n", "a", "h", "t", "r"],
+    "hints": { "tip": "Als Nomen groß und mit Doppel-s – kein 'Eßen'." }
+  },
+  {
+    "id": "meinen",
+    "word": "meinen",
+    "audioUrl": "/assets/audio/meinen.mp3",
+    "letters": ["m", "e", "i", "n", "e", "n", "ä", "t", "r"],
+    "hints": { "tip": "Die Lautfolge 'ei' bleibt – kein 'mien' oder 'meinen' mit ie." }
+  },
+  {
+    "id": "bekam",
+    "word": "bekam",
+    "audioUrl": "/assets/audio/bekam.mp3",
+    "letters": ["b", "e", "k", "a", "m", "h", "t", "n", "o"],
+    "hints": { "tip": "Nur ein m – verwechsle es nicht mit dem Präteritum 'bekam' mit Doppel-m." }
+  },
+  {
+    "id": "idee",
+    "word": "Idee",
+    "audioUrl": "/assets/audio/idee.mp3",
+    "letters": ["I", "d", "e", "e", "a", "h", "t", "l", "r"],
+    "hints": { "tip": "Das Wort endet auf zwei e – kein h oder ä einsetzen." }
+  },
+  {
+    "id": "schaffen",
+    "word": "schaffen",
+    "audioUrl": "/assets/audio/schaffen.mp3",
+    "letters": ["s", "c", "h", "a", "f", "f", "e", "n", "ß"],
+    "hints": { "tip": "Doppel-f sorgt für den kurzen Vokal – nicht zu 'schafen' verkürzen." }
+  },
+  {
+    "id": "stellen",
+    "word": "stellen",
+    "audioUrl": "/assets/audio/stellen.mp3",
+    "letters": ["s", "t", "e", "l", "l", "e", "n", "a", "h"],
+    "hints": { "tip": "Auch hier braucht der Stamm Doppel-l – kein 'stelen'." }
+  },
+  {
+    "id": "diesem",
+    "word": "diesem",
+    "audioUrl": "/assets/audio/diesem.mp3",
+    "letters": ["d", "i", "e", "s", "e", "m", "ä", "t", "r"],
+    "hints": { "tip": "Die Lautfolge 'ie' bleibt – kein 'diesem' mit 'ei'." }
+  },
+  {
+    "id": "fahrrad",
+    "word": "Fahrrad",
+    "audioUrl": "/assets/audio/fahrrad.mp3",
+    "letters": ["F", "a", "h", "r", "r", "a", "d", "o", "t"],
+    "hints": { "tip": "Der Wortstamm enthält Doppel-r – nicht 'Farad'." }
+  },
+  {
+    "id": "ging",
+    "word": "ging",
+    "audioUrl": "/assets/audio/ging.mp3",
+    "letters": ["g", "i", "n", "g", "h", "e", "a", "t", "ß"],
+    "hints": { "tip": "Das ng bleibt – kein k einschieben." }
+  },
+  {
+    "id": "hatte",
+    "word": "hatte",
+    "audioUrl": "/assets/audio/hatte.mp3",
+    "letters": ["h", "a", "t", "t", "e", "n", "d", "o", "r"],
+    "hints": { "tip": "Im Präteritum steht Doppel-t – nicht 'hate'." }
+  },
+  {
+    "id": "weihnachten",
+    "word": "Weihnachten",
+    "audioUrl": "/assets/audio/weihnachten.mp3",
+    "letters": ["W", "e", "i", "h", "n", "a", "c", "t", "o"],
+    "hints": { "tip": "Der Wortanfang 'Weih' enthält h und i – kein 'Weinachten'." }
+  },
+  {
+    "id": "liest",
+    "word": "liest",
+    "audioUrl": "/assets/audio/liest.mp3",
+    "letters": ["l", "i", "e", "s", "t", "h", "a", "ß", "u"],
+    "hints": { "tip": "Auch hier bleibt 'ie' zusammen – nicht 'list' schreiben." }
+  },
+  {
+    "id": "rennen",
+    "word": "rennen",
+    "audioUrl": "/assets/audio/rennen.mp3",
+    "letters": ["r", "e", "n", "n", "e", "n", "a", "t", "h"],
+    "hints": { "tip": "Der Wortstamm enthält Doppel-n – kein 'renen'." }
+  },
+  {
+    "id": "einmal",
+    "word": "einmal",
+    "audioUrl": "/assets/audio/einmal.mp3",
+    "letters": ["e", "i", "n", "m", "a", "l", "h", "t", "ß"],
+    "hints": { "tip": "Das Wort bleibt zusammengeschrieben und beginnt mit 'ei'." }
+  },
+  {
+    "id": "muessen",
+    "word": "müssen",
+    "audioUrl": "/assets/audio/muessen.mp3",
+    "letters": ["m", "ü", "s", "s", "e", "n", "a", "t", "h"],
+    "hints": { "tip": "Der Umlaut und Doppel-s gehören dazu – kein 'mussen'." }
+  },
+  {
+    "id": "erzaehlen",
+    "word": "erzählen",
+    "audioUrl": "/assets/audio/erzaehlen.mp3",
+    "letters": ["e", "r", "z", "ä", "h", "l", "e", "n", "t"],
+    "hints": { "tip": "Der Umlaut bleibt erhalten – nicht schlicht 'erzählen' mit ae." }
+  },
+  {
+    "id": "morgen",
+    "word": "morgen",
+    "audioUrl": "/assets/audio/morgen.mp3",
+    "letters": ["m", "o", "r", "g", "e", "n", "a", "t", "h"],
+    "hints": { "tip": "Die Mitte enthält ein hörbares e – vermeide 'morgen' ohne e." }
+  },
+  {
+    "id": "fehler",
+    "word": "Fehler",
+    "audioUrl": "/assets/audio/fehler.mp3",
+    "letters": ["F", "e", "h", "l", "e", "r", "ä", "i", "t"],
+    "hints": { "tip": "Der Stamm 'fehl' bleibt mit h – kein 'Feler'." }
+  },
+  {
+    "id": "hinaus",
+    "word": "hinaus",
+    "audioUrl": "/assets/audio/hinaus.mp3",
+    "letters": ["h", "i", "n", "a", "u", "s", "e", "ß", "r"],
+    "hints": { "tip": "Die Teile 'hin' und 'aus' bleiben – kein zusätzliches h oder f." }
+  },
+  {
+    "id": "keinen",
+    "word": "keinen",
+    "audioUrl": "/assets/audio/keinen.mp3",
+    "letters": ["k", "e", "i", "n", "e", "n", "ä", "t", "r"],
+    "hints": { "tip": "Die Lautfolge 'ei' bleibt – kein 'kien'." }
+  },
+  {
+    "id": "sieht",
+    "word": "sieht",
+    "audioUrl": "/assets/audio/sieht.mp3",
+    "letters": ["s", "i", "e", "h", "t", "ß", "a", "n", "l"],
+    "hints": { "tip": "Das lange i bildet 'ie' vor 'ht' – nicht 'siht'." }
+  },
+  {
+    "id": "schluss",
+    "word": "Schluss",
+    "audioUrl": "/assets/audio/schluss.mp3",
+    "letters": ["S", "c", "h", "l", "u", "s", "s", "e", "t"],
+    "hints": { "tip": "Der Auslaut endet auf Doppel-s – kein ß." }
+  },
+  {
+    "id": "lehrer",
+    "word": "Lehrer",
+    "audioUrl": "/assets/audio/lehrer.mp3",
+    "letters": ["L", "e", "h", "r", "e", "r", "ä", "n", "t"],
+    "hints": { "tip": "Der Stamm 'lehr' mit h bleibt erhalten – kein 'Lerer'." }
+  },
+  {
+    "id": "wir",
+    "word": "wir",
+    "audioUrl": "/assets/audio/wir.mp3",
+    "letters": ["w", "i", "r", "e", "n", "g", "a", "s", "t"],
+    "hints": { "tip": "Kurz und ohne h – kein 'wih' oder 'wirr'." }
+  },
+  {
+    "id": "wenn",
+    "word": "wenn",
+    "audioUrl": "/assets/audio/wenn.mp3",
+    "letters": ["w", "e", "n", "n", "h", "a", "t", "ß", "i"],
+    "hints": { "tip": "Konditionalsätze brauchen Doppel-n – kein 'wen'." }
+  },
+  {
+    "id": "nimmt",
+    "word": "nimmt",
+    "audioUrl": "/assets/audio/nimmt.mp3",
+    "letters": ["n", "i", "m", "m", "t", "e", "h", "a", "s"],
+    "hints": { "tip": "Hier steht Doppel-m – nicht zu 'nimt' kürzen." }
+  },
+  {
+    "id": "fehlen",
+    "word": "fehlen",
+    "audioUrl": "/assets/audio/fehlen.mp3",
+    "letters": ["f", "e", "h", "l", "e", "n", "ä", "r", "t"],
+    "hints": { "tip": "Das stumme h verlängert den Vokal – kein 'felen'." }
+  },
+  {
+    "id": "kaputt",
+    "word": "kaputt",
+    "audioUrl": "/assets/audio/kaputt.mp3",
+    "letters": ["k", "a", "p", "u", "t", "t", "e", "f", "r"],
+    "hints": { "tip": "Der Endlaut braucht Doppel-t – kein 'kaput'." }
+  },
+  {
+    "id": "ihrem",
+    "word": "ihrem",
+    "audioUrl": "/assets/audio/ihrem.mp3",
+    "letters": ["i", "h", "r", "e", "m", "ä", "t", "n", "s"],
+    "hints": { "tip": "Die Form beginnt mit 'ih-' – kein 'ihrm'." }
+  },
+  {
+    "id": "ass",
+    "word": "aß",
+    "audioUrl": "/assets/audio/ass.mp3",
+    "letters": ["a", "ß", "s", "e", "h", "u", "t", "l", "o"],
+    "hints": { "tip": "Der lange a-Laut verlangt ß – kein Doppel-s einsetzen." }
+  },
+  {
+    "id": "auf-einmal",
+    "word": "auf einmal",
+    "audioUrl": "/assets/audio/auf-einmal.mp3",
+    "letters": ["a", "u", "f", " ", "e", "i", "n", "m", "l"],
+    "hints": { "tip": "Beide Wörter bleiben getrennt – das 'auf' endet mit f." }
+  },
+  {
+    "id": "kennen",
+    "word": "kennen",
+    "audioUrl": "/assets/audio/kennen.mp3",
+    "letters": ["k", "e", "n", "n", "e", "n", "a", "t", "r"],
+    "hints": { "tip": "Der Stamm hat Doppel-n – nicht zu 'kenen' verkürzen." }
+  },
+  {
+    "id": "sass",
+    "word": "saß",
+    "audioUrl": "/assets/audio/sass.mp3",
+    "letters": ["s", "a", "ß", "e", "h", "u", "t", "l", "o"],
+    "hints": { "tip": "Nach dem langen a folgt ß – kein Doppel-s." }
+  },
+  {
+    "id": "viel",
+    "word": "viel",
+    "audioUrl": "/assets/audio/viel.mp3",
+    "letters": ["v", "i", "e", "l", "h", "a", "u", "t", "ß"],
+    "hints": { "tip": "'ie' steht zusammen – nicht als 'viel' mit i-e vertauscht." }
+  },
+  {
+    "id": "ihm",
+    "word": "ihm",
+    "audioUrl": "/assets/audio/ihm.mp3",
+    "letters": ["i", "h", "m", "n", "e", "a", "t", "r", "s"],
+    "hints": { "tip": "Die Form bleibt kurz – kein angehängtes e." }
+  },
+  {
+    "id": "erschrak",
+    "word": "erschrak",
+    "audioUrl": "/assets/audio/erschrak.mp3",
+    "letters": ["e", "r", "s", "c", "h", "r", "a", "k", "t"],
+    "hints": { "tip": "Der Stamm endet auf -rak – kein ck oder 'erschreck'." }
+  },
+  {
+    "id": "koennen",
+    "word": "können",
+    "audioUrl": "/assets/audio/koennen.mp3",
+    "letters": ["k", "ö", "n", "n", "e", "n", "a", "t", "r"],
+    "hints": { "tip": "Der Umlaut und Doppel-n bleiben – nicht 'konnen'." }
+  },
+  {
+    "id": "seinen",
+    "word": "seinen",
+    "audioUrl": "/assets/audio/seinen.mp3",
+    "letters": ["s", "e", "i", "n", "e", "n", "ä", "t", "r"],
+    "hints": { "tip": "Die Lautfolge 'ei' bleibt – kein 'sienen'." }
+  },
+  {
+    "id": "ende",
+    "word": "Ende",
+    "audioUrl": "/assets/audio/ende.mp3",
+    "letters": ["E", "n", "d", "e", "r", "a", "t", "h", "l"],
+    "hints": { "tip": "Als Nomen groß und mit stummem e am Ende." }
+  },
+  {
+    "id": "hinterher",
+    "word": "hinterher",
+    "audioUrl": "/assets/audio/hinterher.mp3",
+    "letters": ["h", "i", "n", "t", "e", "r", "h", "e", "a"],
+    "hints": { "tip": "Der zweite Teil heißt 'her' – kein 'hinther'." }
+  },
+  {
+    "id": "sehen",
+    "word": "sehen",
+    "audioUrl": "/assets/audio/sehen.mp3",
+    "letters": ["s", "e", "h", "e", "n", "ä", "r", "t", "i"],
+    "hints": { "tip": "Das stumme h verlängert den Vokal – nicht 'sehn'." }
+  },
+  {
+    "id": "sollen",
+    "word": "sollen",
+    "audioUrl": "/assets/audio/sollen.mp3",
+    "letters": ["s", "o", "l", "l", "e", "n", "a", "t", "r"],
+    "hints": { "tip": "Der Stamm verlangt Doppel-l – kein 'solen'." }
+  },
+  {
+    "id": "wird",
+    "word": "wird",
+    "audioUrl": "/assets/audio/wird.mp3",
+    "letters": ["w", "i", "r", "d", "t", "e", "h", "a", "s"],
+    "hints": { "tip": "Verwechsele es nicht mit 'wirt' – nur ein d am Ende." }
+  },
+  {
+    "id": "man",
+    "word": "man",
+    "audioUrl": "/assets/audio/man.mp3",
+    "letters": ["m", "a", "n", "e", "t", "h", "s", "r", "i"],
+    "hints": { "tip": "Bleib beim kurzen Grundwort – kein stummes h oder e anhängen." }
+  },
+  {
+    "id": "wissen",
+    "word": "wissen",
+    "audioUrl": "/assets/audio/wissen.mp3",
+    "letters": ["w", "i", "s", "s", "e", "n", "a", "t", "r"],
+    "hints": { "tip": "Der kurze Vokal verlangt Doppel-s – kein ß." }
+  },
+  {
+    "id": "hier",
+    "word": "hier",
+    "audioUrl": "/assets/audio/hier.mp3",
+    "letters": ["h", "i", "e", "r", "a", "t", "s", "l", "n"],
+    "hints": { "tip": "Die Lautfolge 'ie' bleibt – kein 'hiehr'." }
+  },
+  {
+    "id": "stehen",
+    "word": "stehen",
+    "audioUrl": "/assets/audio/stehen.mp3",
+    "letters": ["s", "t", "e", "h", "e", "n", "ä", "r", "i"],
+    "hints": { "tip": "Das stumme h gehört dazu – nicht 'sten'." }
+  },
+  {
+    "id": "dann",
+    "word": "dann",
+    "audioUrl": "/assets/audio/dann.mp3",
+    "letters": ["d", "a", "n", "n", "e", "t", "h", "s", "r"],
+    "hints": { "tip": "Doppel-n für den kurzen Vokal – kein 'dan'." }
+  },
+  {
+    "id": "am-abend",
+    "word": "am Abend",
+    "audioUrl": "/assets/audio/am-abend.mp3",
+    "letters": ["a", "m", " ", "A", "b", "e", "n", "d", "t"],
+    "hints": { "tip": "Das Nomen 'Abend' bleibt groß und getrennt vom 'am'." }
+  },
+  {
+    "id": "spass",
+    "word": "Spaß",
+    "audioUrl": "/assets/audio/spass.mp3",
+    "letters": ["S", "p", "a", "ß", "s", "e", "r", "t", "u"],
+    "hints": { "tip": "Ein langer a-Laut führt zum ß – kein Doppel-s." }
+  },
+  {
+    "id": "spazieren",
+    "word": "spazieren",
+    "audioUrl": "/assets/audio/spazieren.mp3",
+    "letters": ["s", "p", "a", "z", "i", "e", "r", "n", "ß"],
+    "hints": { "tip": "Das z gehört hinein – nicht 'spatzieren' mit tz." }
+  },
+  {
+    "id": "lesen",
+    "word": "lesen",
+    "audioUrl": "/assets/audio/lesen.mp3",
+    "letters": ["l", "e", "s", "e", "n", "ß", "t", "a", "r"],
+    "hints": { "tip": "Nur ein s und der Vokal bleibt lang – kein 'læsen'." }
+  },
+  {
+    "id": "zeit",
+    "word": "Zeit",
+    "audioUrl": "/assets/audio/zeit.mp3",
+    "letters": ["Z", "e", "i", "t", "s", "r", "ä", "h", "n"],
+    "hints": { "tip": "Die Lautfolge 'ei' bleibt – kein 'Zait'." }
+  },
+  {
+    "id": "allein",
+    "word": "allein",
+    "audioUrl": "/assets/audio/allein.mp3",
+    "letters": ["a", "l", "l", "e", "i", "n", "h", "r", "t"],
+    "hints": { "tip": "Der kurze Vokal verlangt Doppel-l – kein 'alein'." }
+  },
+  {
+    "id": "kam",
+    "word": "kam",
+    "audioUrl": "/assets/audio/kam.mp3",
+    "letters": ["k", "a", "m", "h", "e", "n", "t", "r", "s"],
+    "hints": { "tip": "Nur ein m – kein stummes h am Ende." }
+  },
+  {
+    "id": "ein-bisschen",
+    "word": "ein bisschen",
+    "audioUrl": "/assets/audio/ein-bisschen.mp3",
+    "letters": ["e", "i", "n", " ", "b", "s", "c", "h", "t"],
+    "hints": { "tip": "Beide Wörter bleiben getrennt; das 'bis' erhält Doppel-s und 'ch'." }
+  },
+  {
+    "id": "meinem",
+    "word": "meinem",
+    "audioUrl": "/assets/audio/meinem.mp3",
+    "letters": ["m", "e", "i", "n", "e", "m", "ä", "t", "r"],
+    "hints": { "tip": "Die Lautfolge 'ei' bleibt – kein 'mienem'." }
+  },
+  {
+    "id": "kriegen",
+    "word": "kriegen",
+    "audioUrl": "/assets/audio/kriegen.mp3",
+    "letters": ["k", "r", "i", "e", "g", "e", "n", "ä", "t"],
+    "hints": { "tip": "Der Wortstamm enthält 'ie' – nicht 'krigen'." }
+  },
+  {
+    "id": "fallen",
+    "word": "fallen",
+    "audioUrl": "/assets/audio/fallen.mp3",
+    "letters": ["f", "a", "l", "l", "e", "n", "t", "r", "ß"],
+    "hints": { "tip": "Doppel-l hält den Vokal kurz – kein 'falen'." }
+  },
+  {
+    "id": "gehen",
+    "word": "gehen",
+    "audioUrl": "/assets/audio/gehen.mp3",
+    "letters": ["g", "e", "h", "e", "n", "ä", "t", "r", "i"],
+    "hints": { "tip": "Das stumme h verlängert den Vokal – kein 'gehn'." }
+  },
+  {
+    "id": "denn",
+    "word": "denn",
+    "audioUrl": "/assets/audio/denn.mp3",
+    "letters": ["d", "e", "n", "n", "ä", "t", "r", "s", "i"],
+    "hints": { "tip": "Die Konjunktion braucht Doppel-n – nicht 'den'." }
+  },
+  {
+    "id": "weiss",
+    "word": "weiß",
+    "audioUrl": "/assets/audio/weiss.mp3",
+    "letters": ["w", "e", "i", "ß", "s", "a", "u", "h", "t"],
+    "hints": { "tip": "Der lange Vokal verlangt ß – kein Doppel-s." }
+  },
+  {
+    "id": "gibt",
+    "word": "gibt",
+    "audioUrl": "/assets/audio/gibt.mp3",
+    "letters": ["g", "i", "b", "t", "e", "n", "s", "a", "r"],
+    "hints": { "tip": "Nur ein b – kein 'giebt' mit ie." }
+  },
+  {
+    "id": "immer",
+    "word": "immer",
+    "audioUrl": "/assets/audio/immer.mp3",
+    "letters": ["i", "m", "m", "e", "r", "a", "t", "n", "s"],
+    "hints": { "tip": "Der kurze Vokal braucht Doppel-m – nicht 'imer'." }
+  },
+  {
+    "id": "ihn",
+    "word": "ihn",
+    "audioUrl": "/assets/audio/ihn.mp3",
+    "letters": ["i", "h", "n", "e", "t", "a", "r", "s", "m"],
+    "hints": { "tip": "Die Form bleibt kurz – kein 'ihne'." }
+  },
+  {
+    "id": "gesessen",
+    "word": "gesessen",
+    "audioUrl": "/assets/audio/gesessen.mp3",
+    "letters": ["g", "e", "s", "e", "s", "e", "n", "a", "t"],
+    "hints": { "tip": "Hier wiederholen sich s und e – nicht zu 'gesesen' vereinfachen." }
+  },
+  {
+    "id": "rief",
+    "word": "rief",
+    "audioUrl": "/assets/audio/rief.mp3",
+    "letters": ["r", "i", "e", "f", "h", "a", "u", "t", "s"],
+    "hints": { "tip": "Die Lautfolge 'ie' steht vor f – kein 'riff'." }
   }
 ]
-

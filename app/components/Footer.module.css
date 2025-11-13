@@ -105,4 +105,8 @@
   }
 }
 
+:global(body.schule-mode) .footer {
+  display: none;
+}
+
 
