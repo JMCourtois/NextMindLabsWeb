@@ -74,7 +74,7 @@
   border-radius: 999px;
   padding: 0.9rem 1.35rem;
   background: linear-gradient(160deg, var(--color-primary), var(--color-primary-strong));
-  color: #fff;
+  color: #ffffff;
   font-weight: 700;
   box-shadow: 0 16px 32px rgba(79, 70, 229, 0.28);
   cursor: pointer;
@@ -112,11 +112,40 @@
   text-align: center;
 }
 
+.promptRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
 .prompt {
   margin: 0;
   font-weight: 700;
   color: var(--color-text);
   font-size: 1.1rem;
+}
+
+.hintButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 2px solid rgba(79, 70, 229, 0.35);
+  background: rgba(79, 70, 229, 0.12);
+  color: var(--color-primary-strong);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.hintButton:hover,
+.hintButton:focus-visible {
+  background: rgba(79, 70, 229, 0.22);
+  border-color: var(--color-primary-strong);
+  transform: scale(1.08);
 }
 
 .inputWrapper {
@@ -166,14 +195,59 @@
   color: var(--color-muted);
 }
 
-.hint {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--color-muted);
+.hintPopupOverlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(2, 6, 23, 0.45);
+  z-index: 100;
+  animation: fadeIn 0.2s ease;
 }
 
-.hintPlaceholder {
-  visibility: hidden;
+.hintPopupContent {
+  background: linear-gradient(160deg, #ffffff, rgba(255, 255, 255, 0.96));
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  width: min(92vw, 30rem);
+  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.3);
+  animation: popIn 0.3s cubic-bezier(0.68, -0.01, 0.32, 1.05);
+  display: grid;
+  gap: 1rem;
+}
+
+.hintPopupTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-primary-strong);
+  text-align: center;
+}
+
+.hintPopupText {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.hintPopupClose {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  background: linear-gradient(150deg, var(--color-primary), var(--color-primary-strong));
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.25);
+}
+
+.hintPopupClose:hover,
+.hintPopupClose:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(79, 70, 229, 0.32);
 }
 
 .letterGrid {
@@ -335,35 +409,35 @@
 }
 
 .successModal {
-  background: linear-gradient(180deg, #ffffff, rgba(255, 255, 255, 0.95));
-  color: var(--color-text);
+  background: linear-gradient(160deg, var(--color-primary-strong), var(--color-primary));
+  color: #ffffff;
   border-radius: var(--radius-md);
-  padding: 1.25rem 1.5rem;
+  padding: 1.75rem 2rem;
   width: min(92vw, 28rem);
   text-align: center;
-  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.28);
+  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.38);
   animation: successPop 420ms ease;
 }
 
 .successEmblem {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 0.5rem auto;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem auto;
   border-radius: 999px;
   display: grid;
   place-items: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #fff;
-  background: linear-gradient(150deg, var(--color-success), #22c55e);
-  box-shadow: 0 16px 34px rgba(34, 197, 94, 0.35);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.2);
 }
 
 .successMessage {
   margin: 0;
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: var(--color-success);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #ffffff;
 }
 
 @keyframes successPop {

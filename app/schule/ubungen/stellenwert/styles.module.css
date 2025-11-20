@@ -229,59 +229,10 @@
   animation: cubeBloom 0.25s ease forwards;
 }
 
-.cubeClusterCollecting .cube {
-  animation: cubeCollect 0.4s forwards;
-}
-
 @keyframes cubeBloom {
   100% {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes cubeCollect {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(0.2) translateY(-14px);
-  }
-}
-
-.cubeClusterCollecting::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 22px;
-  height: 22px;
-  margin-left: -11px;
-  margin-top: -11px;
-  border-radius: 8px;
-  border: 2px solid rgba(15, 23, 42, 0.25);
-  background: rgba(15, 23, 42, 0.08);
-  opacity: 0;
-  animation: cubeBundlePulse 0.4s ease forwards;
-}
-
-@keyframes cubeBundlePulse {
-  0% {
-    opacity: 0;
-    transform: scale(0.4);
-  }
-
-  80% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(0.4);
   }
 }
 

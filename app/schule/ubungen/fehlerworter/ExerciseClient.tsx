@@ -59,6 +59,7 @@ export function FehlerworterExerciseClient({
   const popAudioRef = useRef<HTMLAudioElement | null>(null);
   const errorAudioRef = useRef<HTMLAudioElement | null>(null);
   const [isAudioBusy, setIsAudioBusy] = useState(false);
+  const [showHintPopup, setShowHintPopup] = useState(false);
   const showSuccessPopup = status === "success";
 
   useEffect(() => {
@@ -233,9 +234,37 @@ export function FehlerworterExerciseClient({
       </header>
 
       <section className={styles.wordSection} aria-labelledby="wordPrompt">
-        <p id="wordPrompt" className={styles.prompt}>
-          Baue das Wort:
-        </p>
+        <div className={styles.promptRow}>
+          <p id="wordPrompt" className={styles.prompt}>
+            Baue das Wort:
+          </p>
+          {currentWord.hints?.tip && (
+            <button
+              type="button"
+              className={styles.hintButton}
+              onClick={() => setShowHintPopup(true)}
+              aria-label="Tipp anzeigen"
+              title="Tipp anzeigen"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+            </button>
+          )}
+        </div>
         <InputDisplay
           value={userInput}
           targetLength={currentWord.word.length}
@@ -243,15 +272,6 @@ export function FehlerworterExerciseClient({
           shouldShake={shouldShake}
           onAnimationEnd={acknowledgeShake}
         />
-        {currentWord.hints?.tip ? (
-          <p className={styles.hint} aria-live="polite">
-            Tipp: {currentWord.hints.tip}
-          </p>
-        ) : (
-          <span aria-hidden="true" className={styles.hintPlaceholder}>
-            &nbsp;
-          </span>
-        )}
       </section>
 
       <LetterGrid letters={letterPool} disabled={isLocked} onSelect={handleSelectLetter} />
@@ -306,6 +326,33 @@ export function FehlerworterExerciseClient({
         message={feedback.message}
         onNext={goToNextWord}
       />
+
+      {showHintPopup && currentWord.hints?.tip && (
+        <div
+          className={styles.hintPopupOverlay}
+          onClick={() => setShowHintPopup(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="hintPopupTitle"
+        >
+          <div
+            className={styles.hintPopupContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 id="hintPopupTitle" className={styles.hintPopupTitle}>
+              💡 Tipp
+            </h3>
+            <p className={styles.hintPopupText}>{currentWord.hints.tip}</p>
+            <button
+              type="button"
+              className={styles.hintPopupClose}
+              onClick={() => setShowHintPopup(false)}
+            >
+              Verstanden
+            </button>
+          </div>
+        </div>
+      )}
 
       <audio
         ref={popAudioRef}

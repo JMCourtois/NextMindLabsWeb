@@ -28,12 +28,12 @@ const SYSTEM_CONFIG: Record<NumberSystem, { base: number; labels: string[]; name
 
 const INITIAL_DIGITS = Array(7).fill(0) as number[];
 
-type BundleEvent = {
+type CarryOverlay = {
   from: number;
   to: number;
   id: number;
-  targetColor: string;
-  payloadCount: number;
+  fromColor: string;
+  toColor: string;
   deltaX: number;
   deltaY: number;
   startX: number;
@@ -83,9 +83,9 @@ export function PlaceValueTrainer() {
   const [hideLeadingZeros, setHideLeadingZeros] = useState(false);
   const [showCubes, setShowCubes] = useState(true);
   const [digits, setDigits] = useState<number[]>(INITIAL_DIGITS);
-  const [bundleEvent, setBundleEvent] = useState<BundleEvent | null>(null);
+  const [carryOverlay, setCarryOverlay] = useState<CarryOverlay | null>(null);
   const bundleIdRef = useRef(0);
-  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const cardRefs = useRef<(DOMRect | null)[]>(Array(7).fill(null));
   const boardRef = useRef<HTMLDivElement | null>(null);
 
   const config = useMemo(() => SYSTEM_CONFIG[numberSystem], [numberSystem]);
@@ -101,7 +101,7 @@ export function PlaceValueTrainer() {
         return value;
       }),
     );
-    setBundleEvent(null);
+    setCarryOverlay(null);
   };
 
   const displayedValue = useMemo(() => {
@@ -140,80 +140,68 @@ export function PlaceValueTrainer() {
 
   const resetDigits = () => {
     setDigits(INITIAL_DIGITS);
-    setBundleEvent(null);
+    setCarryOverlay(null);
   };
 
   const incrementAtIndex = (index: number) => {
     const base = config.base;
-    let pendingBundleMeta: { from: number; to: number; payloadCount: number } | null = null;
+    const previousValue = digits[index];
+
     setDigits((prev) => {
       const next = [...prev];
-      const previousValue = prev[index];
       carryIncrement(next, index, base, autoCarry);
-      if (
-        showCubes &&
-        autoCarry &&
-        base === 10 &&
-        previousValue === base - 1 &&
-        next[index] === 0
-      ) {
-        const targetIndex = index - 1;
-        if (targetIndex >= 0) {
-          pendingBundleMeta = {
-            from: index,
-            to: targetIndex,
-            payloadCount: base,
-          };
-        }
-      }
       return next;
     });
 
-    if (pendingBundleMeta) {
-      const { from, to, payloadCount } = pendingBundleMeta;
-      const fromCard = cardRefs.current[from];
-      const toCard = cardRefs.current[to];
-      const fromRect = fromCard?.getBoundingClientRect();
-      const toRect = toCard?.getBoundingClientRect();
-      const boardRect = boardRef.current?.getBoundingClientRect();
+    // Detect if a carry occurred (digit overflowed and wrapped to 0)
+    const didCarry = autoCarry && previousValue === base - 1;
+    if (showCubes && didCarry) {
+      const targetIndex = index - 1;
+      if (targetIndex >= 0) {
+        const fromCard = cardRefs.current[index];
+        const toCard = cardRefs.current[targetIndex];
+        const boardRect = boardRef.current?.getBoundingClientRect();
 
-      const hasMeasurements = Boolean(fromRect && toRect && boardRect);
+        const hasMeasurements = Boolean(fromCard && toCard && boardRect);
 
-      const startX = hasMeasurements
-        ? (fromRect!.left + fromRect!.width / 2) - boardRect!.left
-        : (boardRect?.width ?? 0) / 2;
+        const startX = hasMeasurements
+          ? (fromCard!.left + fromCard!.width / 2) - boardRect!.left
+          : (boardRect?.width ?? 0) / 2;
 
-      const startY = hasMeasurements
-        ? fromRect!.top - boardRect!.top - 56
-        : -56;
+        const startY = hasMeasurements
+          ? fromCard!.top - boardRect!.top - 56
+          : -56;
 
-      const deltaX = hasMeasurements
-        ? (toRect!.left + toRect!.width / 2) - (fromRect!.left + fromRect!.width / 2)
-        : to < from
-          ? -140
-          : 140;
+        const deltaX = hasMeasurements
+          ? (toCard!.left + toCard!.width / 2) - (fromCard!.left + fromCard!.width / 2)
+          : targetIndex < index
+            ? -140
+            : 140;
 
-      const deltaY = hasMeasurements ? toRect!.top - fromRect!.top : 0;
+        const deltaY = hasMeasurements ? toCard!.top - fromCard!.top : 0;
 
-      const nextId = bundleIdRef.current + 1;
-      bundleIdRef.current = nextId;
+        const nextCarry: CarryOverlay = {
+          from: index,
+          to: targetIndex,
+          id: bundleIdRef.current + 1,
+          fromColor: COLORS[index % COLORS.length],
+          toColor: COLORS[targetIndex % COLORS.length],
+          deltaX,
+          deltaY,
+          startX,
+          startY,
+        };
 
-      setBundleEvent({
-        from,
-        to,
-        id: nextId,
-        targetColor: COLORS[to % COLORS.length],
-        payloadCount,
-        deltaX,
-        deltaY,
-        startX,
-        startY,
-      });
+        bundleIdRef.current = nextCarry.id;
+        requestAnimationFrame(() => {
+          setCarryOverlay(nextCarry);
+        });
+      }
     }
   };
 
-  const handleBundleAnimationEnd = (id: number) => {
-    setBundleEvent((current) => {
+  const handleCarryAnimationEnd = (id: number) => {
+    setCarryOverlay((current) => {
       if (current?.id === id) {
         return null;
       }
@@ -276,7 +264,7 @@ export function PlaceValueTrainer() {
                   const nextValue = event.target.checked;
                   setShowCubes(nextValue);
                   if (!nextValue) {
-                    setBundleEvent(null);
+                    setCarryOverlay(null);
                   }
                 }}
               />
@@ -300,20 +288,20 @@ export function PlaceValueTrainer() {
           const cubeBorder = withAlpha(color, 0.65);
           const cubeFill = withAlpha(color, 0.18);
           const cubeGlow = withAlpha(color, 0.18);
-          const isBundleSource = bundleEvent?.from === index;
-          const isBundleTarget = bundleEvent?.to === index;
-          const activeCubeCount =
-            isBundleSource && bundleEvent ? bundleEvent.payloadCount : digit;
-          const shouldShowOrbit = showCubes && (activeCubeCount > 0 || isBundleSource);
+          const isCarrySource = carryOverlay?.from === index;
+          const isCarryTarget = carryOverlay?.to === index;
+          const shouldShowOrbit = showCubes && digit > 0 && !isCarrySource;
           return (
             <button
               key={label ?? index}
               type="button"
               ref={(element) => {
-                cardRefs.current[index] = element;
+                if (element) {
+                  cardRefs.current[index] = element.getBoundingClientRect();
+                }
               }}
               className={`${styles.digitCard} ${isHidden ? styles.digitCardHidden : ""} ${
-                isBundleTarget ? styles.digitCardTarget : ""
+                isCarryTarget ? styles.digitCardTarget : ""
               }`}
               style={{ borderColor: color, background: `${color}22` }}
               onClick={() => incrementAtIndex(index)}
@@ -321,12 +309,8 @@ export function PlaceValueTrainer() {
             >
               {shouldShowOrbit && (
                 <div className={styles.cubeOrbit} aria-hidden="true">
-                  <div
-                    className={`${styles.cubeCluster} ${
-                      isBundleSource && bundleEvent ? styles.cubeClusterCollecting : ""
-                    }`}
-                  >
-                    {Array.from({ length: activeCubeCount }).map((_, cubeIndex) => (
+                  <div className={styles.cubeCluster}>
+                    {Array.from({ length: digit }).map((_, cubeIndex) => (
                       <span
                         key={`${index}-${cubeIndex}-${digit}`}
                         className={styles.cube}
@@ -351,21 +335,21 @@ export function PlaceValueTrainer() {
           );
           })}
         </div>
-        {showCubes && bundleEvent && (() => {
+        {showCubes && carryOverlay && (() => {
           const flightStyles: FlightStyle = {
-            borderColor: withAlpha(bundleEvent.targetColor, 0.85),
-            backgroundColor: withAlpha(bundleEvent.targetColor, 0.22),
-            boxShadow: `0 14px 32px ${withAlpha(bundleEvent.targetColor, 0.25)}`,
-            "--flight-start-x": `${bundleEvent.startX}px`,
-            "--flight-start-y": `${bundleEvent.startY}px`,
-            "--flight-delta-x": `${bundleEvent.deltaX}px`,
-            "--flight-delta-y": `${bundleEvent.deltaY}px`,
+            borderColor: withAlpha(carryOverlay.toColor, 0.85),
+            backgroundImage: `linear-gradient(to right, ${withAlpha(carryOverlay.fromColor, 0.22)}, ${withAlpha(carryOverlay.toColor, 0.22)})`,
+            boxShadow: `0 14px 32px ${withAlpha(carryOverlay.toColor, 0.25)}`,
+            "--flight-start-x": `${carryOverlay.startX}px`,
+            "--flight-start-y": `${carryOverlay.startY}px`,
+            "--flight-delta-x": `${carryOverlay.deltaX}px`,
+            "--flight-delta-y": `${carryOverlay.deltaY}px`,
           };
           return (
             <span
               className={styles.flightCube}
               style={flightStyles}
-              onAnimationEnd={() => handleBundleAnimationEnd(bundleEvent.id)}
+              onAnimationEnd={() => handleCarryAnimationEnd(carryOverlay.id)}
             />
           );
         })()}
