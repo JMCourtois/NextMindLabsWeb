@@ -15,7 +15,7 @@ const uebungen = [
     href: "/schule/ubungen/stellenwert",
     title: "Stellenwert-Trainer",
     description:
-      "Übe den Zehner-, Binär- oder Hexadezimalsystem – mit farbigen Stellen und automatischem Übertrag.",
+      "Farben, Würfel und automatische Überträge zeigen Kindern Schritt für Schritt, wie Dezimal-, Binär- und Hex-Systeme wirklich funktionieren.",
     badge: "Zahlenverständnis",
   },
 ];
@@ -24,11 +24,12 @@ export default function SchuleHomepage() {
   return (
     <main id="mainContent" className={styles.main}>
       <section className={styles.intro}>
-        <p className={styles.eyebrow}>Schule</p>
-        <h1 className={styles.title}>Übungen für klare Gedanken</h1>
+        <p className={styles.eyebrow}>Lernraum Schule</p>
+        <h1 className={styles.title}>Digitale Werkzeuge für bewusstes Lernen</h1>
         <p className={styles.subtitle}>
-          Wähle eine Lernaufgabe, um Wahrnehmungsfallen spielerisch sichtbar zu machen und mit deinen
-          Schülerinnen und Schülern zu trainieren.
+          Unsere interaktiven Übungen verbinden Sinneserfahrung, Reflexion und Gespräch. So merken
+          Kinder nicht nur, dass sie sich irren können – sie verstehen auch, was sie daraus lernen
+          können.
         </p>
       </section>
 
@@ -41,7 +42,7 @@ export default function SchuleHomepage() {
                 <h2 className={styles.cardTitle}>{uebung.title}</h2>
                 <p className={styles.cardDescription}>{uebung.description}</p>
                 <span className={styles.cardCta} aria-hidden="true">
-                  Übung starten →
+                  Übung öffnen →
                 </span>
               </Link>
             </li>

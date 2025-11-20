@@ -30,9 +30,9 @@ export default async function FehlerworterOverviewPage() {
         <p className={styles.eyebrow}>100 Fehlerwörter</p>
         <h1 id="fehlerworterOverviewHeading">Wähle deine Übungseinheit</h1>
         <p>
-          Jede Einheit enthält zehn Wörter in der Reihenfolge unserer Fehlerwortliste. Starte mit den ersten zehn oder
-          springe gezielt in spätere Sets. Für fortgeschrittene Lernende gibt es am Ende einen Zufallsmix mit zwanzig
-          Begriffen.
+          Die Wörter stammen aus den häufigsten Fehlern, die Kinder in den ersten Grundschuljahren machen.
+          Jede Einheit trainiert zehn Begriffe in der Originalreihenfolge unserer Liste. Wenn deine Klasse sicherer wird, wartet am Ende ein
+          Zufallsmix mit zwanzig Begriffen zur Wiederholung.
         </p>
       </header>
 
