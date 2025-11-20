@@ -37,6 +37,7 @@ function formatDigit(value: number, system: NumberSystem) {
 export function PlaceValueTrainer() {
   const [numberSystem, setNumberSystem] = useState<NumberSystem>("decimal");
   const [autoCarry, setAutoCarry] = useState(false);
+  const [hideLeadingZeros, setHideLeadingZeros] = useState(false);
   const [digits, setDigits] = useState<number[]>(INITIAL_DIGITS);
 
   const config = useMemo(() => SYSTEM_CONFIG[numberSystem], [numberSystem]);
@@ -63,6 +64,28 @@ export function PlaceValueTrainer() {
     }
     return `${decimalValue.toString(16).toUpperCase()} (hex) – ${decimalValue.toString(10)} (dezimal)`;
   }, [config.base, digits, numberSystem]);
+
+  const leadingZeroMask = useMemo(() => {
+    if (!hideLeadingZeros) {
+      return digits.map(() => false);
+    }
+
+    let seenSignificant = false;
+    return digits.map((digit, index) => {
+      if (seenSignificant) {
+        return false;
+      }
+      if (digit === 0) {
+        const isLast = index === digits.length - 1;
+        if (isLast) {
+          return false;
+        }
+        return true;
+      }
+      seenSignificant = true;
+      return false;
+    });
+  }, [digits, hideLeadingZeros]);
 
   const resetDigits = () => setDigits(INITIAL_DIGITS);
 
@@ -104,6 +127,15 @@ export function PlaceValueTrainer() {
           Automatischer Übertrag
         </label>
 
+        <label className={styles.toggle}>
+          <input
+            type="checkbox"
+            checked={hideLeadingZeros}
+            onChange={(event) => setHideLeadingZeros(event.target.checked)}
+          />
+          Führende Nullen ausblenden
+        </label>
+
         <button type="button" className={styles.resetButton} onClick={resetDigits}>
           Zurücksetzen
         </button>
@@ -113,11 +145,12 @@ export function PlaceValueTrainer() {
         {digits.map((digit, index) => {
           const color = COLORS[index % COLORS.length];
           const label = config.labels[index] ?? "";
+          const isHidden = hideLeadingZeros && leadingZeroMask[index];
           return (
             <button
               key={label ?? index}
               type="button"
-              className={styles.digitCard}
+              className={`${styles.digitCard} ${isHidden ? styles.digitCardHidden : ""}`}
               style={{ borderColor: color, background: `${color}22` }}
               onClick={() => incrementAtIndex(index)}
               aria-label={`${label || "Stelle"}: ${formatDigit(digit, numberSystem)}`}

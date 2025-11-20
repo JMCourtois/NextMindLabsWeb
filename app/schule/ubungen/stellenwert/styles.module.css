@@ -133,13 +133,18 @@
   padding: 0.85rem;
   min-height: 160px;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
 }
 
 .digitCard:hover,
 .digitCard:focus-visible {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+}
+
+.digitCardHidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .digitLabel {
