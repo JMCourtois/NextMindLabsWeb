@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contador decenas / unidades</title>
+  <style>
+    :root {
+      --unit-size: 18px;
+      --unit-radius: 4px;
+      --unit-color: #22c55e;
+      --unit-border: rgba(15, 23, 42, 0.7);
+      --big-size: 24px;
+      --big-radius: 6px;
+      --big-border: rgba(15, 23, 42, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    .place-value-counter {
+      display: flex;
+      gap: 5rem;
+      align-items: flex-end;
+      padding: 1.5rem 2.5rem 2.5rem;
+      border-radius: 1.5rem;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      box-shadow:
+        0 24px 80px rgba(15, 23, 42, 0.8),
+        0 0 0 1px rgba(148, 163, 184, 0.15);
+    }
+
+    .column {
+      position: relative;
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+      opacity: 0.7;
+    }
+
+    .digit-wrapper {
+      position: relative;
+      padding-top: 3.5rem; /* espacio para las cajas por encima */
+      min-height: 4.5rem;
+    }
+
+    .digit {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.25);
+    }
+
+    /* Contenedor de cuadraditos de unidades (encima del dígito) */
+    .unit-boxes {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: repeat(5, var(--unit-size));
+      grid-auto-rows: var(--unit-size);
+      gap: 4px;
+      justify-content: center;
+      padding-bottom: 0.5rem;
+    }
+
+    .unit-box {
+      width: var(--unit-size);
+      height: var(--unit-size);
+      border-radius: var(--unit-radius);
+      border: 2px solid var(--unit-border);
+      background: var(--unit-color);
+      opacity: 0;
+      transform: scale(0.4) translateY(8px);
+      animation: unitPop 0.3s forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes unitPop {
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Contenedor de cuadrados grandes (decenas) */
+    .ten-boxes {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      padding-bottom: 0.6rem;
+    }
+
+    .ten-box {
+      width: var(--big-size);
+      height: var(--big-size);
+      border-radius: var(--big-radius);
+      border: 2px solid var(--big-border);
+      background: var(--unit-color);
+      opacity: 0;
+      transform: scale(0.7) translateY(8px);
+      animation: tenPop 0.35s forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes tenPop {
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Animación de "recolección" de las 10 unidades */
+    .unit-boxes.collecting .unit-box {
+      animation: unitFadeOut 0.6s forwards;
+      animation-delay: 0s;
+    }
+
+    @keyframes unitFadeOut {
+      to {
+        opacity: 0;
+        transform: scale(0.4) translateY(-4px);
+      }
+    }
+
+    /* Cuadrado grande que "nace" de las unidades y vuela a las decenas */
+    .unit-boxes.collecting::before {
+      content: "";
+      position: absolute;
+      width: var(--big-size);
+      height: var(--big-size);
+      border-radius: var(--big-radius);
+      border: 2px solid var(--big-border);
+      background: var(--unit-color);
+      opacity: 0;
+      /* Empieza centrado sobre las unidades, acaba cerca de las decenas */
+      animation: bundleToTens 0.6s ease-in-out forwards;
+    }
+
+    @keyframes bundleToTens {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.6);
+      }
+      25% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(-50% - 6rem), 0) scale(1);
+      }
+    }
+
+    /* Controles */
+    .controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: #22c55e;
+      color: #022c22;
+      box-shadow:
+        0 10px 30px rgba(34, 197, 94, 0.35),
+        0 0 0 1px rgba(15, 23, 42, 0.7);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow:
+        0 14px 40px rgba(34, 197, 94, 0.4),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow:
+        0 6px 16px rgba(34, 197, 94, 0.35),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    button.secondary {
+      background: transparent;
+      color: #e5e7eb;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4);
+    }
+
+    button.secondary:hover {
+      filter: none;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .info {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      max-width: 420px;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="place-value-counter">
+    <!-- Columna de decenas -->
+    <div class="column column--tens">
+      <div class="label">Decenas</div>
+      <div class="digit-wrapper">
+        <div class="digit" id="tensDigit">0</div>
+        <div class="ten-boxes" id="tensBoxes"></div>
+      </div>
+    </div>
+
+    <!-- Columna de unidades -->
+    <div class="column column--units">
+      <div class="label">Unidades</div>
+      <div class="digit-wrapper">
+        <div class="digit" id="unitsDigit">0</div>
+        <div class="unit-boxes" id="unitBoxes"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="nextBtn">+1</button>
+    <button class="secondary" id="resetBtn">Reset</button>
+  </div>
+
+  <div class="info">
+    Cada vez que llegas a 10, las 10 unidades se agrupan en un solo cuadrado que
+    “viaja” a las decenas.
+  </div>
+
+  <script>
+    const tensDigit = document.getElementById("tensDigit");
+    const unitsDigit = document.getElementById("unitsDigit");
+    const unitBoxes = document.getElementById("unitBoxes");
+    const tensBoxes = document.getElementById("tensBoxes");
+    const nextBtn = document.getElementById("nextBtn");
+    const resetBtn = document.getElementById("resetBtn");
+
+    let value = 0;
+    const maxValue = 99;
+    let isAnimating = false;
+
+    function render(current) {
+      const tens = Math.floor(current / 10);
+      const units = current % 10;
+
+      tensDigit.textContent = tens;
+      unitsDigit.textContent = units;
+
+      // Unidades
+      unitBoxes.innerHTML = "";
+      for (let i = 0; i < units; i++) {
+        const box = document.createElement("div");
+        box.className = "unit-box";
+        box.style.setProperty("--delay", `${i * 0.05}s`);
+        unitBoxes.appendChild(box);
+      }
+
+      // Decenas
+      tensBoxes.innerHTML = "";
+      for (let i = 0; i < tens; i++) {
+        const box = document.createElement("div");
+        box.className = "ten-box";
+        box.style.setProperty("--delay", `${i * 0.04}s`);
+        tensBoxes.appendChild(box);
+      }
+    }
+
+    function startCollectAnimation(nextValue) {
+      isAnimating = true;
+      unitBoxes.classList.add("collecting");
+
+      const onAnimationEnd = (event) => {
+        // Nos aseguramos de esperar a la animación del "bloque" que vuela
+        if (event.animationName !== "bundleToTens") return;
+
+        unitBoxes.classList.remove("collecting");
+        unitBoxes.removeEventListener("animationend", onAnimationEnd);
+
+        value = nextValue;
+        render(value);
+        isAnimating = false;
+      };
+
+      unitBoxes.addEventListener("animationend", onAnimationEnd);
+    }
+
+    function step() {
+      if (isAnimating) return;
+      if (value >= maxValue) return;
+
+      const nextValue = value + 1;
+      const completesTen = nextValue % 10 === 0; // 10, 20, 30...
+
+      if (completesTen) {
+        startCollectAnimation(nextValue);
+      } else {
+        value = nextValue;
+        render(value);
+      }
+    }
+
+    nextBtn.addEventListener("click", step);
+
+    resetBtn.addEventListener("click", () => {
+      if (isAnimating) return;
+      value = 0;
+      render(value);
+    });
+
+    // Estado inicial
+    render(value);
+  </script>
+</body>
+</html>

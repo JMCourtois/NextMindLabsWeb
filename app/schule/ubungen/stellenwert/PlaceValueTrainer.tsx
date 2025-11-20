@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import styles from "./styles.module.css";
 
 type NumberSystem = "decimal" | "binary" | "hex";
@@ -34,6 +35,29 @@ function formatDigit(value: number, system: NumberSystem) {
   return value.toString();
 }
 
+function withAlpha(hexColor: string, alpha: number) {
+  if (!hexColor.startsWith("#")) {
+    return hexColor;
+  }
+
+  let hex = hexColor.replace("#", "");
+  if (hex.length === 3) {
+    hex = hex
+      .split("")
+      .map((char) => char + char)
+      .join("");
+  }
+
+  if (hex.length !== 6) {
+    return hexColor;
+  }
+
+  const r = parseInt(hex.slice(0, 2), 16);
+  const g = parseInt(hex.slice(2, 4), 16);
+  const b = parseInt(hex.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 export function PlaceValueTrainer() {
   const [numberSystem, setNumberSystem] = useState<NumberSystem>("decimal");
   const [autoCarry, setAutoCarry] = useState(false);
@@ -42,16 +66,18 @@ export function PlaceValueTrainer() {
 
   const config = useMemo(() => SYSTEM_CONFIG[numberSystem], [numberSystem]);
 
-  useEffect(() => {
+  const handleSystemChange = (system: NumberSystem) => {
+    setNumberSystem(system);
+    const base = SYSTEM_CONFIG[system].base;
     setDigits((current) =>
       current.map((value) => {
-        if (value >= config.base) {
-          return config.base - 1;
+        if (value >= base) {
+          return base - 1;
         }
         return value;
       }),
     );
-  }, [config.base]);
+  };
 
   const displayedValue = useMemo(() => {
     const base = config.base;
@@ -109,7 +135,7 @@ export function PlaceValueTrainer() {
                 key={system}
                 type="button"
                 className={numberSystem === system ? styles.switchActive : styles.switch}
-                onClick={() => setNumberSystem(system)}
+                onClick={() => handleSystemChange(system)}
                 aria-pressed={numberSystem === system}
               >
                 {SYSTEM_CONFIG[system].name}
@@ -146,6 +172,10 @@ export function PlaceValueTrainer() {
           const color = COLORS[index % COLORS.length];
           const label = config.labels[index] ?? "";
           const isHidden = hideLeadingZeros && leadingZeroMask[index];
+          const cubeBorder = withAlpha(color, 0.65);
+          const cubeFill = withAlpha(color, 0.18);
+          const cubeGlow = withAlpha(color, 0.25);
+          const cubeStyles = { "--cube-color": color } as CSSProperties;
           return (
             <button
               key={label ?? index}
@@ -155,6 +185,26 @@ export function PlaceValueTrainer() {
               onClick={() => incrementAtIndex(index)}
               aria-label={`${label || "Stelle"}: ${formatDigit(digit, numberSystem)}`}
             >
+              <div className={styles.digitVisual} aria-hidden="true">
+                <div
+                  className={`${styles.cubeGrid} ${digit === 0 ? styles.cubeGridEmpty : ""}`}
+                  style={cubeStyles}
+                  data-count={digit}
+                >
+                  {Array.from({ length: digit }).map((_, cubeIndex) => (
+                    <span
+                      key={`${index}-${cubeIndex}-${digit}`}
+                      className={styles.cube}
+                      style={{
+                        borderColor: cubeBorder,
+                        backgroundColor: cubeFill,
+                        boxShadow: `0 8px 18px ${cubeGlow}`,
+                        animationDelay: `${cubeIndex * 0.035}s`,
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
               <span className={styles.digitLabel} style={{ color }}>
                 {label}
               </span>
