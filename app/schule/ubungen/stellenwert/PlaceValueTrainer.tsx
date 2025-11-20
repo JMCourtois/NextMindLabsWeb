@@ -33,14 +33,18 @@ type BundleEvent = {
   to: number;
   id: number;
   targetColor: string;
-  offsetX: number;
-  offsetY: number;
   payloadCount: number;
+  deltaX: number;
+  deltaY: number;
+  startX: number;
+  startY: number;
 };
 
-type BundleStyle = CSSProperties & {
-  "--bundle-target-x"?: string;
-  "--bundle-target-y"?: string;
+type FlightStyle = CSSProperties & {
+  "--flight-start-x"?: string;
+  "--flight-start-y"?: string;
+  "--flight-delta-x"?: string;
+  "--flight-delta-y"?: string;
 };
 
 function formatDigit(value: number, system: NumberSystem) {
@@ -82,6 +86,7 @@ export function PlaceValueTrainer() {
   const [bundleEvent, setBundleEvent] = useState<BundleEvent | null>(null);
   const bundleIdRef = useRef(0);
   const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const boardRef = useRef<HTMLDivElement | null>(null);
 
   const config = useMemo(() => SYSTEM_CONFIG[numberSystem], [numberSystem]);
 
@@ -170,16 +175,25 @@ export function PlaceValueTrainer() {
       const toCard = cardRefs.current[to];
       const fromRect = fromCard?.getBoundingClientRect();
       const toRect = toCard?.getBoundingClientRect();
+      const boardRect = boardRef.current?.getBoundingClientRect();
 
-      const offsetX =
-        fromRect && toRect
-          ? toRect.left + toRect.width / 2 - (fromRect.left + fromRect.width / 2)
-          : to < from
-            ? -120
-            : 120;
+      const hasMeasurements = Boolean(fromRect && toRect && boardRect);
 
-      const offsetY =
-        fromRect && toRect ? toRect.top - fromRect.top : -30;
+      const startX = hasMeasurements
+        ? (fromRect!.left + fromRect!.width / 2) - boardRect!.left
+        : (boardRect?.width ?? 0) / 2;
+
+      const startY = hasMeasurements
+        ? fromRect!.top - boardRect!.top - 56
+        : -56;
+
+      const deltaX = hasMeasurements
+        ? (toRect!.left + toRect!.width / 2) - (fromRect!.left + fromRect!.width / 2)
+        : to < from
+          ? -140
+          : 140;
+
+      const deltaY = hasMeasurements ? toRect!.top - fromRect!.top : 0;
 
       const nextId = bundleIdRef.current + 1;
       bundleIdRef.current = nextId;
@@ -189,9 +203,11 @@ export function PlaceValueTrainer() {
         to,
         id: nextId,
         targetColor: COLORS[to % COLORS.length],
-        offsetX,
-        offsetY,
         payloadCount,
+        deltaX,
+        deltaY,
+        startX,
+        startY,
       });
     }
   };
@@ -207,64 +223,77 @@ export function PlaceValueTrainer() {
 
   return (
     <div className={styles.trainer}>
-      <div className={styles.controls}>
-        <fieldset className={styles.fieldset}>
-          <legend>Zahlensystem</legend>
-          <div className={styles.buttonGroup} role="group" aria-label="Zahlensystem wählen">
-            {(["decimal", "binary", "hex"] as NumberSystem[]).map((system) => (
-              <button
-                key={system}
-                type="button"
-                className={numberSystem === system ? styles.switchActive : styles.switch}
-                onClick={() => handleSystemChange(system)}
-                aria-pressed={numberSystem === system}
-              >
-                {SYSTEM_CONFIG[system].name}
-              </button>
-            ))}
+      <section className={styles.controls} aria-label="Einstellungen">
+        <div className={styles.controlsHeader}>
+          <fieldset className={styles.fieldset}>
+            <legend>Zahlensystem</legend>
+            <div className={styles.buttonGroup} role="group" aria-label="Zahlensystem wählen">
+              {(["decimal", "binary", "hex"] as NumberSystem[]).map((system) => (
+                <button
+                  key={system}
+                  type="button"
+                  className={numberSystem === system ? styles.switchActive : styles.switch}
+                  onClick={() => handleSystemChange(system)}
+                  aria-pressed={numberSystem === system}
+                >
+                  {SYSTEM_CONFIG[system].name}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
+          <button type="button" className={styles.resetButton} onClick={resetDigits}>
+            Zurücksetzen
+          </button>
+        </div>
+
+        <fieldset className={styles.optionGroup}>
+          <legend>Optionen</legend>
+          <div className={styles.optionRow}>
+            <label className={styles.toggle}>
+              <input
+                type="checkbox"
+                checked={autoCarry}
+                onChange={(event) => setAutoCarry(event.target.checked)}
+              />
+              Automatischer Übertrag
+            </label>
+
+            <label className={styles.toggle}>
+              <input
+                type="checkbox"
+                checked={hideLeadingZeros}
+                onChange={(event) => setHideLeadingZeros(event.target.checked)}
+              />
+              Führende Nullen ausblenden
+            </label>
+
+            <label className={styles.toggle}>
+              <input
+                type="checkbox"
+                checked={showCubes}
+                onChange={(event) => {
+                  const nextValue = event.target.checked;
+                  setShowCubes(nextValue);
+                  if (!nextValue) {
+                    setBundleEvent(null);
+                  }
+                }}
+              />
+              Würfel anzeigen
+            </label>
           </div>
         </fieldset>
+      </section>
 
-        <label className={styles.toggle}>
-          <input
-            type="checkbox"
-            checked={autoCarry}
-            onChange={(event) => setAutoCarry(event.target.checked)}
-          />
-          Automatischer Übertrag
-        </label>
-
-        <label className={styles.toggle}>
-          <input
-            type="checkbox"
-            checked={hideLeadingZeros}
-            onChange={(event) => setHideLeadingZeros(event.target.checked)}
-          />
-          Führende Nullen ausblenden
-        </label>
-
-        <label className={styles.toggle}>
-          <input
-            type="checkbox"
-            checked={showCubes}
-            onChange={(event) => {
-              const nextValue = event.target.checked;
-              setShowCubes(nextValue);
-              if (!nextValue) {
-                setBundleEvent(null);
-              }
-            }}
-          />
-          Würfel anzeigen
-        </label>
-
-        <button type="button" className={styles.resetButton} onClick={resetDigits}>
-          Zurücksetzen
-        </button>
-      </div>
-
-      <div className={styles.board} role="group" aria-label="Stellenwerttafeln">
-        {digits.map((digit, index) => {
+      <div className={styles.boardWrapper}>
+        <div
+          className={styles.board}
+          role="group"
+          aria-label="Stellenwerttafeln"
+          ref={boardRef}
+        >
+          {digits.map((digit, index) => {
           const color = COLORS[index % COLORS.length];
           const label = config.labels[index] ?? "";
           const isHidden = hideLeadingZeros && leadingZeroMask[index];
@@ -273,20 +302,9 @@ export function PlaceValueTrainer() {
           const cubeGlow = withAlpha(color, 0.18);
           const isBundleSource = bundleEvent?.from === index;
           const isBundleTarget = bundleEvent?.to === index;
-          const bundleId = bundleEvent?.id ?? 0;
           const activeCubeCount =
             isBundleSource && bundleEvent ? bundleEvent.payloadCount : digit;
           const shouldShowOrbit = showCubes && (activeCubeCount > 0 || isBundleSource);
-          const bundleStyles: BundleStyle | null =
-            isBundleSource && bundleEvent
-              ? {
-                  borderColor: withAlpha(bundleEvent.targetColor, 0.75),
-                  backgroundColor: withAlpha(bundleEvent.targetColor, 0.25),
-                  boxShadow: `0 6px 16px ${withAlpha(bundleEvent.targetColor, 0.3)}`,
-                  "--bundle-target-x": `${bundleEvent.offsetX}px`,
-                  "--bundle-target-y": `${bundleEvent.offsetY}px`,
-                }
-              : null;
           return (
             <button
               key={label ?? index}
@@ -321,13 +339,6 @@ export function PlaceValueTrainer() {
                       />
                     ))}
                   </div>
-                  {bundleStyles && (
-                    <span
-                      className={styles.cubeBundle}
-                      style={bundleStyles}
-                      onAnimationEnd={() => handleBundleAnimationEnd(bundleId)}
-                    />
-                  )}
                 </div>
               )}
               <span className={styles.digitLabel} style={{ color }}>
@@ -338,7 +349,26 @@ export function PlaceValueTrainer() {
               </span>
             </button>
           );
-        })}
+          })}
+        </div>
+        {showCubes && bundleEvent && (() => {
+          const flightStyles: FlightStyle = {
+            borderColor: withAlpha(bundleEvent.targetColor, 0.85),
+            backgroundColor: withAlpha(bundleEvent.targetColor, 0.22),
+            boxShadow: `0 14px 32px ${withAlpha(bundleEvent.targetColor, 0.25)}`,
+            "--flight-start-x": `${bundleEvent.startX}px`,
+            "--flight-start-y": `${bundleEvent.startY}px`,
+            "--flight-delta-x": `${bundleEvent.deltaX}px`,
+            "--flight-delta-y": `${bundleEvent.deltaY}px`,
+          };
+          return (
+            <span
+              className={styles.flightCube}
+              style={flightStyles}
+              onAnimationEnd={() => handleBundleAnimationEnd(bundleEvent.id)}
+            />
+          );
+        })()}
       </div>
 
       <div className={styles.readout} aria-live="polite">
