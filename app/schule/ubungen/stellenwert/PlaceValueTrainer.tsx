@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import styles from "./styles.module.css";
 
 type NumberSystem = "decimal" | "binary" | "hex";
@@ -27,14 +28,19 @@ const SYSTEM_CONFIG: Record<NumberSystem, { base: number; labels: string[]; name
 
 const INITIAL_DIGITS = Array(7).fill(0) as number[];
 
-type BundleDirection = "left" | "right";
-
 type BundleEvent = {
   from: number;
   to: number;
   id: number;
-  color: string;
-  direction: BundleDirection;
+  targetColor: string;
+  offsetX: number;
+  offsetY: number;
+  payloadCount: number;
+};
+
+type BundleStyle = CSSProperties & {
+  "--bundle-target-x"?: string;
+  "--bundle-target-y"?: string;
 };
 
 function formatDigit(value: number, system: NumberSystem) {
@@ -75,6 +81,7 @@ export function PlaceValueTrainer() {
   const [digits, setDigits] = useState<number[]>(INITIAL_DIGITS);
   const [bundleEvent, setBundleEvent] = useState<BundleEvent | null>(null);
   const bundleIdRef = useRef(0);
+  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const config = useMemo(() => SYSTEM_CONFIG[numberSystem], [numberSystem]);
 
@@ -133,7 +140,7 @@ export function PlaceValueTrainer() {
 
   const incrementAtIndex = (index: number) => {
     const base = config.base;
-    let pendingBundle: BundleEvent | null = null;
+    let pendingBundleMeta: { from: number; to: number; payloadCount: number } | null = null;
     setDigits((prev) => {
       const next = [...prev];
       const previousValue = prev[index];
@@ -147,21 +154,45 @@ export function PlaceValueTrainer() {
       ) {
         const targetIndex = index - 1;
         if (targetIndex >= 0) {
-          const nextId = bundleIdRef.current + 1;
-          bundleIdRef.current = nextId;
-          pendingBundle = {
+          pendingBundleMeta = {
             from: index,
             to: targetIndex,
-            id: nextId,
-            color: COLORS[targetIndex % COLORS.length],
-            direction: targetIndex < index ? "left" : "right",
+            payloadCount: base,
           };
         }
       }
       return next;
     });
-    if (pendingBundle) {
-      setBundleEvent(pendingBundle);
+
+    if (pendingBundleMeta) {
+      const { from, to, payloadCount } = pendingBundleMeta;
+      const fromCard = cardRefs.current[from];
+      const toCard = cardRefs.current[to];
+      const fromRect = fromCard?.getBoundingClientRect();
+      const toRect = toCard?.getBoundingClientRect();
+
+      const offsetX =
+        fromRect && toRect
+          ? toRect.left + toRect.width / 2 - (fromRect.left + fromRect.width / 2)
+          : to < from
+            ? -120
+            : 120;
+
+      const offsetY =
+        fromRect && toRect ? toRect.top - fromRect.top : -30;
+
+      const nextId = bundleIdRef.current + 1;
+      bundleIdRef.current = nextId;
+
+      setBundleEvent({
+        from,
+        to,
+        id: nextId,
+        targetColor: COLORS[to % COLORS.length],
+        offsetX,
+        offsetY,
+        payloadCount,
+      });
     }
   };
 
@@ -239,15 +270,30 @@ export function PlaceValueTrainer() {
           const isHidden = hideLeadingZeros && leadingZeroMask[index];
           const cubeBorder = withAlpha(color, 0.65);
           const cubeFill = withAlpha(color, 0.18);
-          const cubeGlow = withAlpha(color, 0.25);
+          const cubeGlow = withAlpha(color, 0.18);
           const isBundleSource = bundleEvent?.from === index;
           const isBundleTarget = bundleEvent?.to === index;
-          const bundleDirection = bundleEvent?.direction ?? "left";
           const bundleId = bundleEvent?.id ?? 0;
+          const activeCubeCount =
+            isBundleSource && bundleEvent ? bundleEvent.payloadCount : digit;
+          const shouldShowOrbit = showCubes && (activeCubeCount > 0 || isBundleSource);
+          const bundleStyles: BundleStyle | null =
+            isBundleSource && bundleEvent
+              ? {
+                  borderColor: withAlpha(bundleEvent.targetColor, 0.75),
+                  backgroundColor: withAlpha(bundleEvent.targetColor, 0.25),
+                  boxShadow: `0 6px 16px ${withAlpha(bundleEvent.targetColor, 0.3)}`,
+                  "--bundle-target-x": `${bundleEvent.offsetX}px`,
+                  "--bundle-target-y": `${bundleEvent.offsetY}px`,
+                }
+              : null;
           return (
             <button
               key={label ?? index}
               type="button"
+              ref={(element) => {
+                cardRefs.current[index] = element;
+              }}
               className={`${styles.digitCard} ${isHidden ? styles.digitCardHidden : ""} ${
                 isBundleTarget ? styles.digitCardTarget : ""
               }`}
@@ -255,33 +301,30 @@ export function PlaceValueTrainer() {
               onClick={() => incrementAtIndex(index)}
               aria-label={`${label || "Stelle"}: ${formatDigit(digit, numberSystem)}`}
             >
-              {showCubes && (
+              {shouldShowOrbit && (
                 <div className={styles.cubeOrbit} aria-hidden="true">
-                  <div className={styles.cubeCluster}>
-                    {digit === 0 && <span className={styles.cubePlaceholder} />}
-                    {Array.from({ length: digit }).map((_, cubeIndex) => (
+                  <div
+                    className={`${styles.cubeCluster} ${
+                      isBundleSource && bundleEvent ? styles.cubeClusterCollecting : ""
+                    }`}
+                  >
+                    {Array.from({ length: activeCubeCount }).map((_, cubeIndex) => (
                       <span
                         key={`${index}-${cubeIndex}-${digit}`}
                         className={styles.cube}
                         style={{
                           borderColor: cubeBorder,
                           backgroundColor: cubeFill,
-                          boxShadow: `0 8px 18px ${cubeGlow}`,
+                          boxShadow: `0 4px 12px ${cubeGlow}`,
                           animationDelay: `${cubeIndex * 0.025}s`,
                         }}
                       />
                     ))}
                   </div>
-                  {isBundleSource && bundleEvent && (
+                  {bundleStyles && (
                     <span
-                      className={`${styles.cubeBundle} ${
-                        bundleDirection === "left" ? styles.cubeBundleLeft : styles.cubeBundleRight
-                      }`}
-                      style={{
-                        borderColor: cubeBorder,
-                        backgroundColor: cubeFill,
-                        boxShadow: `0 8px 18px ${cubeGlow}`,
-                      }}
+                      className={styles.cubeBundle}
+                      style={bundleStyles}
                       onAnimationEnd={() => handleBundleAnimationEnd(bundleId)}
                     />
                   )}
