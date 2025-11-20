@@ -164,33 +164,36 @@
 
 .cubeOrbit {
   position: absolute;
-  top: -72px;
+  top: -86px;
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(62px, 55%, 130px);
-  display: flex;
-  justify-content: center;
+  width: clamp(70px, 60%, 140px);
+  display: grid;
+  place-items: center;
   pointer-events: none;
   margin: 0;
   min-height: 0;
 }
 
 .cubeCluster {
-  display: flex;
-  flex-wrap: wrap;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  grid-auto-rows: 20px;
+  gap: 6px;
+  width: min(120px, 100%);
   justify-content: center;
-  gap: 4px;
-  width: 100%;
+  justify-items: center;
   pointer-events: none;
 }
 
 .cube {
-  width: 12px;
-  height: 12px;
-  border-radius: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
   border: 2px solid transparent;
   opacity: 0;
-  transform: scale(0.3);
+  transform: scale(0.35);
   animation: cubeBloom 0.25s ease forwards;
 }
 
@@ -213,39 +216,72 @@
 
   100% {
     opacity: 0;
-    transform: scale(0.2) translateY(-12px);
+    transform: scale(0.2) translateY(-14px);
+  }
+}
+
+.cubeClusterCollecting::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -11px;
+  border-radius: 8px;
+  border: 2px solid rgba(15, 23, 42, 0.25);
+  background: rgba(15, 23, 42, 0.08);
+  opacity: 0;
+  animation: cubeBundlePulse 0.4s ease forwards;
+}
+
+@keyframes cubeBundlePulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  80% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
   }
 }
 
 .cubeBundle {
   position: absolute;
-  top: -32px;
+  top: -44px;
   left: 50%;
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   border: 2px solid transparent;
-  animation: cubeTransfer 0.7s cubic-bezier(0.66, -0.01, 0.28, 1.05) forwards;
+  animation: cubeTransfer 0.75s cubic-bezier(0.66, -0.01, 0.28, 1.05) forwards;
 }
 
 @keyframes cubeTransfer {
   0% {
     opacity: 0;
-    transform: translate(-50%, -6px) scale(0.35);
+    transform: translate(-50%, -10px) scale(0.35);
   }
 
   25% {
     opacity: 1;
-    transform: translate(-50%, -28px) scale(0.9);
+    transform: translate(-50%, -34px) scale(1);
   }
 
   100% {
     opacity: 0;
     transform: translate(
         calc(-50% + var(--bundle-target-x, -120px)),
-        calc(-28px + var(--bundle-target-y, -32px))
+        calc(-34px + var(--bundle-target-y, -32px))
       )
-      scale(0.9);
+      scale(0.95);
   }
 }
 
