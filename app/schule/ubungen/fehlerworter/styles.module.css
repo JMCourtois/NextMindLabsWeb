@@ -3,8 +3,6 @@
   flex-direction: column;
   gap: clamp(1.5rem, 4vw, 2.5rem);
   width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
 }
 
 .backLink {
@@ -12,11 +10,29 @@
   font-weight: 600;
   color: var(--color-primary-strong);
   text-decoration: none;
+  padding: 0.5rem 0;
 }
 
 .backLink:hover,
 .backLink:focus-visible {
   text-decoration: underline;
+  color: var(--color-primary);
+}
+
+.statusInfo,
+.statusError {
+  margin: 0;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: var(--radius-md);
+  font-size: 1.05rem;
+  text-align: center;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--color-primary-strong);
+}
+
+.statusError {
+  background: rgba(220, 38, 38, 0.08);
+  color: var(--color-error);
 }
 
 .header {
@@ -38,9 +54,9 @@
   margin: 0;
   font-weight: 600;
   color: var(--color-muted);
-  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-size: 0.9rem;
 }
 
 .heading {
@@ -48,12 +64,14 @@
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   color: var(--color-primary-strong);
+  line-height: 1.2;
 }
 
 .headerDescription {
   margin: 0;
   color: var(--color-muted);
-  font-size: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 
 .audioButton {
@@ -74,7 +92,7 @@
 .audioButton:hover,
 .audioButton:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.35);
 }
 
 .audioButton:disabled {
@@ -84,17 +102,27 @@
   box-shadow: none;
 }
 
+.audioButtonIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
+}
+
+.audioButtonLabel {
+  font-size: 1rem;
+}
+
 .wordSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
   text-align: center;
   background: #fff;
-  padding: clamp(1.5rem, 5vw, 3rem);
+  padding: clamp(2rem, 5vw, 3.5rem);
   border-radius: var(--radius-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .promptRow {
@@ -108,15 +136,15 @@
   margin: 0;
   font-weight: 700;
   color: var(--color-text);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .hintButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
   border: 2px solid rgba(79, 70, 229, 0.35);
   background: rgba(79, 70, 229, 0.12);
@@ -137,20 +165,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   width: min(100%, 32rem);
 }
 
 .inputField {
   width: 100%;
-  min-height: clamp(4rem, 18vw, 6rem);
+  min-height: clamp(5rem, 20vw, 7rem);
   border-radius: var(--radius-md);
   border: 3px solid transparent;
   background: linear-gradient(160deg, rgba(79, 70, 229, 0.08), rgba(255, 255, 255, 0.95));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(2.5rem, 9vw, 3.6rem);
+  font-size: clamp(2.5rem, 9vw, 3.8rem);
   letter-spacing: 0.35rem;
   font-family: var(--font-display);
   color: var(--color-text);
@@ -180,6 +208,62 @@
   color: var(--color-muted);
 }
 
+.hintPopupOverlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(2, 6, 23, 0.45);
+  z-index: 100;
+  animation: fadeIn 0.2s ease;
+}
+
+.hintPopupContent {
+  background: linear-gradient(160deg, #ffffff, rgba(255, 255, 255, 0.96));
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  width: min(92vw, 30rem);
+  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.3);
+  animation: popIn 0.3s cubic-bezier(0.68, -0.01, 0.32, 1.05);
+  display: grid;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.hintPopupTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-primary-strong);
+  text-align: center;
+}
+
+.hintPopupText {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.hintPopupClose {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  background: linear-gradient(150deg, var(--color-primary), var(--color-primary-strong));
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.25);
+}
+
+.hintPopupClose:hover,
+.hintPopupClose:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(79, 70, 229, 0.32);
+}
+
 .letterGrid {
   display: grid;
   gap: clamp(0.75rem, 3vw, 1.25rem);
@@ -193,13 +277,13 @@
 }
 
 .letterButton {
-  min-height: clamp(3.75rem, 14vw, 4.5rem);
-  border-radius: var(--radius-sm);
+  min-height: clamp(4rem, 15vw, 5rem);
+  border-radius: var(--radius-md);
   border: 2px solid rgba(79, 70, 229, 0.1);
   background: #fff;
   color: var(--color-text);
   font-weight: 700;
-  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -210,7 +294,8 @@
 .letterButton:hover,
 .letterButton:focus-visible {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.1);
+  background: linear-gradient(180deg, rgba(79, 70, 229, 0.1), rgba(255, 255, 255, 0.95));
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.12);
   border-color: var(--color-primary);
 }
 
@@ -223,7 +308,7 @@
 .controls {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: clamp(0.75rem, 3vw, 1.5rem);
+  gap: clamp(1rem, 3vw, 1.5rem);
   width: 100%;
 }
 
@@ -236,18 +321,19 @@
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   font-size: 1.05rem;
+  min-height: 3.5rem;
 }
 
 .controlButtonPrimary {
-  background: linear-gradient(150deg, var(--color-success), #22c55e);
+  background: linear-gradient(150deg, var(--color-primary), var(--color-primary-strong));
   color: #fff;
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.25);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25);
 }
 
 .controlButtonPrimary:hover,
 .controlButtonPrimary:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.35);
 }
 
 .controlButtonSecondary {
@@ -323,72 +409,92 @@
   box-shadow: 0 20px 36px rgba(79, 70, 229, 0.25);
 }
 
-/* Hint Popup and Status Styles reused from previous */
-.statusInfo,
-.statusError {
-  margin: 0;
-  padding: clamp(1.5rem, 4vw, 2rem);
-  border-radius: var(--radius-md);
-  font-size: 1.05rem;
-  text-align: center;
-  background: rgba(79, 70, 229, 0.08);
-  color: var(--color-primary-strong);
-}
-
-.statusError {
-  background: rgba(220, 38, 38, 0.08);
-  color: var(--color-error);
-}
-
-.hintPopupOverlay {
+/* Success Popup */
+.successOverlay {
   position: fixed;
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(2, 6, 23, 0.45);
-  z-index: 100;
-  animation: fadeIn 0.2s ease;
+  background: rgba(2, 6, 23, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 50;
 }
 
-.hintPopupContent {
-  background: #fff;
-  border-radius: var(--radius-md);
-  padding: 2rem;
-  width: min(92vw, 30rem);
-  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.3);
-  display: grid;
-  gap: 1rem;
-  text-align: center;
+.successOverlayOpen {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.hintPopupTitle {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--color-primary-strong);
-}
-
-.hintPopupText {
-  margin: 0;
-  line-height: 1.6;
-  color: var(--color-text);
-}
-
-.hintPopupClose {
-  border: none;
-  border-radius: 999px;
-  padding: 0.85rem 1.5rem;
-  background: linear-gradient(150deg, var(--color-primary), var(--color-primary-strong));
+.successModal {
+  background: linear-gradient(160deg, var(--color-primary-strong), var(--color-primary));
   color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  width: min(92vw, 28rem);
+  text-align: center;
+  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.38);
+  animation: successPop 420ms ease;
+}
+
+.successEmblem {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem auto;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.2);
+}
+
+.successMessage {
+  margin: 0;
   font-weight: 700;
-  cursor: pointer;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+@keyframes successPop {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes inputShake {
-  10%, 90% { transform: translateX(-2px); }
-  20%, 80% { transform: translateX(3px); }
-  30%, 50%, 70% { transform: translateX(-4px); }
-  40%, 60% { transform: translateX(4px); }
+  10%,
+  90% {
+    transform: translateX(-2px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(3px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
 }
 
 @media (max-width: 640px) {
