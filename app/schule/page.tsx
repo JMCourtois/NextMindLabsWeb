@@ -7,7 +7,7 @@ const uebungen = [
     href: "/schule/ubungen/fehlerworter",
     title: "100 Fehlerwörter",
     description:
-      "Höre das Wort, setze die Buchstaben richtig zusammen und überprüfe deine Lösung.",
+      "Höre das Wort und baue es Buchstabe für Buchstabe nach.",
     badge: "Audio + Buchstaben",
   },
   {
@@ -15,15 +15,15 @@ const uebungen = [
     href: "/schule/ubungen/luckentext",
     title: "Lückentext-Training",
     description:
-      "Vervollständige Sätze mit dem richtigen Wort. Höre dir die Wörter an und finde die passende Schreibweise.",
-    badge: "Satzverständnis + Rechtschreibung",
+      "Vervollständige Sätze mit dem richtigen Wort.",
+    badge: "Satzverständnis",
   },
   {
     slug: "stellenwerttrainer",
     href: "/schule/ubungen/stellenwert",
     title: "Stellenwert-Trainer",
     description:
-      "Farben, Würfel und automatische Überträge zeigen Kindern Schritt für Schritt, wie Dezimal-, Binär- und Hex-Systeme wirklich funktionieren.",
+      "Verstehe Dezimal-, Binär- und Hex-Systeme interaktiv.",
     badge: "Zahlenverständnis",
   },
 ];
@@ -33,11 +33,9 @@ export default function SchuleHomepage() {
     <main id="mainContent" className={styles.main}>
       <section className={styles.intro}>
         <p className={styles.eyebrow}>Lernraum Schule</p>
-        <h1 className={styles.title}>Digitale Werkzeuge für bewusstes Lernen</h1>
+        <h1 className={styles.title}>Digitale Werkzeuge</h1>
         <p className={styles.subtitle}>
-          Unsere interaktiven Übungen verbinden Sinneserfahrung, Reflexion und Gespräch. So merken
-          Kinder nicht nur, dass sie sich irren können – sie verstehen auch, was sie daraus lernen
-          können.
+          Interaktive Übungen für bewusstes Lernen. Ohne Ablenkung, fokussiert auf das Verstehen.
         </p>
       </section>
 
@@ -60,5 +58,3 @@ export default function SchuleHomepage() {
     </main>
   );
 }
-
-
