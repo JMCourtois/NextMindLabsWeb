@@ -8,6 +8,7 @@ export type SpellingWord = {
   hints?: {
     tip?: string;
   };
+  sentence?: string;
 };
 
 export type SpellingFeedback = {

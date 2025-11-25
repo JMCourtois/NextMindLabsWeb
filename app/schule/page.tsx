@@ -11,6 +11,14 @@ const uebungen = [
     badge: "Audio + Buchstaben",
   },
   {
+    slug: "luckentext",
+    href: "/schule/ubungen/luckentext",
+    title: "Lückentext-Training",
+    description:
+      "Vervollständige Sätze mit dem richtigen Wort. Höre dir die Wörter an und finde die passende Schreibweise.",
+    badge: "Satzverständnis + Rechtschreibung",
+  },
+  {
     slug: "stellenwerttrainer",
     href: "/schule/ubungen/stellenwert",
     title: "Stellenwert-Trainer",
