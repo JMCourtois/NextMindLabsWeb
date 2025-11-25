@@ -17,7 +17,7 @@
     "hints": {
       "tip": "Viele Lernende greifen hier fälschlich zu 'ss' – achte auf den langen Vokal und das ß."
     },
-    "sentence": "Das habe ich mir ___ gedacht."
+    "sentence": "Pass gut auf, dass du ___ nicht den falschen Weg nimmst!"
   },
   {
     "id": "sitzen",
@@ -37,7 +37,7 @@
     "hints": {
       "tip": "Das 'tz' bleibt eine Einheit – kein zusätzliches t oder k einschieben."
     },
-    "sentence": "Die Schüler ___ auf ihren Stühlen."
+    "sentence": "Nach dem langen Spaziergang wollten wir uns nur noch auf die Bank ___."
   },
   {
     "id": "zu-hause",
@@ -57,7 +57,7 @@
     "hints": {
       "tip": "Der zweite Teil ist ein Nomen: groß schreiben und getrennt lassen."
     },
-    "sentence": "Am liebsten bin ich ___."
+    "sentence": "Egal wo wir hingehen, am wohlsten fühle ich mich immer ___."
   },
   {
     "id": "stellen",
@@ -77,7 +77,7 @@
     "hints": {
       "tip": "Auch hier braucht der Stamm Doppel-l – kein 'stelen'."
     },
-    "sentence": "Bitte ___ die Tasse auf den Tisch."
+    "sentence": "Kannst du die Vase bitte vorsichtig auf den Tisch ___?"
   },
   {
     "id": "vielleicht",
@@ -97,7 +97,7 @@
     "hints": {
       "tip": "Der Laut 'ie' steht vor dem Doppel-l – kein 'villeicht' oder 'viellicht'."
     },
-    "sentence": "___ gehen wir heute ins Kino."
+    "sentence": "Wenn wir uns beeilen, schaffen wir es ___ noch pünktlich zum Film."
   },
   {
     "id": "nicht",
@@ -117,7 +117,7 @@
     "hints": {
       "tip": "Das Kehllaut-Paar 'ch' bleibt – kein 'nikht' oder 'nischt'."
     },
-    "sentence": "Das darfst du ___ tun."
+    "sentence": "Ich habe dir doch gesagt, dass du das ___ tun sollst."
   },
   {
     "id": "bekommen",
@@ -137,7 +137,7 @@
     "hints": {
       "tip": "Hier bleiben zwei m erhalten, auch wenn man sie kaum hört."
     },
-    "sentence": "Ich möchte ein Eis ___."
+    "sentence": "Zum Geburtstag möchte ich dieses Jahr ein neues Fahrrad ___."
   },
   {
     "id": "jetzt",
@@ -157,7 +157,7 @@
     "hints": {
       "tip": "Der Schluss lautet 'tz' – kein zusätzliches e oder d anhängen."
     },
-    "sentence": "___ ist es Zeit ins Bett zu gehen."
+    "sentence": "Wir müssen uns beeilen, denn ___ fährt der Bus gleich ab."
   },
   {
     "id": "fahren",
@@ -177,7 +177,7 @@
     "hints": {
       "tip": "Das stumme h verlängert den Vokal – nicht zu 'faren' verkürzen."
     },
-    "sentence": "Wir ___ mit dem Auto."
+    "sentence": "Im Sommer wollen wir mit dem Auto an die Ostsee ___."
   },
   {
     "id": "lassen",
@@ -197,7 +197,7 @@
     "hints": {
       "tip": "Ein Doppel-s sorgt für den kurzen Vokal – kein ß verwenden."
     },
-    "sentence": "Wir ___ den Drachen steigen."
+    "sentence": "Kannst du bitte die Tür offen ___, damit frische Luft hereinkommt?"
   },
   {
     "id": "angst",
@@ -217,7 +217,7 @@
     "hints": {
       "tip": "Der Laut 'ng' bleibt zusammen – kein zusätzliches e oder h dazwischen."
     },
-    "sentence": "Du brauchst keine ___ zu haben."
+    "sentence": "In der Dunkelheit hatte das kleine Kind plötzlich große ___."
   },
   {
     "id": "herein",
@@ -237,7 +237,7 @@
     "hints": {
       "tip": "Es heißt 'he-rein' – die Reihenfolge von 'e' und 'ei' nicht vertauschen."
     },
-    "sentence": "Bitte komm doch ___."
+    "sentence": "Es klopfte an der Tür und der Lehrer rief laut: Kommen Sie ___!"
   },
   {
     "id": "wollen",
@@ -257,7 +257,7 @@
     "hints": {
       "tip": "Der Stamm hat Doppel-l – verwechsle es nicht mit 'wolen' oder 'woßlen'."
     },
-    "sentence": "Wir ___ Fußball spielen."
+    "sentence": "Die Kinder ___ unbedingt noch eine Runde auf dem Karussell fahren."
   },
   {
     "id": "essen",
@@ -277,7 +277,7 @@
     "hints": {
       "tip": "Der kurze Vokal verlangt Doppel-s – kein ß einsetzen."
     },
-    "sentence": "Wir ___ heute Nudeln."
+    "sentence": "Am liebsten ___ wir am Sonntag gemeinsam mit der ganzen Familie."
   },
   {
     "id": "abends",
@@ -297,7 +297,7 @@
     "hints": {
       "tip": "Am Ende steht -ds, nicht -tz oder -ts."
     },
-    "sentence": "___ ist es dunkel."
+    "sentence": "Besonders ___ lese ich gerne noch ein spannendes Buch im Bett."
   },
   {
     "id": "ganz",
@@ -317,7 +317,7 @@
     "hints": {
       "tip": "Der Endlaut ist ein einfaches z – kein tz oder s."
     },
-    "sentence": "Ich habe den ___ Kuchen gegessen."
+    "sentence": "Ich habe den ___ Kuchen alleine aufgegessen, weil er so lecker war."
   },
   {
     "id": "gucken",
@@ -337,7 +337,7 @@
     "hints": {
       "tip": "Beide Varianten mit ck sind erlaubt – das ck nicht zu k oder g austauschen."
     },
-    "sentence": "Kannst du mal ___?"
+    "sentence": "Lass uns mal ___, ob im Fernsehen heute etwas Gutes läuft."
   },
   {
     "id": "kommen",
@@ -357,7 +357,7 @@
     "hints": {
       "tip": "Der Stamm 'kommen' hat zwei m – kein 'komen'."
     },
-    "sentence": "Die Gäste ___ gleich."
+    "sentence": "Wann ___ deine Freunde eigentlich zu deiner Geburtstagsfeier?"
   },
   {
     "id": "wieder",
@@ -377,7 +377,7 @@
     "hints": {
       "tip": "Unterscheide 'wieder' (noch einmal) von 'wider' (gegen)."
     },
-    "sentence": "Komm bald ___!"
+    "sentence": "Es war so schön im Urlaub, dass wir nächstes Jahr ___ dorthin wollen."
   },
   {
     "id": "aussen",
@@ -397,7 +397,7 @@
     "hints": {
       "tip": "Der lange Vokal verlangt ß – nicht 'aussen' mit Doppel-s."
     },
-    "sentence": "Wir spielen ___ im Garten."
+    "sentence": "Die Schale der Frucht ist hart, aber ___ ist sie sehr weich."
   },
   {
     "id": "ploetzlich",
@@ -417,7 +417,7 @@
     "hints": {
       "tip": "Merke dir Umlaut und tz – kein 'plotzlich' ohne Punkte."
     },
-    "sentence": "___ war der Strom weg."
+    "sentence": "Es war ganz still, doch ___ hörten wir einen lauten Knall."
   },
   {
     "id": "gross",
@@ -437,7 +437,7 @@
     "hints": {
       "tip": "Der lange o-Laut führt zum ß – kein Doppel-s."
     },
-    "sentence": "Ich bin schon sehr ___."
+    "sentence": "Der Baum im Garten ist über die Jahre sehr ___ geworden."
   },
   {
     "id": "nehmen",
@@ -457,7 +457,7 @@
     "hints": {
       "tip": "Das stumme h bleibt – nicht zu 'nemen' verkürzen."
     },
-    "sentence": "Wir ___ den Bus."
+    "sentence": "Für die Suppe müssen wir einen Löffel ___, nicht die Gabel."
   },
   {
     "id": "tag",
@@ -477,7 +477,7 @@
     "hints": {
       "tip": "Kurz und knapp – kein zusätzliches e am Ende, nur ein g."
     },
-    "sentence": "Guten ___!"
+    "sentence": "Jeden ___ gehe ich mit meinem Hund im Park spazieren."
   },
   {
     "id": "ziemlich",
@@ -497,7 +497,7 @@
     "hints": {
       "tip": "Das Wort endet auf -lich – kein -tig oder -tsch."
     },
-    "sentence": "Das Wasser ist ___ kalt."
+    "sentence": "Die Aufgabe war ___ schwer, aber ich habe sie trotzdem gelöst."
   },
   {
     "id": "alle",
@@ -517,7 +517,7 @@
     "hints": {
       "tip": "Der kurze Vokal braucht Doppel-l – nicht nur ein l."
     },
-    "sentence": "___ Vögel sind schon da."
+    "sentence": "Nach dem Sportfest waren ___ Schüler müde und wollten nach Hause."
   },
   {
     "id": "endlich",
@@ -537,7 +537,7 @@
     "hints": {
       "tip": "Der Auslaut -lich bleibt – kein zusätzliches e oder k."
     },
-    "sentence": "___ ist das Wochenende da!"
+    "sentence": "Nach langer Wartezeit ist der Bus ___ an der Haltestelle angekommen."
   },
   {
     "id": "spielen",
@@ -557,7 +557,7 @@
     "hints": {
       "tip": "Das 'ie' gehört zusammen – vermeide 'spilen'."
     },
-    "sentence": "Komm, wir ___ Verstecken."
+    "sentence": "Bei schönem Wetter ___ die Kinder am liebsten draußen im Garten."
   },
   {
     "id": "sagen",
@@ -577,7 +577,7 @@
     "hints": {
       "tip": "Mit g geschrieben – kein 'saken' oder 'sahen'."
     },
-    "sentence": "Das wollte ich dir ___."
+    "sentence": "Du musst mir die Wahrheit ___, auch wenn es schwerfällt."
   },
   {
     "id": "meinen",
@@ -597,7 +597,7 @@
     "hints": {
       "tip": "Die Lautfolge 'ei' bleibt – kein 'mien' oder 'meinen' mit ie."
     },
-    "sentence": "Was ___ Sie dazu?"
+    "sentence": "Ich verstehe nicht ganz, was Sie mit dieser Frage ___."
   },
   {
     "id": "idee",
@@ -617,7 +617,7 @@
     "hints": {
       "tip": "Das Wort endet auf zwei e – kein h oder ä einsetzen."
     },
-    "sentence": "Ich habe eine tolle ___!"
+    "sentence": "Das ist eine hervorragende ___, das sollten wir sofort ausprobieren!"
   },
   {
     "id": "fahrrad",
@@ -637,7 +637,7 @@
     "hints": {
       "tip": "Der Wortstamm enthält Doppel-r – nicht 'Farad'."
     },
-    "sentence": "Mein ___ hat einen Platten."
+    "sentence": "Er fährt jeden Morgen mit dem ___ zur Schule, auch wenn es regnet."
   },
   {
     "id": "weihnachten",
@@ -657,7 +657,7 @@
     "hints": {
       "tip": "Der Wortanfang 'Weih' enthält h und i – kein 'Weinachten'."
     },
-    "sentence": "Bald ist ___."
+    "sentence": "An ___ freuen sich alle Kinder auf die Geschenke unter dem Baum."
   },
   {
     "id": "rennen",
@@ -677,7 +677,7 @@
     "hints": {
       "tip": "Der Wortstamm enthält Doppel-n – kein 'renen'."
     },
-    "sentence": "Nicht so schnell ___!"
+    "sentence": "Wir müssen schnell zum Bahnhof ___, sonst verpassen wir den Zug."
   },
   {
     "id": "einmal",
@@ -697,7 +697,7 @@
     "hints": {
       "tip": "Das Wort bleibt zusammengeschrieben und beginnt mit 'ei'."
     },
-    "sentence": "Es war ___ eine Prinzessin."
+    "sentence": "Ich möchte ___ um die ganze Welt reisen und viele Länder sehen."
   },
   {
     "id": "muessen",
@@ -717,7 +717,7 @@
     "hints": {
       "tip": "Der Umlaut und Doppel-s gehören dazu – kein 'mussen'."
     },
-    "sentence": "Wir ___ jetzt leise sein."
+    "sentence": "Wir ___ uns jetzt wirklich beeilen, sonst kommen wir zu spät."
   },
   {
     "id": "erzaehlen",
@@ -737,7 +737,7 @@
     "hints": {
       "tip": "Der Umlaut bleibt erhalten – nicht schlicht 'erzählen' mit ae."
     },
-    "sentence": "Opa kann gut ___."
+    "sentence": "Opa soll uns heute Abend wieder eine spannende Geschichte ___."
   },
   {
     "id": "morgen",
@@ -757,7 +757,7 @@
     "hints": {
       "tip": "Die Mitte enthält ein hörbares e – vermeide 'morgen' ohne e."
     },
-    "sentence": "Bis ___!"
+    "sentence": "Wenn das Wetter schön ist, gehen wir ___ ins Freibad."
   },
   {
     "id": "fehler",
@@ -777,7 +777,7 @@
     "hints": {
       "tip": "Der Stamm 'fehl' bleibt mit h – kein 'Feler'."
     },
-    "sentence": "Ich habe einen ___ gemacht."
+    "sentence": "Aus jedem ___ kann man etwas lernen und es beim nächsten Mal besser machen."
   },
   {
     "id": "hinaus",
@@ -797,7 +797,7 @@
     "hints": {
       "tip": "Die Teile 'hin' und 'aus' bleiben – kein zusätzliches h oder f."
     },
-    "sentence": "Wir schauen zum Fenster ___."
+    "sentence": "Er schaute zum Fenster ___, um zu sehen, wer da gerufen hatte."
   },
   {
     "id": "schluss",
@@ -817,7 +817,7 @@
     "hints": {
       "tip": "Der Auslaut endet auf Doppel-s – kein ß."
     },
-    "sentence": "Jetzt ist aber ___!"
+    "sentence": "Am ___ des Films gab es ein großes Happy End für alle."
   },
   {
     "id": "lehrer",
@@ -837,7 +837,7 @@
     "hints": {
       "tip": "Der Stamm 'lehr' mit h bleibt erhalten – kein 'Lerer'."
     },
-    "sentence": "Der ___ schreibt an die Tafel."
+    "sentence": "Unser ___ erklärt uns Mathe immer so, dass es jeder versteht."
   },
   {
     "id": "wir",
@@ -857,7 +857,7 @@
     "hints": {
       "tip": "Kurz und ohne h – kein 'wih' oder 'wirr'."
     },
-    "sentence": "___ sind ein gutes Team."
+    "sentence": "Zusammen sind ___ stark und können jedes Problem lösen."
   },
   {
     "id": "wenn",
@@ -877,7 +877,7 @@
     "hints": {
       "tip": "Konditionalsätze brauchen Doppel-n – kein 'wen'."
     },
-    "sentence": "Sag Bescheid, ___ du fertig bist."
+    "sentence": "Sag mir bitte Bescheid, ___ du mit den Hausaufgaben fertig bist."
   },
   {
     "id": "fehlen",
@@ -897,7 +897,7 @@
     "hints": {
       "tip": "Das stumme h verlängert den Vokal – kein 'felen'."
     },
-    "sentence": "Drei Schüler ___ heute."
+    "sentence": "Es ___ noch zwei Stühle, damit alle am Tisch sitzen können."
   },
   {
     "id": "kaputt",
@@ -917,7 +917,7 @@
     "hints": {
       "tip": "Der Endlaut braucht Doppel-t – kein 'kaput'."
     },
-    "sentence": "Die Lampe ist ___."
+    "sentence": "Mein Handy ist runtergefallen und jetzt ist das Display ___."
   },
   {
     "id": "kennen",
@@ -937,7 +937,7 @@
     "hints": {
       "tip": "Der Stamm hat Doppel-n – nicht zu 'kenen' verkürzen."
     },
-    "sentence": "Ich ___ diesen Film schon."
+    "sentence": "Ich ___ diesen Jungen nicht, er ist neu in unserer Klasse."
   },
   {
     "id": "viel",
@@ -957,7 +957,7 @@
     "hints": {
       "tip": "'ie' steht zusammen – nicht als 'viel' mit i-e vertauscht."
     },
-    "sentence": "Das ist aber ___ Arbeit."
+    "sentence": "Manchmal ist es ___ besser, weniger zu reden und mehr zuzuhören."
   },
   {
     "id": "koennen",
@@ -977,7 +977,7 @@
     "hints": {
       "tip": "Der Umlaut und Doppel-n bleiben – nicht 'konnen'."
     },
-    "sentence": "___ Sie mir helfen?"
+    "sentence": "Mit etwas Übung ___ wir das Spiel sicher gewinnen."
   },
   {
     "id": "ende",
@@ -997,7 +997,7 @@
     "hints": {
       "tip": "Als Nomen groß und mit stummem e am Ende."
     },
-    "sentence": "Das ___ ist nah."
+    "sentence": "Wir bleiben bis zum ___ der Vorstellung im Theater sitzen."
   },
   {
     "id": "hinterher",
@@ -1017,7 +1017,7 @@
     "hints": {
       "tip": "Der zweite Teil heißt 'her' – kein 'hinther'."
     },
-    "sentence": "Er rennt mir ___."
+    "sentence": "Erst machen wir die Arbeit, und ___ können wir spielen."
   },
   {
     "id": "sehen",
@@ -1037,7 +1037,7 @@
     "hints": {
       "tip": "Das stumme h verlängert den Vokal – nicht 'sehn'."
     },
-    "sentence": "Ich kann dich ___."
+    "sentence": "Ohne Brille kann ich die Schrift an der Tafel kaum ___."
   },
   {
     "id": "sollen",
@@ -1057,7 +1057,7 @@
     "hints": {
       "tip": "Der Stamm verlangt Doppel-l – kein 'solen'."
     },
-    "sentence": "Du ___ dein Zimmer aufräumen."
+    "sentence": "Die Eltern sagten, wir ___ nicht so spät nach Hause kommen."
   },
   {
     "id": "man",
@@ -1077,7 +1077,7 @@
     "hints": {
       "tip": "Bleib beim kurzen Grundwort – kein stummes h oder e anhängen."
     },
-    "sentence": "Das macht ___ so."
+    "sentence": "In der Bibliothek muss ___ leise sein, um niemanden zu stören."
   },
   {
     "id": "wissen",
@@ -1097,7 +1097,7 @@
     "hints": {
       "tip": "Der kurze Vokal verlangt Doppel-s – kein ß."
     },
-    "sentence": "Das muss man ___."
+    "sentence": "Ich möchte gerne ___, wie spät es gerade ist."
   },
   {
     "id": "hier",
@@ -1117,7 +1117,7 @@
     "hints": {
       "tip": "Die Lautfolge 'ie' bleibt – kein 'hiehr'."
     },
-    "sentence": "Ich bin ___!"
+    "sentence": "Bleib bitte ___, bis ich wieder zurück bin."
   },
   {
     "id": "stehen",
@@ -1137,7 +1137,7 @@
     "hints": {
       "tip": "Das stumme h gehört dazu – nicht 'sten'."
     },
-    "sentence": "Bleib bitte ___."
+    "sentence": "Wir mussten lange in der Schlange ___, bis wir an der Reihe waren."
   },
   {
     "id": "dann",
@@ -1157,7 +1157,7 @@
     "hints": {
       "tip": "Doppel-n für den kurzen Vokal – kein 'dan'."
     },
-    "sentence": "Was machen wir ___?"
+    "sentence": "Zuerst machen wir die Hausaufgaben, und ___ gehen wir raus."
   },
   {
     "id": "spass",
@@ -1177,7 +1177,7 @@
     "hints": {
       "tip": "Ein langer a-Laut führt zum ß – kein Doppel-s."
     },
-    "sentence": "Viel ___ beim Spielen!"
+    "sentence": "Es macht immer großen ___, mit Freunden Fußball zu spielen."
   },
   {
     "id": "spazieren",
@@ -1197,7 +1197,7 @@
     "hints": {
       "tip": "Das z gehört hinein – nicht 'spatzieren' mit tz."
     },
-    "sentence": "Wir gehen im Park ___."
+    "sentence": "Am Sonntag gehen wir gerne im Wald ___ und genießen die Natur."
   },
   {
     "id": "lesen",
@@ -1217,7 +1217,7 @@
     "hints": {
       "tip": "Nur ein s und der Vokal bleibt lang – kein 'læsen'."
     },
-    "sentence": "Ich lerne ___."
+    "sentence": "In der Schule lernen die Kinder schon früh, wie man Bücher ___ kann."
   },
   {
     "id": "zeit",
@@ -1237,7 +1237,7 @@
     "hints": {
       "tip": "Die Lautfolge 'ei' bleibt – kein 'Zait'."
     },
-    "sentence": "Ich habe keine ___."
+    "sentence": "Es braucht viel ___, um ein Instrument richtig gut zu lernen."
   },
   {
     "id": "allein",
@@ -1257,7 +1257,7 @@
     "hints": {
       "tip": "Der kurze Vokal verlangt Doppel-l – kein 'alein'."
     },
-    "sentence": "Ich kann das ___ schaffen."
+    "sentence": "Manchmal bin ich gerne ___, um in Ruhe nachzudenken."
   },
   {
     "id": "kriegen",
@@ -1277,7 +1277,7 @@
     "hints": {
       "tip": "Der Wortstamm enthält 'ie' – nicht 'krigen'."
     },
-    "sentence": "Wir ___ das schon hin."
+    "sentence": "Wenn wir uns anstrengen, ___ wir das bestimmt hin."
   },
   {
     "id": "fallen",
@@ -1297,7 +1297,7 @@
     "hints": {
       "tip": "Doppel-l hält den Vokal kurz – kein 'falen'."
     },
-    "sentence": "Pass auf, nicht ___!"
+    "sentence": "Pass auf, dass die Gläser nicht vom Tablett ___!"
   },
   {
     "id": "gehen",
@@ -1317,7 +1317,7 @@
     "hints": {
       "tip": "Das stumme h verlängert den Vokal – kein 'gehn'."
     },
-    "sentence": "Lass uns nach Hause ___."
+    "sentence": "Wir wollen heute Abend noch ins Kino ___."
   },
   {
     "id": "denn",
@@ -1337,7 +1337,7 @@
     "hints": {
       "tip": "Die Konjunktion braucht Doppel-n – nicht 'den'."
     },
-    "sentence": "Was ist ___ los?"
+    "sentence": "Ich kann nicht kommen, ___ ich bin leider krank geworden."
   },
   {
     "id": "weiss",
@@ -1357,7 +1357,7 @@
     "hints": {
       "tip": "Der lange Vokal verlangt ß – kein Doppel-s."
     },
-    "sentence": "Wer ___ die Antwort?"
+    "sentence": "Niemand ___ genau, wie das Wetter morgen wird."
   },
   {
     "id": "immer",
@@ -1377,6 +1377,6 @@
     "hints": {
       "tip": "Der kurze Vokal braucht Doppel-m – nicht 'imer'."
     },
-    "sentence": "Er kommt ___ pünktlich."
+    "sentence": "Meine Oma sagt ___ , dass früher alles besser war."
   }
 ]
