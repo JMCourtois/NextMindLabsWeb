@@ -20,18 +20,23 @@
 }
 
 .header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(1rem, 4vw, 2rem);
+  display: grid;
+  gap: 0.5rem;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  max-width: 1240px;
+  text-align: center;
+  justify-items: center;
+  box-shadow: none;
+  border: none;
 }
 
 .headerText {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: 32rem;
+  max-width: 40rem;
 }
 
 .eyebrow {
@@ -43,32 +48,29 @@
   font-weight: 700;
 }
 
-.heading {
+.header h1 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
   color: var(--color-primary-strong);
-  line-height: 1.2;
 }
 
-.headerDescription {
+.header p {
   margin: 0;
   color: var(--color-muted);
   font-size: 1rem;
-  line-height: 1.5;
 }
 
 .trainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2rem);
   background: #fff;
-  padding: clamp(2rem, 5vw, 3rem);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
   border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  margin-top: 0.5rem;
+  border: 2px solid rgba(79, 70, 229, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  justify-items: center;
+  width: min(100%, 1240px);
 }
 
 .controls {
@@ -96,15 +98,6 @@
   gap: 0.75rem;
 }
 
-.fieldset legend {
-  font-weight: 700;
-  color: var(--color-primary-strong);
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-}
-
 .optionGroup {
   margin: 0;
   padding: 0;
@@ -121,6 +114,21 @@
   letter-spacing: 0.05em;
 }
 
+.fieldset legend {
+    font-weight: 700;
+    color: var(--color-primary-strong);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.optionRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .buttonGroup {
   display: inline-flex;
   flex-wrap: wrap;
@@ -133,7 +141,7 @@
   border-radius: 999px;
   border: 2px solid rgba(79, 70, 229, 0.15);
   background: #fff;
-  color: var(--color-text);
+  color: var(--color-primary-strong); /* Changed from text to primary strong for better contrast */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -144,12 +152,12 @@
   background: linear-gradient(150deg, var(--color-primary), var(--color-primary-strong));
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
 }
 
-.switch:hover:not(.switchActive) {
-  border-color: var(--color-primary);
-  color: var(--color-primary-strong);
+.switch:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary-strong);
 }
 
 .toggle {
@@ -197,6 +205,7 @@
 .boardWrapper {
   position: relative;
   width: 100%;
+  margin-top: 2rem; /* Added margin to separate options from board */
 }
 
 .board {
@@ -205,7 +214,7 @@
   gap: clamp(0.5rem, 1vw, 1rem);
   width: 100%;
   overflow: visible;
-  margin-top: 1.5rem;
+  margin-top: 3.5rem;
 }
 
 .digitColumn {

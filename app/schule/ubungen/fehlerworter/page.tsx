@@ -15,59 +15,43 @@ export default async function FehlerworterOverviewPage() {
   const groups = Array.from({ length: totalGroups }, (_, index) => {
     const start = index * WORDS_PER_SET;
     const end = Math.min(start + WORDS_PER_SET, words.length);
-    const sample = words.slice(start, end).slice(0, 3).map((word) => word.word);
     return {
       id: `uebung-${index + 1}`,
-      title: `Übung ${index + 1}`,
-      description: `Wörter ${start + 1} – ${end}`,
-      examples: sample,
+      title: `Gruppe ${index + 1}`,
+      description: `${end - start} Wörter`,
     };
   });
 
   return (
     <section className={styles.page} aria-labelledby="fehlerworterOverviewHeading">
+       <Link href="/schule" className={styles.backLink}>
+        ← Zur Übersicht
+      </Link>
+
       <header className={styles.header}>
-        <p className={styles.eyebrow}>100 Fehlerwörter</p>
-        <h1 id="fehlerworterOverviewHeading">Wähle deine Übungseinheit</h1>
-        <p>
-          Die Wörter stammen aus den häufigsten Fehlern, die Kinder in den ersten Grundschuljahren machen.
-          Jede Einheit trainiert zehn Begriffe in der Originalreihenfolge unserer Liste. Wenn deine Klasse sicherer wird, wartet am Ende ein
-          Zufallsmix mit zwanzig Begriffen zur Wiederholung.
-        </p>
+        <div className={styles.headerText}>
+            <h1 id="fehlerworterOverviewHeading" className={styles.heading}>Sprach- und Hörtraining</h1>
+            <p className={styles.headerDescription}>
+            Die Wörter stammen aus den häufigsten Fehlern. Wähle eine Gruppe, um zu starten.
+            </p>
+        </div>
       </header>
 
-      <div className={styles.grid}>
+      <div className={styles.groupSection}>
+        <Link href="fehlerworter/zufall" className={styles.groupCard}>
+            <h2 className={styles.groupCardTitle}>🎲 Zufallsauswahl</h2>
+            <p className={styles.groupCardInfo}>
+                {RANDOM_WORD_COUNT} zufällig ausgewählte Wörter
+            </p>
+        </Link>
+
         {groups.map((group) => (
-          <Link key={group.id} href={`fehlerworter/${group.id}`} className={styles.cardLinkWrapper}>
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2>{group.title}</h2>
-                <p>{group.description}</p>
-              </div>
-              <span className={styles.cardCta} aria-hidden="true">
-                Übung starten →
-              </span>
-            </article>
+          <Link key={group.id} href={`fehlerworter/${group.id}`} className={styles.groupCard}>
+              <h2 className={styles.groupCardTitle}>{group.title}</h2>
+              <p className={styles.groupCardInfo}>{group.description}</p>
           </Link>
         ))}
-
-        <Link href="fehlerworter/zufall" className={styles.cardLinkWrapper}>
-          <article className={styles.card} data-accent="true">
-            <div className={styles.cardHeader}>
-              <h2>Zufallsmix</h2>
-              <p>
-                {RANDOM_WORD_COUNT} zufällig ausgewählte Wörter aus der kompletten Fehlerwortliste – perfekt zum Wiederholen
-                oder für eine Abschlussrunde.
-              </p>
-            </div>
-            <span className={styles.cardCta} aria-hidden="true">
-              Zufall starten →
-            </span>
-          </article>
-        </Link>
       </div>
     </section>
   );
 }
-
-
