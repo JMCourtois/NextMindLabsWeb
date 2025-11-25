@@ -6,11 +6,7 @@
 }
 
 .backLink {
-  align-self: flex-start;
-  font-weight: 600;
-  color: var(--color-primary-strong);
-  text-decoration: none;
-  padding: 0.5rem 0;
+  display: none;
 }
 
 .backLink:hover,
