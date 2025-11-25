@@ -8,7 +8,7 @@ const uebungen = [
     title: "100 Fehlerwörter",
     description:
       "Höre das Wort und baue es Buchstabe für Buchstabe nach.",
-    badge: "Audio + Buchstaben",
+    badge: "Deutsch",
   },
   {
     slug: "luckentext",
@@ -16,7 +16,7 @@ const uebungen = [
     title: "Lückentext-Training",
     description:
       "Vervollständige Sätze mit dem richtigen Wort.",
-    badge: "Satzverständnis",
+    badge: "Deutsch",
   },
   {
     slug: "stellenwerttrainer",
@@ -24,7 +24,7 @@ const uebungen = [
     title: "Stellenwert-Trainer",
     description:
       "Verstehe Dezimal-, Binär- und Hex-Systeme interaktiv.",
-    badge: "Zahlenverständnis",
+    badge: "Mathe",
   },
 ];
 

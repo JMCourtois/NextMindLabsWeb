@@ -28,7 +28,7 @@ export default async function LuckentextOverviewPage() {
       <div className={styles.groupSection}>
         <Link href="/schule/ubungen/luckentext/zufall" className={styles.groupCard}>
           <h2 className={styles.groupCardTitle}>🎲 Zufallsauswahl</h2>
-          <p className={styles.groupCardInfo}>10 gemischte Sätze aus allen Bereichen</p>
+          <p className={styles.groupCardInfo}>10 zufällig ausgewählte Sätze</p>
         </Link>
 
         {groups.map((group) => (

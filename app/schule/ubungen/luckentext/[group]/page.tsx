@@ -17,7 +17,7 @@ async function resolveGroup(groupParam: string) {
     const randomized = shuffleArray([...validWords]).slice(0, 10);
     return {
       title: "Zufallsauswahl",
-      description: "10 gemischte Sätze aus allen Bereichen",
+      description: "10 gemischte Sätze",
       words: randomized,
     };
   }
