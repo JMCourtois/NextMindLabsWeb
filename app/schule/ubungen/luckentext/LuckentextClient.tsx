@@ -155,19 +155,6 @@ export function LuckentextClient({ words }: LuckentextClientProps) {
   if (viewMode === "menu") {
     return (
       <section className={styles.page}>
-         <Link href="/schule" className={styles.backLink}>
-            ← Zur Übersicht
-          </Link>
-          
-          <header className={styles.header}>
-            <div className={styles.headerText}>
-              <h2 className={styles.heading}>Lückentext-Training</h2>
-              <p className={styles.headerDescription}>
-                Wähle eine Übungsgruppe. Höre genau hin und finde das passende Wort für den Satz.
-              </p>
-            </div>
-          </header>
-
           <div className={styles.groupSection}>
              <button onClick={startRandomMode} className={styles.groupCard}>
                 <h3 className={styles.groupCardTitle}>🎲 Zufallsauswahl</h3>
@@ -197,10 +184,6 @@ export function LuckentextClient({ words }: LuckentextClientProps) {
 
   return (
     <section className={styles.page}>
-      <button onClick={handleBackToMenu} className={styles.backLink} type="button">
-        ← Zurück zur Auswahl
-      </button>
-
       <header className={styles.header}>
         <div className={styles.headerText}>
           <p className={styles.progress}>{progressLabel}</p>

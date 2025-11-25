@@ -24,19 +24,6 @@ export default async function FehlerworterOverviewPage() {
 
   return (
     <section className={styles.page} aria-labelledby="fehlerworterOverviewHeading">
-       <Link href="/schule" className={styles.backLink}>
-        ← Zur Übersicht
-      </Link>
-
-      <header className={styles.header}>
-        <div className={styles.headerText}>
-            <h1 id="fehlerworterOverviewHeading" className={styles.heading}>Sprach- und Hörtraining</h1>
-            <p className={styles.headerDescription}>
-            Die Wörter stammen aus den häufigsten Fehlern. Wähle eine Gruppe, um zu starten.
-            </p>
-        </div>
-      </header>
-
       <div className={styles.groupSection}>
         <Link href="fehlerworter/zufall" className={styles.groupCard}>
             <h2 className={styles.groupCardTitle}>🎲 Zufallsauswahl</h2>
