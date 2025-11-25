@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./SchuleNav.module.css";
 
 const SCHULE_NAV_ITEMS = [
@@ -8,6 +11,12 @@ const SCHULE_NAV_ITEMS = [
 ];
 
 export function SchuleNav() {
+  const pathname = usePathname();
+  
+  const isActive = (href: string) => {
+    return pathname?.startsWith(href);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -19,7 +28,10 @@ export function SchuleNav() {
             <ul className={styles.navList}>
               {SCHULE_NAV_ITEMS.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className={styles.navLink}>
+                  <Link 
+                    href={item.href} 
+                    className={`${styles.navLink} ${isActive(item.href) ? styles.navLinkActive : ''}`}
+                  >
                     {item.label}
                   </Link>
                 </li>
