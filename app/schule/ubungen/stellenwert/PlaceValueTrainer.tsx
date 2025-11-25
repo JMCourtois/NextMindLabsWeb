@@ -292,46 +292,50 @@ export function PlaceValueTrainer() {
           const isCarryTarget = carryOverlay?.to === index;
           const shouldShowOrbit = showCubes && digit > 0 && !isCarrySource;
           return (
-            <button
+            <div 
               key={label ?? index}
-              type="button"
-              ref={(element) => {
-                if (element) {
-                  cardRefs.current[index] = element.getBoundingClientRect();
-                }
-              }}
-              className={`${styles.digitCard} ${isHidden ? styles.digitCardHidden : ""} ${
-                isCarryTarget ? styles.digitCardTarget : ""
-              }`}
-              style={{ borderColor: color, background: `${color}22` }}
-              onClick={() => incrementAtIndex(index)}
-              aria-label={`${label || "Stelle"}: ${formatDigit(digit, numberSystem)}`}
+              className={`${styles.digitColumn} ${isHidden ? styles.digitColumnHidden : ""}`}
             >
-              {shouldShowOrbit && (
-                <div className={styles.cubeOrbit} aria-hidden="true">
-                  <div className={styles.cubeCluster}>
-                    {Array.from({ length: digit }).map((_, cubeIndex) => (
-                      <span
-                        key={`${index}-${cubeIndex}-${digit}`}
-                        className={styles.cube}
-                        style={{
-                          borderColor: cubeBorder,
-                          backgroundColor: cubeFill,
-                          boxShadow: `0 4px 12px ${cubeGlow}`,
-                          animationDelay: `${cubeIndex * 0.025}s`,
-                        }}
-                      />
-                    ))}
+              <button
+                type="button"
+                ref={(element) => {
+                  if (element) {
+                    cardRefs.current[index] = element.getBoundingClientRect();
+                  }
+                }}
+                className={`${styles.digitCard} ${
+                  isCarryTarget ? styles.digitCardTarget : ""
+                }`}
+                style={{ borderColor: color, background: `${color}22` }}
+                onClick={() => incrementAtIndex(index)}
+                aria-label={`${label || "Stelle"}: ${formatDigit(digit, numberSystem)}`}
+              >
+                {shouldShowOrbit && (
+                  <div className={styles.cubeOrbit} aria-hidden="true">
+                    <div className={styles.cubeCluster}>
+                      {Array.from({ length: digit }).map((_, cubeIndex) => (
+                        <span
+                          key={`${index}-${cubeIndex}-${digit}`}
+                          className={styles.cube}
+                          style={{
+                            borderColor: cubeBorder,
+                            backgroundColor: cubeFill,
+                            boxShadow: `0 4px 12px ${cubeGlow}`,
+                            animationDelay: `${cubeIndex * 0.025}s`,
+                          }}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+                <span className={styles.digitValue} style={{ color }}>
+                  {formatDigit(digit, numberSystem)}
+                </span>
+              </button>
               <span className={styles.digitLabel} style={{ color }}>
                 {label}
               </span>
-              <span className={styles.digitValue} style={{ color }}>
-                {formatDigit(digit, numberSystem)}
-              </span>
-            </button>
+            </div>
           );
           })}
         </div>
@@ -374,6 +378,3 @@ function carryIncrement(digits: number[], index: number, base: number, autoCarry
     }
   }
 }
-
-
-
