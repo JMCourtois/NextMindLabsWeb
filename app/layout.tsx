@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "@/lib/auth-context";
 import { SkipLink } from "./components/SkipLink";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
@@ -46,10 +47,12 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <SkipLink />
-        <Nav />
-        <div className="layout-shell">{children}</div>
-        <Footer />
+        <AuthProvider>
+          <SkipLink />
+          <Nav />
+          <div className="layout-shell">{children}</div>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

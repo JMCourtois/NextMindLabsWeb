@@ -55,7 +55,7 @@ export default function LandingPage() {
           </p>
           <div className={styles.heroCtas}>
             <a href="#precio" className={styles.primaryButton}>
-              Únete como miembro fundador
+              Reservar plaza de fundador
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -64,12 +64,36 @@ export default function LandingPage() {
               Ver cómo funciona
             </a>
           </div>
+          <p className={styles.heroProof}>
+            <span className={styles.heroProofDot}></span>
+            <strong>38 de 50</strong> plazas de fundador ocupadas
+          </p>
         </div>
         <div className={styles.heroVisual} aria-hidden="true">
           <div className={styles.heroVisualInner}>
             <div className={styles.heroOrb1}></div>
             <div className={styles.heroOrb2}></div>
             <div className={styles.heroOrb3}></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Strip */}
+      <section className={styles.socialProof} aria-label="Credenciales">
+        <div className={styles.socialProofInner}>
+          <div className={styles.socialProofItem}>
+            <span className={styles.socialProofValue}>15+</span>
+            <span className={styles.socialProofLabel}>años de experiencia en formación ejecutiva</span>
+          </div>
+          <div className={styles.socialProofDivider}></div>
+          <div className={styles.socialProofItem}>
+            <span className={styles.socialProofValue}>500+</span>
+            <span className={styles.socialProofLabel}>profesionales formados en pensamiento crítico</span>
+          </div>
+          <div className={styles.socialProofDivider}></div>
+          <div className={styles.socialProofItem}>
+            <span className={styles.socialProofValue}>4.9/5</span>
+            <span className={styles.socialProofLabel}>valoración media de los miembros</span>
           </div>
         </div>
       </section>
@@ -265,6 +289,14 @@ export default function LandingPage() {
           </div>
           <p className={styles.pricingAlt}>o €190/año (ahorra 2 meses)</p>
           
+          {/* Urgency indicator */}
+          <div className={styles.urgencyBar}>
+            <div className={styles.urgencyBarFill} style={{ width: "76%" }}></div>
+          </div>
+          <p className={styles.urgencyText}>
+            <strong>38 de 50</strong> plazas ocupadas
+          </p>
+
           <ul className={styles.pricingFeatures}>
             <li>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
