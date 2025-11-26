@@ -9,7 +9,7 @@ export function Footer() {
       <div className={styles.container}>
         <div className={styles.content}>
           {/* Logo */}
-          <Link href="/" className={styles.logo} aria-label="Next Mind Labs - Inicio">
+          <Link href="/" className={styles.logo} aria-label="Next Mind Labs - Home">
             <span className={styles.logoIcon} aria-hidden="true">
               <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="32" height="32" rx="8" fill="currentColor"/>
@@ -21,15 +21,15 @@ export function Footer() {
           </Link>
 
           {/* Links */}
-          <nav className={styles.nav} aria-label="Enlaces del pie de página">
-            <Link href="/legal/privacy">Privacidad</Link>
-            <Link href="/legal/terms">Términos</Link>
-            <a href="mailto:hola@nextmindlabs.com">Contacto</a>
+          <nav className={styles.nav} aria-label="Footer links">
+            <Link href="/legal/privacy">Privacy</Link>
+            <Link href="/legal/terms">Terms</Link>
+            <a href="mailto:hello@nextmindlabs.com">Contact</a>
           </nav>
         </div>
 
         <div className={styles.bottom}>
-          <p>© {currentYear} Next Mind Labs. Todos los derechos reservados.</p>
+          <p>© {currentYear} Next Mind Labs. All rights reserved.</p>
         </div>
       </div>
     </footer>

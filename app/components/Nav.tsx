@@ -7,17 +7,17 @@ import { useAuth } from "@/lib/auth-context";
 import styles from "./Nav.module.css";
 
 const PUBLIC_NAV_ITEMS = [
-  { href: "/#como-funciona", label: "Cómo funciona" },
-  { href: "/#precio", label: "Precio" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
 ];
 
 const LOGGED_IN_NAV_ITEMS = [
-  { href: "/programa", label: "Programa" },
-  { href: "/programa/sprints", label: "Sprints" },
-  { href: "/programa/vault", label: "Vault" },
-  { href: "/programa/radar", label: "Radar" },
-  { href: "/programa/clinic", label: "Case Clinic" },
+  { href: "/program", label: "Program" },
+  { href: "/program/sprints", label: "Sprints" },
+  { href: "/program/vault", label: "Vault" },
+  { href: "/program/radar", label: "Radar" },
+  { href: "/program/clinic", label: "Case Clinic" },
 ];
 
 export function Nav() {
@@ -93,9 +93,9 @@ export function Nav() {
         <div className={styles.inner}>
           {/* Logo */}
           <Link 
-            href={isLoggedIn ? "/programa" : "/"} 
+            href={isLoggedIn ? "/program" : "/"} 
             className={styles.logo} 
-            aria-label="Next Mind Labs - Inicio"
+            aria-label="Next Mind Labs - Home"
             onClick={closeMenu}
           >
             <span className={styles.logoIcon} aria-hidden="true">
@@ -109,7 +109,7 @@ export function Nav() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className={styles.desktopNav} aria-label="Navegación principal">
+          <nav className={styles.desktopNav} aria-label="Main navigation">
             <ul className={styles.navList}>
               {navItems.map((item) => (
                 <li key={item.href}>
@@ -137,7 +137,7 @@ export function Nav() {
                   onClick={toggleUserMenu}
                   aria-expanded={isUserMenuOpen}
                   aria-haspopup="true"
-                  aria-label="Menú de usuario"
+                  aria-label="User menu"
                 >
                   <span className={styles.userAvatar}>
                     {user?.name.charAt(0)}
@@ -158,15 +158,15 @@ export function Nav() {
                     <div className={styles.userDropdownHeader}>
                       <span className={styles.userDropdownName}>{user?.name}</span>
                       <span className={styles.userDropdownEmail}>{user?.email}</span>
-                      <span className={styles.userDropdownBadge}>Miembro {user?.plan}</span>
+                      <span className={styles.userDropdownBadge}>{user?.plan} member</span>
                     </div>
                     <div className={styles.userDropdownDivider} />
-                    <Link href="/programa/cuenta" className={styles.userDropdownItem} onClick={closeMenu}>
+                    <Link href="/program/account" className={styles.userDropdownItem} onClick={closeMenu}>
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <circle cx="8" cy="5" r="3" stroke="currentColor" strokeWidth="1.5"/>
                         <path d="M2 14C2 11.2386 4.68629 9 8 9C11.3137 9 14 11.2386 14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
-                      Mi cuenta
+                      My account
                     </Link>
                     <button className={styles.userDropdownItem} onClick={logout}>
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -174,14 +174,14 @@ export function Nav() {
                         <path d="M11 11L14 8L11 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M14 8H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
-                      Cerrar sesión
+                      Sign out
                     </button>
                     <div className={styles.userDropdownDivider} />
                     <button className={styles.userDropdownItemMuted} onClick={toggle}>
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M8 2V14M2 8H14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
-                      Ver modo público
+                      View public mode
                     </button>
                   </div>
                 )}
@@ -192,7 +192,7 @@ export function Nav() {
                   <button
                     className={styles.userButtonOutline}
                     onClick={toggle}
-                    aria-label="Simular inicio de sesión"
+                    aria-label="Simulate login"
                   >
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.5"/>
@@ -200,11 +200,11 @@ export function Nav() {
                     </svg>
                   </button>
                   <span className={styles.userButtonTooltip}>
-                    Demo: Ver experiencia de miembro
+                    Demo: View member experience
                   </span>
                 </div>
-                <a href="#precio" className={styles.ctaButton}>
-                  Únete ahora
+                <a href="#pricing" className={styles.ctaButton}>
+                  Join now
                 </a>
               </div>
             )}
@@ -216,7 +216,7 @@ export function Nav() {
               <button
                 className={styles.userButtonMobile}
                 onClick={toggleUserMenu}
-                aria-label="Menú de usuario"
+                aria-label="User menu"
               >
                 <span className={styles.userAvatar}>
                   {user?.name.charAt(0)}
@@ -227,7 +227,7 @@ export function Nav() {
               <button
                 className={styles.userButtonOutlineMobile}
                 onClick={toggle}
-                aria-label="Simular inicio de sesión"
+                aria-label="Simulate login"
               >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.5"/>
@@ -238,7 +238,7 @@ export function Nav() {
             <button
               className={styles.menuButton}
               onClick={toggleMenu}
-              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
             >
@@ -258,18 +258,18 @@ export function Nav() {
           <div className={styles.userDropdownHeader}>
             <span className={styles.userDropdownName}>{user?.name}</span>
             <span className={styles.userDropdownEmail}>{user?.email}</span>
-            <span className={styles.userDropdownBadge}>Miembro {user?.plan}</span>
+            <span className={styles.userDropdownBadge}>{user?.plan} member</span>
           </div>
           <div className={styles.userDropdownDivider} />
-          <Link href="/programa/cuenta" className={styles.userDropdownItem} onClick={closeMenu}>
-            Mi cuenta
+          <Link href="/program/account" className={styles.userDropdownItem} onClick={closeMenu}>
+            My account
           </Link>
           <button className={styles.userDropdownItem} onClick={logout}>
-            Cerrar sesión
+            Sign out
           </button>
           <div className={styles.userDropdownDivider} />
           <button className={styles.userDropdownItemMuted} onClick={toggle}>
-            Ver modo público
+            View public mode
           </button>
         </div>
       )}
@@ -280,7 +280,7 @@ export function Nav() {
         className={`${styles.mobileNav} ${isMenuOpen ? styles.mobileNavOpen : ""}`}
         aria-hidden={!isMenuOpen}
       >
-        <nav aria-label="Navegación móvil">
+        <nav aria-label="Mobile navigation">
           <ul className={styles.mobileNavList}>
             {navItems.map((item) => (
               <li key={item.href}>
@@ -305,8 +305,8 @@ export function Nav() {
             ))}
           </ul>
           {!isLoggedIn && (
-            <a href="#precio" className={styles.mobileCta} onClick={closeMenu}>
-              Únete como miembro fundador
+            <a href="#pricing" className={styles.mobileCta} onClick={closeMenu}>
+              Join as founding member
             </a>
           )}
         </nav>

@@ -1,22 +1,22 @@
 "use client";
 
 import { useAuth } from "@/lib/auth-context";
-import styles from "../programa.module.css";
+import styles from "../program.module.css";
 
-export default function CuentaPage() {
+export default function AccountPage() {
   const { user, logout, toggle } = useAuth();
 
   return (
     <main id="mainContent" className={styles.page}>
       <header className={styles.pageHeader}>
-        <span className={styles.pageLabel}>Mi cuenta</span>
-        <h1 className={styles.pageTitle}>Configuración</h1>
+        <span className={styles.pageLabel}>My Account</span>
+        <h1 className={styles.pageTitle}>Settings</h1>
       </header>
 
       {/* Profile Section */}
       <section className={styles.section}>
         <div className={styles.contentBlock}>
-          <h2 className={styles.contentBlockTitle}>Perfil</h2>
+          <h2 className={styles.contentBlockTitle}>Profile</h2>
           <div style={{ display: "grid", gap: "1rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
               <div style={{ 
@@ -34,8 +34,8 @@ export default function CuentaPage() {
                 {user?.name?.charAt(0) || "U"}
               </div>
               <div>
-                <div style={{ fontWeight: "600", fontSize: "1.125rem" }}>{user?.name || "Usuario"}</div>
-                <div style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>{user?.email || "email@ejemplo.com"}</div>
+                <div style={{ fontWeight: "600", fontSize: "1.125rem" }}>{user?.name || "User"}</div>
+                <div style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>{user?.email || "email@example.com"}</div>
               </div>
             </div>
           </div>
@@ -45,12 +45,12 @@ export default function CuentaPage() {
       {/* Subscription Section */}
       <section className={styles.section}>
         <div className={styles.contentBlock}>
-          <h2 className={styles.contentBlockTitle}>Suscripción</h2>
+          <h2 className={styles.contentBlockTitle}>Subscription</h2>
           <div style={{ display: "grid", gap: "1.25rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem", background: "var(--color-surface-muted)", borderRadius: "var(--radius-md)" }}>
               <div>
-                <div style={{ fontWeight: "600" }}>Plan actual</div>
-                <div style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>Miembro {user?.plan || "fundador"}</div>
+                <div style={{ fontWeight: "600" }}>Current plan</div>
+                <div style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>{user?.plan || "Founder"} member</div>
               </div>
               <span style={{ 
                 padding: "0.25rem 0.75rem", 
@@ -61,19 +61,19 @@ export default function CuentaPage() {
                 fontWeight: "600",
                 textTransform: "uppercase"
               }}>
-                €19/mes
+                €19/month
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div>
-                <div style={{ fontWeight: "600" }}>Miembro desde</div>
-                <div style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>{user?.memberSince || "Enero 2025"}</div>
+                <div style={{ fontWeight: "600" }}>Member since</div>
+                <div style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>{user?.memberSince || "January 2025"}</div>
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div>
-                <div style={{ fontWeight: "600" }}>Próximo cobro</div>
-                <div style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>1 de Febrero, 2025</div>
+                <div style={{ fontWeight: "600" }}>Next billing date</div>
+                <div style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>February 1, 2025</div>
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function CuentaPage() {
       {/* Actions */}
       <section className={styles.section}>
         <div className={styles.contentBlock}>
-          <h2 className={styles.contentBlockTitle}>Acciones</h2>
+          <h2 className={styles.contentBlockTitle}>Actions</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             <button 
               onClick={logout}
@@ -99,7 +99,7 @@ export default function CuentaPage() {
                 transition: "all 0.2s ease"
               }}
             >
-              Cerrar sesión
+              Sign out
             </button>
             <button 
               onClick={toggle}
@@ -116,7 +116,7 @@ export default function CuentaPage() {
                 transition: "all 0.2s ease"
               }}
             >
-              Demo: Ver modo público
+              Demo: View public mode
             </button>
           </div>
         </div>
@@ -130,11 +130,11 @@ export default function CuentaPage() {
               <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.5"/>
               <path d="M9 6V10M9 12.5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
-            Nota sobre esta demo
+            About this demo
           </div>
           <p className={styles.highlightBoxText}>
-            Esta es una versión de demostración. En la versión real, aquí podrás gestionar 
-            tu perfil, cambiar tu método de pago, ver historial de facturas y más.
+            This is a demo version. In the full version, you'll be able to manage 
+            your profile, change your payment method, view invoice history, and more.
           </p>
         </div>
       </section>

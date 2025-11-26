@@ -18,10 +18,10 @@ type SimulatedUser = {
 };
 
 const SIMULATED_USER: SimulatedUser = {
-  name: "María García",
-  email: "maria@ejemplo.com",
+  name: "Sarah Chen",
+  email: "sarah@example.com",
   plan: "founder",
-  memberSince: "Enero 2025",
+  memberSince: "January 2025",
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -59,4 +59,3 @@ export function useAuth() {
   }
   return context;
 }
-
