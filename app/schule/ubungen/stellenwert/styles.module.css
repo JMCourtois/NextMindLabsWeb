@@ -156,6 +156,51 @@
     color: var(--color-primary-strong);
 }
 
+/* Segmented Control for +/- Mode Toggle */
+.modeToggleWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.modeToggle {
+  display: inline-flex;
+  background: #fff;
+  border-radius: 999px;
+  border: 2px solid rgba(79, 70, 229, 0.15);
+  padding: 4px;
+  gap: 0;
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.1);
+}
+
+.modeButton {
+  padding: 0.6rem 1.4rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--color-primary-strong);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  line-height: 1;
+  border-radius: 999px;
+}
+
+.modeButton:hover:not(.modeButtonActive) {
+  background: rgba(79, 70, 229, 0.08);
+}
+
+.modeButtonActive {
+  background: linear-gradient(150deg, var(--color-primary), var(--color-primary-strong));
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
 .toggle {
   display: inline-flex;
   align-items: center;

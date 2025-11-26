@@ -79,6 +79,7 @@ function withAlpha(hexColor: string, alpha: number) {
 
 export function PlaceValueTrainer() {
   const [numberSystem, setNumberSystem] = useState<NumberSystem>("decimal");
+  const [operationMode, setOperationMode] = useState<"add" | "subtract">("add");
   const [autoCarry, setAutoCarry] = useState(false);
   const [hideLeadingZeros, setHideLeadingZeros] = useState(false);
   const [showCubes, setShowCubes] = useState(true);
@@ -143,59 +144,114 @@ export function PlaceValueTrainer() {
     setCarryOverlay(null);
   };
 
-  const incrementAtIndex = (index: number) => {
+  const handleDigitClick = (index: number) => {
     const base = config.base;
     const previousValue = digits[index];
 
-    setDigits((prev) => {
-      const next = [...prev];
-      carryIncrement(next, index, base, autoCarry);
-      return next;
-    });
+    if (operationMode === "add") {
+      setDigits((prev) => {
+        const next = [...prev];
+        carryIncrement(next, index, base, autoCarry);
+        return next;
+      });
 
-    // Detect if a carry occurred (digit overflowed and wrapped to 0)
-    const didCarry = autoCarry && previousValue === base - 1;
-    if (showCubes && didCarry) {
-      const targetIndex = index - 1;
-      if (targetIndex >= 0) {
-        const fromCard = cardRefs.current[index];
-        const toCard = cardRefs.current[targetIndex];
-        const boardRect = boardRef.current?.getBoundingClientRect();
+      // Detect if a carry occurred (digit overflowed and wrapped to 0)
+      const didCarry = autoCarry && previousValue === base - 1;
+      if (showCubes && didCarry) {
+        const targetIndex = index - 1;
+        if (targetIndex >= 0) {
+          const fromCard = cardRefs.current[index];
+          const toCard = cardRefs.current[targetIndex];
+          const boardRect = boardRef.current?.getBoundingClientRect();
 
-        const hasMeasurements = Boolean(fromCard && toCard && boardRect);
+          const hasMeasurements = Boolean(fromCard && toCard && boardRect);
 
-        const startX = hasMeasurements
-          ? (fromCard!.left + fromCard!.width / 2) - boardRect!.left
-          : (boardRect?.width ?? 0) / 2;
+          const startX = hasMeasurements
+            ? (fromCard!.left + fromCard!.width / 2) - boardRect!.left
+            : (boardRect?.width ?? 0) / 2;
 
-        const startY = hasMeasurements
-          ? fromCard!.top - boardRect!.top - 56
-          : -56;
+          const startY = hasMeasurements
+            ? fromCard!.top - boardRect!.top - 56
+            : -56;
 
-        const deltaX = hasMeasurements
-          ? (toCard!.left + toCard!.width / 2) - (fromCard!.left + fromCard!.width / 2)
-          : targetIndex < index
-            ? -140
+          const deltaX = hasMeasurements
+            ? (toCard!.left + toCard!.width / 2) - (fromCard!.left + fromCard!.width / 2)
+            : targetIndex < index
+              ? -140
+              : 140;
+
+          const deltaY = hasMeasurements ? toCard!.top - fromCard!.top : 0;
+
+          const nextCarry: CarryOverlay = {
+            from: index,
+            to: targetIndex,
+            id: bundleIdRef.current + 1,
+            fromColor: COLORS[index % COLORS.length],
+            toColor: COLORS[targetIndex % COLORS.length],
+            deltaX,
+            deltaY,
+            startX,
+            startY,
+          };
+
+          bundleIdRef.current = nextCarry.id;
+          requestAnimationFrame(() => {
+            setCarryOverlay(nextCarry);
+          });
+        }
+      }
+    } else {
+      // Subtract mode
+      setDigits((prev) => {
+        const next = [...prev];
+        borrowDecrement(next, index, base, autoCarry);
+        return next;
+      });
+
+      // Detect if a borrow occurred (digit underflowed from 0 to base-1)
+      const didBorrow = autoCarry && previousValue === 0;
+      if (showCubes && didBorrow) {
+        const sourceIndex = index - 1;
+        const targetIndex = index;
+
+        if (sourceIndex >= 0) {
+          const fromCard = cardRefs.current[sourceIndex];
+          const toCard = cardRefs.current[targetIndex];
+          const boardRect = boardRef.current?.getBoundingClientRect();
+
+          const hasMeasurements = Boolean(fromCard && toCard && boardRect);
+
+          const startX = hasMeasurements
+            ? (fromCard!.left + fromCard!.width / 2) - boardRect!.left
+            : (boardRect?.width ?? 0) / 2;
+
+          const startY = hasMeasurements
+            ? fromCard!.top - boardRect!.top - 56
+            : -56;
+
+          const deltaX = hasMeasurements
+            ? (toCard!.left + toCard!.width / 2) - (fromCard!.left + fromCard!.width / 2)
             : 140;
 
-        const deltaY = hasMeasurements ? toCard!.top - fromCard!.top : 0;
+          const deltaY = hasMeasurements ? toCard!.top - fromCard!.top : 0;
 
-        const nextCarry: CarryOverlay = {
-          from: index,
-          to: targetIndex,
-          id: bundleIdRef.current + 1,
-          fromColor: COLORS[index % COLORS.length],
-          toColor: COLORS[targetIndex % COLORS.length],
-          deltaX,
-          deltaY,
-          startX,
-          startY,
-        };
+          const nextCarry: CarryOverlay = {
+            from: sourceIndex,
+            to: targetIndex,
+            id: bundleIdRef.current + 1,
+            fromColor: COLORS[sourceIndex % COLORS.length],
+            toColor: COLORS[targetIndex % COLORS.length],
+            deltaX,
+            deltaY,
+            startX,
+            startY,
+          };
 
-        bundleIdRef.current = nextCarry.id;
-        requestAnimationFrame(() => {
-          setCarryOverlay(nextCarry);
-        });
+          bundleIdRef.current = nextCarry.id;
+          requestAnimationFrame(() => {
+            setCarryOverlay(nextCarry);
+          });
+        }
       }
     }
   };
@@ -274,6 +330,30 @@ export function PlaceValueTrainer() {
         </fieldset>
       </section>
 
+      {/* Mode Toggle +/- centered */}
+      <div className={styles.modeToggleWrapper}>
+        <div className={styles.modeToggle} role="group" aria-label="Rechenoperation">
+          <button
+            type="button"
+            className={`${styles.modeButton} ${operationMode === "add" ? styles.modeButtonActive : ""}`}
+            onClick={() => setOperationMode("add")}
+            aria-pressed={operationMode === "add"}
+            aria-label="Addieren"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            className={`${styles.modeButton} ${operationMode === "subtract" ? styles.modeButtonActive : ""}`}
+            onClick={() => setOperationMode("subtract")}
+            aria-pressed={operationMode === "subtract"}
+            aria-label="Subtrahieren"
+          >
+            −
+          </button>
+        </div>
+      </div>
+
       <div className={styles.boardWrapper}>
         <div
           className={styles.board}
@@ -307,7 +387,7 @@ export function PlaceValueTrainer() {
                   isCarryTarget ? styles.digitCardTarget : ""
                 }`}
                 style={{ borderColor: color, background: `${color}22` }}
-                onClick={() => incrementAtIndex(index)}
+                onClick={() => handleDigitClick(index)}
                 aria-label={`${label || "Stelle"}: ${formatDigit(digit, numberSystem)}`}
               >
                 {shouldShowOrbit && (
@@ -375,6 +455,19 @@ function carryIncrement(digits: number[], index: number, base: number, autoCarry
     digits[index] = 0;
     if (autoCarry) {
       carryIncrement(digits, index - 1, base, autoCarry);
+    }
+  }
+}
+
+function borrowDecrement(digits: number[], index: number, base: number, autoCarry: boolean) {
+  if (index < 0) {
+    return;
+  }
+  digits[index] -= 1;
+  if (digits[index] < 0) {
+    digits[index] = base - 1;
+    if (autoCarry) {
+      borrowDecrement(digits, index - 1, base, autoCarry);
     }
   }
 }
