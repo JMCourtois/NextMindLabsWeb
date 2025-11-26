@@ -85,6 +85,7 @@ export function PlaceValueTrainer() {
   const [showCubes, setShowCubes] = useState(true);
   const [digits, setDigits] = useState<number[]>(INITIAL_DIGITS);
   const [carryOverlay, setCarryOverlay] = useState<CarryOverlay | null>(null);
+  const [errorIndex, setErrorIndex] = useState<number | null>(null);
   const bundleIdRef = useRef(0);
   const cardRefs = useRef<(DOMRect | null)[]>(Array(7).fill(null));
   const boardRef = useRef<HTMLDivElement | null>(null);
@@ -142,6 +143,22 @@ export function PlaceValueTrainer() {
   const resetDigits = () => {
     setDigits(INITIAL_DIGITS);
     setCarryOverlay(null);
+    setErrorIndex(null);
+  };
+
+  // Check if subtracting at index would result in negative total
+  const wouldResultInNegative = (index: number): boolean => {
+    const base = config.base;
+    // Calculate total value from index 0 to current index (inclusive)
+    // This represents the "available" value at this position and higher
+    let availableValue = 0;
+    for (let i = 0; i <= index; i++) {
+      availableValue = availableValue * base + digits[i];
+    }
+    // If we subtract 1 unit at this position, it would be negative if availableValue is 0
+    // The unit value at position 'index' is base^(6-index) but we need to check 
+    // if there's enough value to subtract from
+    return availableValue === 0;
   };
 
   const handleDigitClick = (index: number) => {
@@ -201,7 +218,13 @@ export function PlaceValueTrainer() {
         }
       }
     } else {
-      // Subtract mode
+      // Subtract mode - check if this would result in negative
+      if (wouldResultInNegative(index)) {
+        // Show error animation
+        setErrorIndex(index);
+        return;
+      }
+
       setDigits((prev) => {
         const next = [...prev];
         borrowDecrement(next, index, base, autoCarry);
@@ -370,6 +393,7 @@ export function PlaceValueTrainer() {
           const cubeGlow = withAlpha(color, 0.18);
           const isCarrySource = carryOverlay?.from === index;
           const isCarryTarget = carryOverlay?.to === index;
+          const isError = errorIndex === index;
           const shouldShowOrbit = showCubes && digit > 0 && !isCarrySource;
           return (
             <div 
@@ -385,9 +409,17 @@ export function PlaceValueTrainer() {
                 }}
                 className={`${styles.digitCard} ${
                   isCarryTarget ? styles.digitCardTarget : ""
-                }`}
-                style={{ borderColor: color, background: `${color}22` }}
+                } ${isError ? styles.digitCardError : ""}`}
+                style={{ 
+                  borderColor: isError ? "var(--color-error)" : color, 
+                  background: isError ? "rgba(220, 38, 38, 0.08)" : `${color}22` 
+                }}
                 onClick={() => handleDigitClick(index)}
+                onAnimationEnd={() => {
+                  if (isError) {
+                    setErrorIndex(null);
+                  }
+                }}
                 aria-label={`${label || "Stelle"}: ${formatDigit(digit, numberSystem)}`}
               >
                 {shouldShowOrbit && (
