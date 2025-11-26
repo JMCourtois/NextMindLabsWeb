@@ -5,21 +5,36 @@ import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 
 export const metadata: Metadata = {
-  title: "Next Mind Labs",
+  title: "Next Mind Labs | La escuela para profesionales que no serán reemplazados",
   description:
-    "Playful learning journeys that help young minds recognise and work through cognitive biases.",
+    "Deja de competir con la IA. Aprende a dirigirla. Conviértete en un Profesional Híbrido con pensamiento crítico + IA como socio intelectual.",
+  keywords: [
+    "IA para profesionales",
+    "inteligencia artificial",
+    "pensamiento crítico",
+    "productividad con IA",
+    "ChatGPT profesional",
+    "formación IA",
+    "profesional híbrido"
+  ],
+  authors: [{ name: "Next Mind Labs" }],
   openGraph: {
-    title: "Next Mind Labs",
+    title: "Next Mind Labs | Deja de competir con la IA. Aprende a dirigirla.",
     description:
-      "Future-ready skills and bias-aware learning paths for an AI-powered workplace.",
-    url: "https://nextmindlabs.example",
+      "Conviértete en un Profesional Híbrido: alta capacidad humana + alta capacidad técnica. Sin ruido, sin cursos eternos, sin prompts vacíos.",
+    url: "https://nextmindlabs.com",
     siteName: "Next Mind Labs",
-    type: "website"
+    type: "website",
+    locale: "es_ES"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Next Mind Labs",
-    description: "Build bias-aware, AI-ready capabilities for tomorrow’s jobs."
+    title: "Next Mind Labs | La escuela para profesionales que no serán reemplazados",
+    description: "Deja de competir con la IA. Aprende a dirigirla."
+  },
+  robots: {
+    index: true,
+    follow: true
   }
 };
 
@@ -29,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body>
         <SkipLink />
         <Nav />

@@ -8,7 +8,7 @@ export function SkipLink() {
 
   return (
     <a className="skip-link" href="#mainContent">
-      {isSchoolSection ? "Zum Inhalt springen" : "Skip to content"}
+      {isSchoolSection ? "Zum Inhalt springen" : "Ir al contenido"}
     </a>
   );
 }

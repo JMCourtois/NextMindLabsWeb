@@ -1,77 +1,275 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
+  background: rgba(253, 251, 247, 0.92);
   backdrop-filter: blur(12px);
-  background-color: rgba(17, 24, 39, 0.85);
   border-bottom: 1px solid var(--color-border);
+}
+
+.container {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2rem);
 }
 
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1.1rem 0;
+  gap: 1.5rem;
+  height: 4.5rem;
 }
 
+/* Logo */
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: var(--color-text);
+  z-index: 101;
+}
+
+.logo:hover {
+  color: var(--color-text);
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-primary);
+}
+
+.logoIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.logoText {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.01em;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .navList {
   display: flex;
   align-items: center;
-  gap: clamp(0.75rem, 2vw, 1.5rem);
+  gap: 0.25rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .navLink {
-  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.35rem 0.15rem;
-  color: var(--color-muted);
-  transition: color 0.2s ease;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
 }
 
-.navLink::after {
-  content: "";
+.navLink:hover {
+  color: var(--color-text);
+  background: var(--color-surface-muted);
+}
+
+/* CTA Button */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.ctaButton:hover {
+  background: var(--color-accent-light);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Mobile Menu Button */
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+}
+
+.menuButton:hover {
+  background: var(--color-surface-muted);
+}
+
+.menuIcon {
+  position: relative;
+  width: 1.25rem;
+  height: 0.875rem;
+}
+
+.menuIcon span {
   position: absolute;
   left: 0;
-  bottom: -0.35rem;
   width: 100%;
   height: 2px;
-  border-radius: 999px;
-  background: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.2s ease;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-.navLink:hover,
-.navLink:focus-visible {
+.menuIcon span:nth-child(1) {
+  top: 0;
+}
+
+.menuIcon span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menuIcon span:nth-child(3) {
+  bottom: 0;
+}
+
+/* Menu icon animation */
+.menuIconOpen span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.menuIconOpen span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.menuIconOpen span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* Mobile Navigation */
+.mobileNav {
+  position: fixed;
+  top: 4.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-background);
+  padding: 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 99;
+  overflow-y: auto;
+}
+
+.mobileNavOpen {
+  transform: translateX(0);
+}
+
+.mobileNavList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 1rem 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.mobileNavLink:hover {
+  background: var(--color-surface-muted);
   color: var(--color-text);
 }
 
-.navLink:hover::after,
-.navLink:focus-visible::after {
-  transform: scaleX(1);
+.mobileCta {
+  display: block;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
+.mobileCta:hover {
+  background: var(--color-accent-light);
+  color: #fff;
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 98;
+  opacity: 0;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hide global nav on /schule pages */
 :global(body.schule-mode) .header {
   display: none;
 }
 
-@media (max-width: 900px) {
-  .navList {
+/* Responsive */
+@media (max-width: 768px) {
+  .desktopNav {
     display: none;
+  }
+
+  .menuButton {
+    display: flex;
   }
 }
 
+@media (min-width: 769px) {
+  .mobileNav {
+    display: none;
+  }
 
+  .backdrop {
+    display: none;
+  }
+}

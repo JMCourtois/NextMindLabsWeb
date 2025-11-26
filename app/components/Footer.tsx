@@ -1,79 +1,37 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
 
-const PRIMARY_LINKS = [
-  { href: "/skills", label: "Skills" },
-  { href: "/biases", label: "Biases" },
-  { href: "/reference", label: "Reference" },
-  { href: "/learning-paths", label: "Learning Paths" },
-  { href: "/exercises", label: "Exercises" }
-];
-
-const COMPANY_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-  { href: "/legal/privacy", label: "Privacy", external: true },
-  { href: "/legal/terms", label: "Terms", external: true }
-];
-
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className={styles.footer}>
-      <div className="layout-shell">
-        <div className={styles.grid}>
-          <div>
-            <h2 className={styles.logo}>Next Mind Labs</h2>
-            <p className={styles.tagline}>
-              Helping teams build bias-aware, AI-ready skills for tomorrow&apos;s work.
-            </p>
-          </div>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          {/* Logo */}
+          <Link href="/" className={styles.logo} aria-label="Next Mind Labs - Inicio">
+            <span className={styles.logoIcon} aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="8" fill="currentColor"/>
+                <path d="M8 16L14 10L20 16L14 22L8 16Z" fill="white"/>
+                <path d="M14 16L20 10L26 16L20 22L14 16Z" fill="white" fillOpacity="0.6"/>
+              </svg>
+            </span>
+            <span className={styles.logoText}>Next Mind Labs</span>
+          </Link>
 
-          <div className={styles.column}>
-            <h3>Explore</h3>
-            <ul>
-              {PRIMARY_LINKS.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href}>{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className={styles.column}>
-            <h3>Company</h3>
-            <ul>
-              {COMPANY_LINKS.map((item) =>
-                item.external ? (
-                  <li key={item.href}>
-                    <a href={item.href}>{item.label}</a>
-                  </li>
-                ) : (
-                  <li key={item.href}>
-                    <Link href={item.href}>{item.label}</Link>
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
-
-          <div className={styles.column}>
-            <h3>Newsletter</h3>
-            <p>Monthly prompts, cases, and classroom-ready activities.</p>
-            <form className={styles.form}>
-              <label className="sr-only" htmlFor="footer-email">
-                Email address
-              </label>
-              <input id="footer-email" type="email" required placeholder="you@example.com" />
-              <button type="submit">Subscribe</button>
-            </form>
-          </div>
+          {/* Links */}
+          <nav className={styles.nav} aria-label="Enlaces del pie de página">
+            <Link href="/legal/privacy">Privacidad</Link>
+            <Link href="/legal/terms">Términos</Link>
+            <a href="mailto:hola@nextmindlabs.com">Contacto</a>
+          </nav>
         </div>
-        <div className={styles.subfooter}>
-          <p>© {new Date().getFullYear()} Next Mind Labs. All rights reserved.</p>
+
+        <div className={styles.bottom}>
+          <p>© {currentYear} Next Mind Labs. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
   );
 }
-
-
